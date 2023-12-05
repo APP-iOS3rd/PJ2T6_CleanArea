@@ -11,6 +11,7 @@
 		41FCC83B2B1EEC110024A928 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCC83A2B1EEC110024A928 /* ContentView.swift */; };
 		41FCC83D2B1EEC140024A928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FCC83C2B1EEC140024A928 /* Assets.xcassets */; };
 		41FCC8412B1EEC140024A928 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FCC8402B1EEC140024A928 /* Preview Assets.xcassets */; };
+		41FCC84A2B1EF06E0024A928 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCC8492B1EF06E0024A928 /* StartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		41FCC83C2B1EEC140024A928 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41FCC83E2B1EEC140024A928 /* CleanArea.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CleanArea.entitlements; sourceTree = "<group>"; };
 		41FCC8402B1EEC140024A928 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		41FCC8492B1EF06E0024A928 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				41FCC8382B1EEC110024A928 /* CleanAreaApp.swift */,
 				41FCC83A2B1EEC110024A928 /* ContentView.swift */,
+				41FCC8492B1EF06E0024A928 /* StartView.swift */,
 				41FCC83C2B1EEC140024A928 /* Assets.xcassets */,
 				41FCC83E2B1EEC140024A928 /* CleanArea.entitlements */,
 				41FCC83F2B1EEC140024A928 /* Preview Content */,
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41FCC84A2B1EF06E0024A928 /* StartView.swift in Sources */,
 				41FCC83B2B1EEC110024A928 /* ContentView.swift in Sources */,
 				41FCC8392B1EEC110024A928 /* CleanAreaApp.swift in Sources */,
 			);
