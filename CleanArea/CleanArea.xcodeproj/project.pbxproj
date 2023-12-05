@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		417146E22B1F30FE00E91494 /* TFStyleViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417146E12B1F30FE00E91494 /* TFStyleViewModifier.swift */; };
+		417146E42B1F32D400E91494 /* StartVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417146E32B1F32D400E91494 /* StartVM.swift */; };
+		417146E62B1F36D200E91494 /* StartTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417146E52B1F36D200E91494 /* StartTextField.swift */; };
 		41FCC8392B1EEC110024A928 /* CleanAreaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCC8382B1EEC110024A928 /* CleanAreaApp.swift */; };
 		41FCC83B2B1EEC110024A928 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCC83A2B1EEC110024A928 /* ContentView.swift */; };
 		41FCC83D2B1EEC140024A928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FCC83C2B1EEC140024A928 /* Assets.xcassets */; };
@@ -15,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		417146E12B1F30FE00E91494 /* TFStyleViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFStyleViewModifier.swift; sourceTree = "<group>"; };
+		417146E32B1F32D400E91494 /* StartVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVM.swift; sourceTree = "<group>"; };
+		417146E52B1F36D200E91494 /* StartTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartTextField.swift; sourceTree = "<group>"; };
 		41FCC8352B1EEC110024A928 /* CleanArea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		41FCC8382B1EEC110024A928 /* CleanAreaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanAreaApp.swift; sourceTree = "<group>"; };
 		41FCC83A2B1EEC110024A928 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -35,6 +41,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		417146DD2B1F2F3A00E91494 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				417146DF2B1F2F5E00E91494 /* Start */,
+				417146DE2B1F2F5000E91494 /* Main */,
+				417146E02B1F2F6900E91494 /* Helpers */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		417146DE2B1F2F5000E91494 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		417146DF2B1F2F5E00E91494 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				41FCC8492B1EF06E0024A928 /* StartView.swift */,
+				417146E52B1F36D200E91494 /* StartTextField.swift */,
+				417146E32B1F32D400E91494 /* StartVM.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		417146E02B1F2F6900E91494 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				417146E12B1F30FE00E91494 /* TFStyleViewModifier.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		41FCC82C2B1EEC110024A928 = {
 			isa = PBXGroup;
 			children = (
@@ -56,7 +97,7 @@
 			children = (
 				41FCC8382B1EEC110024A928 /* CleanAreaApp.swift */,
 				41FCC83A2B1EEC110024A928 /* ContentView.swift */,
-				41FCC8492B1EF06E0024A928 /* StartView.swift */,
+				417146DD2B1F2F3A00E91494 /* iOS */,
 				41FCC83C2B1EEC140024A928 /* Assets.xcassets */,
 				41FCC83E2B1EEC140024A928 /* CleanArea.entitlements */,
 				41FCC83F2B1EEC140024A928 /* Preview Content */,
@@ -142,7 +183,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				417146E42B1F32D400E91494 /* StartVM.swift in Sources */,
 				41FCC84A2B1EF06E0024A928 /* StartView.swift in Sources */,
+				417146E62B1F36D200E91494 /* StartTextField.swift in Sources */,
+				417146E22B1F30FE00E91494 /* TFStyleViewModifier.swift in Sources */,
 				41FCC83B2B1EEC110024A928 /* ContentView.swift in Sources */,
 				41FCC8392B1EEC110024A928 /* CleanAreaApp.swift in Sources */,
 			);
