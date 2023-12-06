@@ -19,7 +19,7 @@ class APIViewModel: XMLParser, ObservableObject {
 //    let bizTycdSelOptions = ["일자리분야", "주거분야", "교육분야"]
 //    let srchPolyBizSecdOptions = ["중앙부처", "서울", "부산"]
 //    let keywordOptions = ["#취업", "#창업", "#교육", "#주거", "#경제,금융"]
-    
+//    
     
     
     var apiKey: String? {
@@ -43,7 +43,7 @@ class APIViewModel: XMLParser, ObservableObject {
             return value
         }
     }
-    //query: 정책명,정책소개 정보검색,srchPolyBizSecd: 주거지 ,
+    //query: 정책명,정책소개 정보검색 , bizTycdSel: 정책분야,srchPolyBizSecd: 주거지 ,keyword: 키워드
     func search(query: String, bizTycdSel:String, srchPolyBizSecd:String, keyword: String) {
         
         guard let apiKey = apiKey else { return }
