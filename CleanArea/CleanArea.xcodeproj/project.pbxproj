@@ -15,6 +15,11 @@
 		41FCC83D2B1EEC140024A928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FCC83C2B1EEC140024A928 /* Assets.xcassets */; };
 		41FCC8412B1EEC140024A928 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FCC8402B1EEC140024A928 /* Preview Assets.xcassets */; };
 		41FCC84A2B1EF06E0024A928 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCC8492B1EF06E0024A928 /* StartView.swift */; };
+		5C10AE3D2B202D5400408F18 /* ApiKeys.plist in Sources */ = {isa = PBXBuildFile; fileRef = 5C10AE3C2B202D5400408F18 /* ApiKeys.plist */; };
+		5C10AE3F2B202D6000408F18 /* APIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C10AE3E2B202D6000408F18 /* APIViewModel.swift */; };
+		5C10AE412B202D6800408F18 /* YouthPolicyListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C10AE402B202D6800408F18 /* YouthPolicyListParser.swift */; };
+		5C10AE432B202D9D00408F18 /* APIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C10AE422B202D9D00408F18 /* APIModel.swift */; };
+		5C10AE452B203CEE00408F18 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C10AE442B203CEE00408F18 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		41FCC83E2B1EEC140024A928 /* CleanArea.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CleanArea.entitlements; sourceTree = "<group>"; };
 		41FCC8402B1EEC140024A928 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		41FCC8492B1EF06E0024A928 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		5C10AE3C2B202D5400408F18 /* ApiKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		5C10AE3E2B202D6000408F18 /* APIViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIViewModel.swift; sourceTree = "<group>"; };
+		5C10AE402B202D6800408F18 /* YouthPolicyListParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouthPolicyListParser.swift; sourceTree = "<group>"; };
+		5C10AE422B202D9D00408F18 /* APIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIModel.swift; sourceTree = "<group>"; };
+		5C10AE442B203CEE00408F18 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +55,9 @@
 			isa = PBXGroup;
 			children = (
 				417146DF2B1F2F5E00E91494 /* Start */,
-				417146DE2B1F2F5000E91494 /* Main */,
 				417146E02B1F2F6900E91494 /* Helpers */,
 			);
 			path = iOS;
-			sourceTree = "<group>";
-		};
-		417146DE2B1F2F5000E91494 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		417146DF2B1F2F5E00E91494 /* Start */ = {
@@ -97,7 +99,12 @@
 			children = (
 				41FCC8382B1EEC110024A928 /* CleanAreaApp.swift */,
 				41FCC83A2B1EEC110024A928 /* ContentView.swift */,
+				5C10AE442B203CEE00408F18 /* TestView.swift */,
 				417146DD2B1F2F3A00E91494 /* iOS */,
+				5C10AE402B202D6800408F18 /* YouthPolicyListParser.swift */,
+				5C10AE3E2B202D6000408F18 /* APIViewModel.swift */,
+				5C10AE422B202D9D00408F18 /* APIModel.swift */,
+				5C10AE3C2B202D5400408F18 /* ApiKeys.plist */,
 				41FCC83C2B1EEC140024A928 /* Assets.xcassets */,
 				41FCC83E2B1EEC140024A928 /* CleanArea.entitlements */,
 				41FCC83F2B1EEC140024A928 /* Preview Content */,
@@ -185,10 +192,15 @@
 			files = (
 				417146E42B1F32D400E91494 /* StartVM.swift in Sources */,
 				41FCC84A2B1EF06E0024A928 /* StartView.swift in Sources */,
+				5C10AE452B203CEE00408F18 /* TestView.swift in Sources */,
 				417146E62B1F36D200E91494 /* StartTextField.swift in Sources */,
 				417146E22B1F30FE00E91494 /* TFStyleViewModifier.swift in Sources */,
 				41FCC83B2B1EEC110024A928 /* ContentView.swift in Sources */,
 				41FCC8392B1EEC110024A928 /* CleanAreaApp.swift in Sources */,
+				5C10AE3F2B202D6000408F18 /* APIViewModel.swift in Sources */,
+				5C10AE432B202D9D00408F18 /* APIModel.swift in Sources */,
+				5C10AE412B202D6800408F18 /* YouthPolicyListParser.swift in Sources */,
+				5C10AE3D2B202D5400408F18 /* ApiKeys.plist in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
