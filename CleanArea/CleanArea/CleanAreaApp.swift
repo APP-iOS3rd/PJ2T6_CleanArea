@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct CleanAreaApp: App {
@@ -13,5 +14,6 @@ struct CleanAreaApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: Policy.self)
     }
 }
