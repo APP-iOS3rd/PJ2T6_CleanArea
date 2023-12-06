@@ -16,6 +16,11 @@
 		41FCC8412B1EEC140024A928 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FCC8402B1EEC140024A928 /* Preview Assets.xcassets */; };
 		41FCC84A2B1EF06E0024A928 /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FCC8492B1EF06E0024A928 /* StartView.swift */; };
 		7324B7E42B20075100554B12 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7324B7E32B20075100554B12 /* DetailView.swift */; };
+		7324B7E62B200EB600554B12 /* DetailScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7324B7E52B200EB600554B12 /* DetailScrollView.swift */; };
+		7324B7E82B2029CF00554B12 /* DetailSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7324B7E72B2029CF00554B12 /* DetailSummaryView.swift */; };
+		7324B7EA2B202C6000554B12 /* DetailQualificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7324B7E92B202C6000554B12 /* DetailQualificationView.swift */; };
+		7324B7EC2B202C9300554B12 /* DetailWayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7324B7EB2B202C9300554B12 /* DetailWayView.swift */; };
+		7324B7EE2B202CC400554B12 /* DetailEtcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7324B7ED2B202CC400554B12 /* DetailEtcView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		41FCC8402B1EEC140024A928 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		41FCC8492B1EF06E0024A928 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		7324B7E32B20075100554B12 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		7324B7E52B200EB600554B12 /* DetailScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailScrollView.swift; sourceTree = "<group>"; };
+		7324B7E72B2029CF00554B12 /* DetailSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSummaryView.swift; sourceTree = "<group>"; };
+		7324B7E92B202C6000554B12 /* DetailQualificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailQualificationView.swift; sourceTree = "<group>"; };
+		7324B7EB2B202C9300554B12 /* DetailWayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWayView.swift; sourceTree = "<group>"; };
+		7324B7ED2B202CC400554B12 /* DetailEtcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailEtcView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +122,11 @@
 			isa = PBXGroup;
 			children = (
 				7324B7E32B20075100554B12 /* DetailView.swift */,
+				7324B7E52B200EB600554B12 /* DetailScrollView.swift */,
+				7324B7E72B2029CF00554B12 /* DetailSummaryView.swift */,
+				7324B7E92B202C6000554B12 /* DetailQualificationView.swift */,
+				7324B7EB2B202C9300554B12 /* DetailWayView.swift */,
+				7324B7ED2B202CC400554B12 /* DetailEtcView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -190,9 +205,14 @@
 				41FCC84A2B1EF06E0024A928 /* StartView.swift in Sources */,
 				417146E62B1F36D200E91494 /* StartTextField.swift in Sources */,
 				7324B7E42B20075100554B12 /* DetailView.swift in Sources */,
+				7324B7EE2B202CC400554B12 /* DetailEtcView.swift in Sources */,
+				7324B7EC2B202C9300554B12 /* DetailWayView.swift in Sources */,
 				417146E22B1F30FE00E91494 /* TFStyleViewModifier.swift in Sources */,
 				41FCC83B2B1EEC110024A928 /* ContentView.swift in Sources */,
+				7324B7E62B200EB600554B12 /* DetailScrollView.swift in Sources */,
 				41FCC8392B1EEC110024A928 /* CleanAreaApp.swift in Sources */,
+				7324B7E82B2029CF00554B12 /* DetailSummaryView.swift in Sources */,
+				7324B7EA2B202C6000554B12 /* DetailQualificationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
