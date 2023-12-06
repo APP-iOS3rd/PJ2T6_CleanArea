@@ -52,7 +52,6 @@ class YouthPolicyListParser: NSObject, XMLParserDelegate {
     private var currentPolyRlmCd = ""                           // 정책분야코드
     
     
-    
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         currentElement = elementName
     }
