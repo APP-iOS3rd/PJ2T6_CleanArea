@@ -17,7 +17,7 @@ import SwiftData
 //}
 
 @Model
-struct Policy: Identifiable {
+class Policy: Identifiable {
     @Attribute(.unique) let id = UUID()
     
     var rnum: Int               //row 번호

@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import SwiftData
 //받아올 데이터
 struct YouthPolicyList {
     var pageIndex: Int
@@ -14,8 +14,9 @@ struct YouthPolicyList {
     var youthPolicies: [YouthPolicy]
 }
 
-struct YouthPolicy: Identifiable {
-    let id = UUID()
+@Model
+class YouthPolicy: Identifiable {
+    @Attribute(.unique) let id = UUID()
     
     var rnum: Int               //row 번호
     var bizId: String           //정책 ID
@@ -50,4 +51,40 @@ struct YouthPolicy: Identifiable {
     var tintCherCtpcCn: String  //  운영기관담당자연락처
     var etct: String            // 기타사항
     var polyRlmCd: String       // 정책분야코드
+    
+    init(rnum: Int, bizId: String, polyBizSecd: String, polyBizTy: String, polyBizSjnm: String, polyItcnCn: String, sporCn: String, sporScvl: String, bizPrdCn: String, prdRpttSecd: String, rqutPrdCn: String, ageInfo: String, majrRqisCn: String, empmSttsCn: String, splzRlmRqisCn: String, accrRqisCn: String, prcpCn: String, aditRscn: String, prcpLmttTrgtCn: String, rqutProcCn: String, pstnPaprCn: String, jdgnPresCn: String, rqutUrla: String, rfcSiteUrla1: String, rfcSiteUrla2: String, mngtMson: String, mngtMrofCherCn: String, cherCtpcCn: String, cnsgNmor: String, tintCherCn: String, tintCherCtpcCn: String, etct: String, polyRlmCd: String) {
+        self.rnum = rnum
+        self.bizId = bizId
+        self.polyBizSecd = polyBizSecd
+        self.polyBizTy = polyBizTy
+        self.polyBizSjnm = polyBizSjnm
+        self.polyItcnCn = polyItcnCn
+        self.sporCn = sporCn
+        self.sporScvl = sporScvl
+        self.bizPrdCn = bizPrdCn
+        self.prdRpttSecd = prdRpttSecd
+        self.rqutPrdCn = rqutPrdCn
+        self.ageInfo = ageInfo
+        self.majrRqisCn = majrRqisCn
+        self.empmSttsCn = empmSttsCn
+        self.splzRlmRqisCn = splzRlmRqisCn
+        self.accrRqisCn = accrRqisCn
+        self.prcpCn = prcpCn
+        self.aditRscn = aditRscn
+        self.prcpLmttTrgtCn = prcpLmttTrgtCn
+        self.rqutProcCn = rqutProcCn
+        self.pstnPaprCn = pstnPaprCn
+        self.jdgnPresCn = jdgnPresCn
+        self.rqutUrla = rqutUrla
+        self.rfcSiteUrla1 = rfcSiteUrla1
+        self.rfcSiteUrla2 = rfcSiteUrla2
+        self.mngtMson = mngtMson
+        self.mngtMrofCherCn = mngtMrofCherCn
+        self.cherCtpcCn = cherCtpcCn
+        self.cnsgNmor = cnsgNmor
+        self.tintCherCn = tintCherCn
+        self.tintCherCtpcCn = tintCherCtpcCn
+        self.etct = etct
+        self.polyRlmCd = polyRlmCd
+    }
 }

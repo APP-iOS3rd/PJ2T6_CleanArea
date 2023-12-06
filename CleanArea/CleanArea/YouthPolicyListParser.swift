@@ -7,9 +7,6 @@
 
 import Foundation
 
-
-import Foundation
-
 class YouthPolicyListParser: NSObject, XMLParserDelegate {
     
     private var youthPolicyList: YouthPolicyList?
