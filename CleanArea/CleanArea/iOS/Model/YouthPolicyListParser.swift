@@ -105,8 +105,8 @@ class YouthPolicyListParser: NSObject, XMLParserDelegate {
             currentPstnPaprCn += change
         case "jdgnPresCn":
             currentJdgnPresCn += change
-        case "rfcSiteUrla1":
-            currentRfcSiteUrla1 += change
+//        case "rfcSiteUrla1":
+//            currentRfcSiteUrla1 += change
         case "rfcSiteUrla2":
             currentRfcSiteUrla2 += change
         case "mngtMson":
