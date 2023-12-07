@@ -12,35 +12,67 @@ struct ListView: View {
     var tabType: TabType
     
     var body: some View {
-        ZStack{
-            List {
-                ForEach(currentItems, id: \.sequenceNumber) { item in
-                    PolicyListItemView(sequenceNumber: item.sequenceNumber,
-                                       polyBizSjnm: item.polyBizSjnm,
-                                       progress: item.progress,
-                                       bizPrdCn: item.bizPrdCn,
-                                       remainDate: item.remainDate,
-                                       polyCategory: item.polyCategory)
-                    .listRowBackground(Color.clear)
-                    .listRowInsets(EdgeInsets())
-                    .padding(.vertical, 8)
+        NavigationView {
+            VStack{
+                if tabType == .hot {
+                    HStack{
+                        Text("인기정책")
+                            .font(.title)
+                            .bold()
+                            .foregroundStyle(.mainGreen)
+                            .padding(.top, 20)
+                        Spacer()
+                    }
+                    .frame(width: 330)
+                    .padding()
+                } else if tabType == .like {
+                    HStack{
+                        Text("즐겨찾기")
+                            .font(.title)
+                            .bold()
+                            .foregroundStyle(.mainGreen)
+                            .padding(.top, 20)
+                        Spacer()
+                    }
+                    .frame(width: 330)
+                    .padding()
                 }
+                
+                List {
+                    ForEach(currentItems, id: \.sequenceNumber) { item in
+                        ZStack(alignment: .leading) {
+                            PolicyListItemView(sequenceNumber: item.sequenceNumber,
+                                               polyBizSjnm: item.polyBizSjnm,
+                                               progress: item.progress,
+                                               bizPrdCn: item.bizPrdCn,
+                                               remainDate: item.remainDate,
+                                               polyCategory: item.polyCategory)
+                            NavigationLink(destination: DetailView()) {
+                                EmptyView()
+                            }
+                            .opacity(0)
+                        }
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
+                        .padding(.vertical, 8)
+                    }
+                }
+                .background(Color.clear)
+                .scrollContentBackground(.hidden)
             }
-            .background(Color.clear)
-            .scrollContentBackground(.hidden)
         }
     }
     
     private var currentItems: [PolicyItem] {
-            switch tabType {
-            case .hot:
-                return vm.popularPolicyItems
-            case .like:
-                return vm.likePolicyItems
-            case .recommand:
-                return vm.recommandPolicyItems
-            }
+        switch tabType {
+        case .hot:
+            return vm.popularPolicyItems
+        case .like:
+            return vm.likePolicyItems
+        case .recommand:
+            return vm.recommandPolicyItems
         }
+    }
 }
 
 struct PolicyListItemView: View {
@@ -50,10 +82,10 @@ struct PolicyListItemView: View {
     var bizPrdCn: String
     var remainDate: String
     var polyCategory: String
-    
+
     @State private var isLike: Bool = false
-    
-    
+
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -71,19 +103,17 @@ struct PolicyListItemView: View {
                 HStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.white)
-                            .frame(width: 60, height: 25)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(progressColor, lineWidth: 2)
-                            )
+                            .fill(progressColor)
+                            .frame(width: 70, height: 25)
+
                         Text(progressText)
                             .font(.system(size: 16))
-                            .foregroundStyle(progressColor)
-                        
+                            .bold()
+                            .foregroundStyle(.white)
+
                     }
                     .padding(.leading, 10)
-                    
+
                     VStack {
                         Text(bizPrdCn)
                             .font(.system(size: 10))
@@ -94,7 +124,6 @@ struct PolicyListItemView: View {
                     }
                 }
             }
-            
             Spacer()
             
             VStack {

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchBar: View {
     @Binding var text: String
-
+    
     var body: some View {
         HStack {
             TextField("정책이름을 검색해 주세요", text: $text)
@@ -23,7 +23,7 @@ struct SearchBar: View {
                             .foregroundColor(.gray)
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 8)
-
+                        
                         if text != "" {
                             Button(action: {
                                 self.text = ""
@@ -46,23 +46,38 @@ extension View {
     }
 }
 
-
-
-
-
 struct RecommandDetailView: View {
     @State private var searchText = ""
     
+    var modelName : String
+    
+    init(modelName: String) {
+            self.modelName = modelName
+        
+        }
+    
     var body: some View {
-        VStack {
+        VStack(){
+            HStack{
+                Text(modelName)
+                    .font(.title)
+                    .bold()
+                    .foregroundStyle(.mainGreen)
+                    .padding(.top, 20)
+                Spacer()
+                
+            }
+            .frame(width: 330)
+            .padding()
             SearchBar(text: $searchText)
-                .padding(.bottom, -30)
                 .padding(.top,30)
             ListView(tabType: .recommand)
+            Spacer()
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
-#Preview {
-    RecommandDetailView()
-}
+//#Preview {
+//    RecommandDetailView()
+//}

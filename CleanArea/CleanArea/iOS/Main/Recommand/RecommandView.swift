@@ -6,12 +6,49 @@
 //
 
 import SwiftUI
-struct RecommandCell : View {
-    @Binding var model : RecommandCellModel
-    @Environment(\.presentationMode) var presentationMode
+
+struct RecommandView: View {
+    @StateObject var vm = RecommandVM()
+
     var body: some View {
-        NavigationLink(destination: destinationView(for: model.destinationKey)) {
-            HStack{
+        NavigationView {
+            VStack {
+                HStack {
+                    Text("추천정책")
+                        .font(.title)
+                        .bold()
+                        .foregroundStyle(.mainGreen)
+                        .padding(.top, 20)
+                    Spacer()
+                }
+                .padding()
+                .frame(width: 330)
+
+                // 추천 정책 셀을 표시하는 LazyHGrid
+                LazyHGrid(rows: [GridItem(.adaptive(minimum: 85))]) {
+                    ForEach(vm.recommandcellModels.indices, id: \.self) { index in
+                        RecommandCell(model: $vm.recommandcellModels[index])
+                    }
+                }
+                .onAppear {
+                    vm.updateModels()
+                }
+            }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarHidden(false)
+        }
+    }
+}
+struct RecommandCell: View {
+    @Binding var model: RecommandCellModel
+
+    var body: some View {
+        NavigationLink(
+            destination: destinationView(for: model.destinationKey, cellName: model.name)
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarHidden(true)
+        ) {
+            HStack {
                 Text(model.name)
                     .bold()
                     .foregroundStyle(.black)
@@ -30,43 +67,14 @@ struct RecommandCell : View {
             .cornerRadius(10)
         }
     }
-    
+
     @ViewBuilder
-    private func destinationView(for key: String) -> some View {
-        VStack{
-            switch key {
-            case "일자리":
-                RecommandDetailView()
-            case "주거":
-                RecommandDetailView()
-            case "교육":
-                RecommandDetailView()
-            case "복지,문화":
-                RecommandDetailView()
-            case "참여,권리":
-                RecommandDetailView()
-                
-            default:
-                Text("Invalid destination key")
-            }
-        }
-    }
-    
-
-}
-
-struct RecommandView: View {
-    @StateObject var vm = RecommandVM()
-    var body: some View {
-        NavigationView {
-            LazyHGrid(rows: [GridItem(.adaptive(minimum: 85))]) {
-                ForEach(vm.recommandcellModels.indices, id: \.self) { index in
-                    RecommandCell(model: $vm.recommandcellModels[index])
-                }
-            }
-            .onAppear {
-                vm.updateModels()
-            }
+    private func destinationView(for key: String, cellName: String) -> some View {
+        switch key {
+        case "일자리", "주거", "교육", "복지,문화", "참여,권리":
+            RecommandDetailView(modelName: cellName)
+        default:
+            Text("Invalid destination key")
         }
     }
 }

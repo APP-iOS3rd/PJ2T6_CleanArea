@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    
+
     @State var isFavorite: Bool = false              //나중에 뷰 모델에서 @Published 변수로 변경
     
     var body: some View {
@@ -74,6 +74,9 @@ extension Color {
     }
 }
 
+#Preview {
+    DetailView()
+}
 /*
  color
  뒤로가기 = 1E482D

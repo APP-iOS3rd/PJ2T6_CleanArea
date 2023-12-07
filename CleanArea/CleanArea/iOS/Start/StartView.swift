@@ -9,7 +9,8 @@ import SwiftUI
 
 struct StartView: View {
     @ObservedObject var vm: StartVM
-
+    @State private var showMainView = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -26,15 +27,15 @@ struct StartView: View {
             StartTextField(text: $vm.residence,
                            type: .residence,
                            width: 300)
-                            .environmentObject(vm)
+            .environmentObject(vm)
             StartTextField(text: $vm.employmentStatus,
                            type: .employmentStatus,
                            width: 300)
-                            .environmentObject(vm)
+            .environmentObject(vm)
             StartTextField(text: $vm.educationLevel,
                            type: .educationLevel,
                            width: 300)
-                            .environmentObject(vm)
+            .environmentObject(vm)
             StartTextField(text: $vm.age,
                            type: .age,
                            width: 300)
@@ -45,6 +46,7 @@ struct StartView: View {
             
             Button(action: {
                 vm.search()
+                self.showMainView = true
             }, label: {
                 Text("정책검색")
                     .font(.title3)
@@ -55,6 +57,9 @@ struct StartView: View {
             })
             .frame(width: 140, height: 50)
             Spacer()
+        }
+        .fullScreenCover(isPresented: $showMainView) {
+            MainView()
         }
     }
 }
