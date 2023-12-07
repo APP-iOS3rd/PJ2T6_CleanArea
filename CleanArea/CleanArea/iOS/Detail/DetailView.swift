@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct DetailView: View {
+    var sphere: String?                              //분야
+    var youthPolicy: YouthPolicy?                    //정책 내용
     
     @State var isFavorite: Bool = false              //나중에 뷰 모델에서 @Published 변수로 변경
     
@@ -21,6 +23,9 @@ struct DetailView: View {
                 
                 Spacer()
                 
+                //TODO: 스타버튼
+                //StarBtn(policy: <#T##YouthPolicy#>)
+                
                 Button(action: {
                     //TODO: 즐겨찾기 swiftData랑 연동해야됨
                     isFavorite.toggle()
@@ -28,15 +33,15 @@ struct DetailView: View {
                     Image(systemName: isFavorite ? "star.fill" : "star")
                         .resizable()
                         .frame(width: 28, height: 28)
-                        .foregroundStyle(Color.init(hex: "64A37B"))
+                        .foregroundColor(.buttonGreen)
                 })
             }
             
             HStack {
-                Text("수영구 청년 및 신혼 부부 주거 자금 대출이자 지원 사업")
+                Text(youthPolicy?.polyBizSjnm ?? "")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 25, weight: .semibold))
-                    .foregroundStyle(Color.init(hex: "1E482D"))
+                    .foregroundStyle(.mainGreen)
                 
                 Spacer()
                 Image(systemName: "swift")
@@ -44,7 +49,7 @@ struct DetailView: View {
                     .frame(width: 60, height: 60)
                     .padding(.leading, 30)
                 
-                /*
+                /* TODO: 사진 에셋에 넣기(노가다)
                  Image("시 사진 이름")
                  .resizable()
                  .frame(width: 60, height: 60)
@@ -52,7 +57,7 @@ struct DetailView: View {
             }
             .padding(.top)
             
-            DetailScrollView()
+            DetailScrollView(youthPolicy: youthPolicy)
         }
         .padding(.horizontal, 20)
         .navigationBarBackButtonHidden()
@@ -83,8 +88,7 @@ extension Color {
  버튼 = 8AC49F
  큹x = 9A9A9A
  태그 = E1F1E1
- 
+ */
  #Preview {
  DetailView()
  }
- */
