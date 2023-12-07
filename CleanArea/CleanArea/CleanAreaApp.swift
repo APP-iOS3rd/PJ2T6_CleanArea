@@ -14,6 +14,6 @@ struct CleanAreaApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Policy.self)
+        .modelContainer(for: YouthPolicy.self)
     }
 }

@@ -20,8 +20,8 @@
 		1D3630702B2164F60075939D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3630632B2164F60075939D /* MainView.swift */; };
 		1D3630712B2164F60075939D /* TFStyleViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3630652B2164F60075939D /* TFStyleViewModifier.swift */; };
 		41FBE2912B2166F100D3AD65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FBE2902B2166F100D3AD65 /* Assets.xcassets */; };
+		41FBE2932B21830600D3AD65 /* DetailModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBE2922B21830600D3AD65 /* DetailModifer.swift */; };
 		5A2E8F162B21699600B3CA70 /* StartBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E8F142B21699500B3CA70 /* StartBtn.swift */; };
-		5A2E8F172B21699600B3CA70 /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E8F152B21699600B3CA70 /* SwiftData.swift */; };
 		5CC873EB2B21808900D6497D /* APIViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC873EA2B21808900D6497D /* APIViewModel.swift */; };
 		5CC873ED2B2180A400D6497D /* YouthPolicyListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC873EC2B2180A400D6497D /* YouthPolicyListParser.swift */; };
 		734E98282B216221002EC806 /* CleanAreaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E98272B216221002EC806 /* CleanAreaApp.swift */; };
@@ -69,8 +69,8 @@
 		1D3630632B2164F60075939D /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1D3630652B2164F60075939D /* TFStyleViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFStyleViewModifier.swift; sourceTree = "<group>"; };
 		41FBE2902B2166F100D3AD65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		41FBE2922B21830600D3AD65 /* DetailModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModifer.swift; sourceTree = "<group>"; };
 		5A2E8F142B21699500B3CA70 /* StartBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartBtn.swift; sourceTree = "<group>"; };
-		5A2E8F152B21699600B3CA70 /* SwiftData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
 		5CC873EA2B21808900D6497D /* APIViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIViewModel.swift; sourceTree = "<group>"; };
 		5CC873EC2B2180A400D6497D /* YouthPolicyListParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouthPolicyListParser.swift; sourceTree = "<group>"; };
 		734E98242B216221002EC806 /* CleanArea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArea.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -118,12 +118,12 @@
 		1D3630542B2164F60075939D /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				5A2E8F0F2B21688900B3CA70 /* SwiftData */,
-				734E98512B2162DE002EC806 /* Detail */,
 				1D3630552B2164F60075939D /* Start */,
-				1D3630592B2164F60075939D /* Model */,
 				1D36305B2B2164F60075939D /* Main */,
+				734E98512B2162DE002EC806 /* Detail */,
+				1D3630592B2164F60075939D /* Model */,
 				1D3630642B2164F60075939D /* Helpers */,
+				41FBE2942B21839800D3AD65 /* UIElement */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -134,6 +134,7 @@
 				1D3630562B2164F60075939D /* StartView.swift */,
 				1D3630572B2164F60075939D /* StartTextField.swift */,
 				1D3630582B2164F60075939D /* StartVM.swift */,
+				5CC873EA2B21808900D6497D /* APIViewModel.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -142,8 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				5CC873EC2B2180A400D6497D /* YouthPolicyListParser.swift */,
-				5CC873EA2B21808900D6497D /* APIViewModel.swift */,
 				1D36305A2B2164F60075939D /* YouthPolicyList.swift */,
+				1D3630612B2164F60075939D /* RecommandCellModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,9 +152,9 @@
 		1D36305B2B2164F60075939D /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				1D36305C2B2164F60075939D /* ListVM.swift */,
-				1D3630622B2164F60075939D /* ListView.swift */,
 				1D3630632B2164F60075939D /* MainView.swift */,
+				1D3630622B2164F60075939D /* ListView.swift */,
+				1D36305C2B2164F60075939D /* ListVM.swift */,
 				1D36305D2B2164F60075939D /* Recommand */,
 			);
 			path = Main;
@@ -165,7 +166,6 @@
 				1D36305E2B2164F60075939D /* RecommandView.swift */,
 				1D36305F2B2164F60075939D /* RecommandDetailView.swift */,
 				1D3630602B2164F60075939D /* RecommandVM.swift */,
-				1D3630612B2164F60075939D /* RecommandCellModel.swift */,
 			);
 			path = Recommand;
 			sourceTree = "<group>";
@@ -174,17 +174,17 @@
 			isa = PBXGroup;
 			children = (
 				1D3630652B2164F60075939D /* TFStyleViewModifier.swift */,
+				41FBE2922B21830600D3AD65 /* DetailModifer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		5A2E8F0F2B21688900B3CA70 /* SwiftData */ = {
+		41FBE2942B21839800D3AD65 /* UIElement */ = {
 			isa = PBXGroup;
 			children = (
 				5A2E8F142B21699500B3CA70 /* StartBtn.swift */,
-				5A2E8F152B21699600B3CA70 /* SwiftData.swift */,
 			);
-			path = SwiftData;
+			path = UIElement;
 			sourceTree = "<group>";
 		};
 		734E981B2B216221002EC806 = {
@@ -387,7 +387,6 @@
 				1D36306C2B2164F60075939D /* RecommandDetailView.swift in Sources */,
 				1D3630702B2164F60075939D /* MainView.swift in Sources */,
 				5A2E8F162B21699600B3CA70 /* StartBtn.swift in Sources */,
-				5A2E8F172B21699600B3CA70 /* SwiftData.swift in Sources */,
 				1D36306D2B2164F60075939D /* RecommandVM.swift in Sources */,
 				1D36306E2B2164F60075939D /* RecommandCellModel.swift in Sources */,
 				734E985A2B2162DE002EC806 /* DetailEtcView.swift in Sources */,
@@ -397,6 +396,7 @@
 				734E98582B2162DE002EC806 /* DetailView.swift in Sources */,
 				1D3630672B2164F60075939D /* StartTextField.swift in Sources */,
 				734E98282B216221002EC806 /* CleanAreaApp.swift in Sources */,
+				41FBE2932B21830600D3AD65 /* DetailModifer.swift in Sources */,
 				734E985D2B2162DE002EC806 /* DetailSummaryView.swift in Sources */,
 				1D3630692B2164F60075939D /* YouthPolicyList.swift in Sources */,
 				1D3630682B2164F60075939D /* StartVM.swift in Sources */,

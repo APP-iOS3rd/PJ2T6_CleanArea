@@ -11,7 +11,7 @@ import SwiftData
 struct StarBtn: View {
     @Environment(\.modelContext) var modelContext
     @State private var isClicked = false
-    var policy: Policy
+    var policy: YouthPolicy
 
     var body: some View {
         Button {
