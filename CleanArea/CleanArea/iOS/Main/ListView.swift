@@ -82,10 +82,10 @@ struct PolicyListItemView: View {
     var bizPrdCn: String
     var remainDate: String
     var polyCategory: String
-    
+
     @State private var isLike: Bool = false
-    
-    
+
+
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
@@ -103,19 +103,17 @@ struct PolicyListItemView: View {
                 HStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.white)
-                            .frame(width: 60, height: 25)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(progressColor, lineWidth: 2)
-                            )
+                            .fill(progressColor)
+                            .frame(width: 70, height: 25)
+
                         Text(progressText)
                             .font(.system(size: 16))
-                            .foregroundStyle(progressColor)
-                        
+                            .bold()
+                            .foregroundStyle(.white)
+
                     }
                     .padding(.leading, 10)
-                    
+
                     VStack {
                         Text(bizPrdCn)
                             .font(.system(size: 10))
@@ -126,7 +124,6 @@ struct PolicyListItemView: View {
                     }
                 }
             }
-            
             Spacer()
             
             VStack {
