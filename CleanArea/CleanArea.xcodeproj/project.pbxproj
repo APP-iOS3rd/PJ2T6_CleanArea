@@ -20,6 +20,8 @@
 		1D3630702B2164F60075939D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3630632B2164F60075939D /* MainView.swift */; };
 		1D3630712B2164F60075939D /* TFStyleViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3630652B2164F60075939D /* TFStyleViewModifier.swift */; };
 		41FBE2912B2166F100D3AD65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FBE2902B2166F100D3AD65 /* Assets.xcassets */; };
+		5A2E8F162B21699600B3CA70 /* StartBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E8F142B21699500B3CA70 /* StartBtn.swift */; };
+		5A2E8F172B21699600B3CA70 /* SwiftData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E8F152B21699600B3CA70 /* SwiftData.swift */; };
 		734E98282B216221002EC806 /* CleanAreaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E98272B216221002EC806 /* CleanAreaApp.swift */; };
 		734E982A2B216221002EC806 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E98292B216221002EC806 /* ContentView.swift */; };
 		734E982F2B216223002EC806 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 734E982E2B216223002EC806 /* Preview Assets.xcassets */; };
@@ -65,6 +67,8 @@
 		1D3630632B2164F60075939D /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1D3630652B2164F60075939D /* TFStyleViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFStyleViewModifier.swift; sourceTree = "<group>"; };
 		41FBE2902B2166F100D3AD65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5A2E8F142B21699500B3CA70 /* StartBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartBtn.swift; sourceTree = "<group>"; };
+		5A2E8F152B21699600B3CA70 /* SwiftData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftData.swift; sourceTree = "<group>"; };
 		734E98242B216221002EC806 /* CleanArea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		734E98272B216221002EC806 /* CleanAreaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanAreaApp.swift; sourceTree = "<group>"; };
 		734E98292B216221002EC806 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 		1D3630542B2164F60075939D /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				5A2E8F0F2B21688900B3CA70 /* SwiftData */,
 				734E98512B2162DE002EC806 /* Detail */,
 				1D3630552B2164F60075939D /* Start */,
 				1D3630592B2164F60075939D /* Model */,
@@ -167,6 +172,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		5A2E8F0F2B21688900B3CA70 /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				5A2E8F142B21699500B3CA70 /* StartBtn.swift */,
+				5A2E8F152B21699600B3CA70 /* SwiftData.swift */,
+			);
+			path = SwiftData;
+			sourceTree = "<group>";
+		};
 		734E981B2B216221002EC806 = {
 			isa = PBXGroup;
 			children = (
@@ -195,16 +209,8 @@
 				41FBE2902B2166F100D3AD65 /* Assets.xcassets */,
 				734E982E2B216223002EC806 /* Preview Assets.xcassets */,
 				1D3630542B2164F60075939D /* iOS */,
-				734E982D2B216223002EC806 /* Preview Content */,
 			);
 			path = CleanArea;
-			sourceTree = "<group>";
-		};
-		734E982D2B216223002EC806 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		734E98372B216223002EC806 /* CleanAreaTests */ = {
@@ -373,6 +379,8 @@
 				734E982A2B216221002EC806 /* ContentView.swift in Sources */,
 				1D36306C2B2164F60075939D /* RecommandDetailView.swift in Sources */,
 				1D3630702B2164F60075939D /* MainView.swift in Sources */,
+				5A2E8F162B21699600B3CA70 /* StartBtn.swift in Sources */,
+				5A2E8F172B21699600B3CA70 /* SwiftData.swift in Sources */,
 				1D36306D2B2164F60075939D /* RecommandVM.swift in Sources */,
 				1D36306E2B2164F60075939D /* RecommandCellModel.swift in Sources */,
 				734E985A2B2162DE002EC806 /* DetailEtcView.swift in Sources */,
@@ -549,7 +557,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CleanArea/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -577,7 +585,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"CleanArea/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
