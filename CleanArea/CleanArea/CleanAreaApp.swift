@@ -12,7 +12,7 @@ import SwiftData
 struct CleanAreaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StartView(vm: StartVM())
         }
         .modelContainer(for: YouthPolicy.self)
     }
