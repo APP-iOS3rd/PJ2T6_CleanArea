@@ -11,31 +11,33 @@ struct DetailSummaryView: View {
     @Binding var selectedIndex: Int
     
     var proxy: ScrollViewProxy?
+    var sphere: String?
+    var youthPolicy: YouthPolicy?
     
     var body: some View {
         VStack {
             VStack(spacing: 15) {
                 HStack {
-                    Text("교육 분야")
+                    Text(sphere ?? "")
                         .frame(width: (UIScreen.main.bounds.width - 70)/3, height: 50)
                         .modifier(TagModifier())
                 
                     Spacer()
-                    Text("18 ~ 34세")
+                    Text(youthPolicy?.ageInfo ?? "")
                         .frame(width: (UIScreen.main.bounds.width - 70)/3, height: 50)
                         .modifier(TagModifier())
                     
                     Spacer()
-                    Text("약 300명")
+                    Text(youthPolicy?.sporScvl ?? "")
                         .frame(width: (UIScreen.main.bounds.width - 70)/3, height: 50)
                         .modifier(TagModifier())
                 }
                 
-                Text("운영 기간: 2023.01.01.~2023.12.31.")
+                Text("운영 기간: \(youthPolicy?.bizPrdCn ?? "")")
                     .frame(width: UIScreen.main.bounds.width - 40, height: 50)
                     .modifier(TagModifier())
                 
-                Text("신청 기간: 매년 일정시기")
+                Text("신청 기간: \(youthPolicy?.rqutPrdCn ?? "")")
                     .frame(width: UIScreen.main.bounds.width - 40, height: 50)
                     .modifier(TagModifier())
             }
@@ -44,7 +46,7 @@ struct DetailSummaryView: View {
                 Text("한 눈에 보는 정책 요약")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 20, weight: .semibold))
-                    .foregroundStyle(Color.init(hex: "1E482D"))
+                    .foregroundStyle(.mainGreen)
                     .padding(.top, 30)
                 
                 HStack {
@@ -53,7 +55,7 @@ struct DetailSummaryView: View {
                     
                     Spacer()
                     
-                    Text("교육 분야")
+                    Text(sphere ?? "")
                         .modifier(DetailSemiContentModifier())
                 }
                 
@@ -63,28 +65,30 @@ struct DetailSummaryView: View {
                     
                     Spacer()
                     
-                    Text("약 300명")
+                    Text(youthPolicy?.sporScvl ?? "")
                         .modifier(DetailSemiContentModifier())
                 }
                 
-                Text("신청 기간")
-                    .modifier(DetailSemiTitleModifier())
-                
-                Text("2023년 08월 21일 ~ 2023년 09월 08일")
-                    .modifier(DetailSemiContentModifier())
-                    .padding(.top, -10)
-                
-                Text("지원 내용")
-                    .modifier(DetailSemiTitleModifier())
-                
-                Text("구입, 전월세 목적으로 금융권 대출을 실행한 대출 잔액의 1%, 가구당 100만 원 이내에서 지원(매년 1회 신청·접수, 회차당 50만 원까지 지원)")
-                    .modifier(DetailSemiContentModifier())
-                    .padding(.top, -10)
-                
+                ForEach(0..<2){ index in
+                    let choose = chooseTitle(index)
+                    Text(choose.0)
+                        .modifier(DetailSemiTitleModifier())
+                    Text(choose.1)
+                        .modifier(DetailSemiContentModifier())
+                        .padding(.top, -10)
+                }
             }
         }
         .id(0)
         .padding(.horizontal, 20)
+    }
+    
+    private func chooseTitle(_ index: Int) -> (String, String){
+        switch index {
+        case 0: return ("신청 기간", "2123231213123213123213")
+        case 1: return ("지원 내용", youthPolicy?.sporCn ?? "")
+        default: return ("","")
+        }
     }
 }
 
