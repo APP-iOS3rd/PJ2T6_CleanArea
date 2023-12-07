@@ -195,16 +195,8 @@
 				41FBE2902B2166F100D3AD65 /* Assets.xcassets */,
 				734E982E2B216223002EC806 /* Preview Assets.xcassets */,
 				1D3630542B2164F60075939D /* iOS */,
-				734E982D2B216223002EC806 /* Preview Content */,
 			);
 			path = CleanArea;
-			sourceTree = "<group>";
-		};
-		734E982D2B216223002EC806 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		734E98372B216223002EC806 /* CleanAreaTests */ = {
