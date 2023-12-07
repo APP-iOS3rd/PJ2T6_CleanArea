@@ -6,11 +6,45 @@
 //
 
 import SwiftUI
+
+
+struct RecommandView: View {
+    @StateObject var vm = RecommandVM()
+    var body: some View {
+        VStack{
+            HStack{
+                Text("추천정책")
+                    .font(.title)
+                    .bold()
+                    .foregroundStyle(.mainGreen)
+                    .padding(.top, 20)
+                Spacer()
+            }
+            .padding()
+            .frame(width: 330)
+            
+            NavigationView {
+                LazyHGrid(rows: [GridItem(.adaptive(minimum: 85))]) {
+                    ForEach(vm.recommandcellModels.indices, id: \.self) { index in
+                        RecommandCell(model: $vm.recommandcellModels[index])
+                    }
+                }
+                .onAppear {
+                    vm.updateModels()
+                }
+            }
+            Spacer()
+        }
+    }
+}
+
 struct RecommandCell : View {
     @Binding var model : RecommandCellModel
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
+        
         NavigationLink(destination: destinationView(for: model.destinationKey)) {
+            
             HStack{
                 Text(model.name)
                     .bold()
@@ -29,6 +63,7 @@ struct RecommandCell : View {
             .background(Color.backgroundGreen)
             .cornerRadius(10)
         }
+        
     }
     
     @ViewBuilder
@@ -51,26 +86,8 @@ struct RecommandCell : View {
             }
         }
     }
-    
 
 }
-
-struct RecommandView: View {
-    @StateObject var vm = RecommandVM()
-    var body: some View {
-        NavigationView {
-            LazyHGrid(rows: [GridItem(.adaptive(minimum: 85))]) {
-                ForEach(vm.recommandcellModels.indices, id: \.self) { index in
-                    RecommandCell(model: $vm.recommandcellModels[index])
-                }
-            }
-            .onAppear {
-                vm.updateModels()
-            }
-        }
-    }
-}
-
 
 #Preview {
     RecommandView()

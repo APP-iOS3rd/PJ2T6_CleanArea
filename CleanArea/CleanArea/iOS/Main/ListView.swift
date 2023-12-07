@@ -12,35 +12,67 @@ struct ListView: View {
     var tabType: TabType
     
     var body: some View {
-        ZStack{
-            List {
-                ForEach(currentItems, id: \.sequenceNumber) { item in
-                    PolicyListItemView(sequenceNumber: item.sequenceNumber,
-                                       polyBizSjnm: item.polyBizSjnm,
-                                       progress: item.progress,
-                                       bizPrdCn: item.bizPrdCn,
-                                       remainDate: item.remainDate,
-                                       polyCategory: item.polyCategory)
-                    .listRowBackground(Color.clear)
-                    .listRowInsets(EdgeInsets())
-                    .padding(.vertical, 8)
+        NavigationView {
+            VStack{
+                if tabType == .hot {
+                    HStack{
+                        Text("인기정책")
+                            .font(.title)
+                            .bold()
+                            .foregroundStyle(.mainGreen)
+                            .padding(.top, 20)
+                        Spacer()
+                    }
+                    .frame(width: 330)
+                    .padding()
+                } else if tabType == .like {
+                    HStack{
+                        Text("즐겨찾기")
+                            .font(.title)
+                            .bold()
+                            .foregroundStyle(.mainGreen)
+                            .padding(.top, 20)
+                        Spacer()
+                    }
+                    .frame(width: 330)
+                    .padding()
                 }
+                
+                List {
+                    ForEach(currentItems, id: \.sequenceNumber) { item in
+                        ZStack(alignment: .leading) {
+                            PolicyListItemView(sequenceNumber: item.sequenceNumber,
+                                               polyBizSjnm: item.polyBizSjnm,
+                                               progress: item.progress,
+                                               bizPrdCn: item.bizPrdCn,
+                                               remainDate: item.remainDate,
+                                               polyCategory: item.polyCategory)
+                            NavigationLink(destination: DetailView()) {
+                                EmptyView()
+                            }
+                            .opacity(0)
+                        }
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
+                        .padding(.vertical, 8)
+                    }
+                }
+                .background(Color.clear)
+                .scrollContentBackground(.hidden)
             }
-            .background(Color.clear)
-            .scrollContentBackground(.hidden)
         }
     }
     
     private var currentItems: [PolicyItem] {
-            switch tabType {
-            case .hot:
-                return vm.popularPolicyItems
-            case .like:
-                return vm.likePolicyItems
-            case .recommand:
-                return vm.recommandPolicyItems
-            }
+        switch tabType {
+        case .hot:
+            return vm.popularPolicyItems
+        case .like:
+            return vm.likePolicyItems
+        case .recommand:
+            return vm.recommandPolicyItems
         }
+    }
 }
 
 struct PolicyListItemView: View {
