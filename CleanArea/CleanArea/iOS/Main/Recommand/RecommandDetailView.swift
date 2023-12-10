@@ -4,7 +4,6 @@
 //
 //  Created by 최동호 on 12/6/23.
 //
-
 import SwiftUI
 
 struct SearchBar: View {
@@ -40,6 +39,7 @@ struct SearchBar: View {
         }
     }
 }
+
 extension View {
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -48,36 +48,47 @@ extension View {
 
 struct RecommandDetailView: View {
     @State private var searchText = ""
+    var modelName: String
+    @Environment(\.presentationMode) var presentationMode
     
-    var modelName : String
-    
-    init(modelName: String) {
-            self.modelName = modelName
-        
-        }
     
     var body: some View {
-        VStack(){
-            HStack{
-                Text(modelName)
-                    .font(.title)
-                    .bold()
-                    .foregroundStyle(.mainGreen)
-                    .padding(.top, 20)
-                Spacer()
+        NavigationView {
+            VStack() {
                 
+                    HStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                            
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .foregroundColor(Color.buttonGreen)
+                                .bold()
+                        }
+                        Text(modelName)
+                            .font(.title)
+                            .bold()
+                            .foregroundStyle(.mainGreen)
+                        Spacer()
+                    }
+                    .frame(width: 330)
+                    .padding()
+                    SearchBar(text: $searchText)
+                
+                
+                Spacer()
+                            
+                ListView(tabType: .recommand)
+                    .background(NavigationLink(
+                        destination: EmptyView(),
+                        label: { EmptyView() }
+                    ))            
             }
-            .frame(width: 330)
-            .padding()
-            SearchBar(text: $searchText)
-                .padding(.top,30)
-            ListView(tabType: .recommand)
-            Spacer()
+            .navigationBarBackButtonHidden()
         }
-        .navigationBarBackButtonHidden()
     }
 }
 
-//#Preview {
-//    RecommandDetailView()
-//}
+#Preview {
+    RecommandDetailView(modelName: "일자리")
+}
