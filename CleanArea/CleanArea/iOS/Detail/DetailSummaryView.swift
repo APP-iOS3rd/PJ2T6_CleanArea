@@ -85,7 +85,7 @@ struct DetailSummaryView: View {
     
     private func chooseTitle(_ index: Int) -> (String, String){
         switch index {
-        case 0: return ("신청 기간", "2123231213123213123213")
+        case 0: return ("신청 기간", youthPolicy?.rqutPrdCn ?? "")
         case 1: return ("지원 내용", youthPolicy?.sporCn ?? "")
         default: return ("","")
         }

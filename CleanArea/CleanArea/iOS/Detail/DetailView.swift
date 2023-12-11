@@ -20,7 +20,7 @@ struct DetailView: View {
                 Image(systemName: "chevron.backward")
                     .resizable()
                     .frame(width: 17, height: 22)
-                    .foregroundStyle(Color.init(hex: "1E482D"))
+                    .foregroundStyle(.mainGreen)
                 
                 Spacer()
                 

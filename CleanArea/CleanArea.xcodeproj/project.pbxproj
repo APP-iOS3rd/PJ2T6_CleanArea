@@ -31,6 +31,8 @@
 		5AC3EF5C2B2541F7001BB1F5 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3EF532B2541F7001BB1F5 /* TestView.swift */; };
 		5AC3EF5D2B2541F7001BB1F5 /* StartTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3EF542B2541F7001BB1F5 /* StartTextField.swift */; };
 		5CC873ED2B2180A400D6497D /* YouthPolicyListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC873EC2B2180A400D6497D /* YouthPolicyListParser.swift */; };
+		731327712B26F04B00564388 /* WebSiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731327702B26F04B00564388 /* WebSiteView.swift */; };
+		731327732B26F05F00564388 /* WebSiteLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731327722B26F05F00564388 /* WebSiteLinkView.swift */; };
 		734E98282B216221002EC806 /* CleanAreaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E98272B216221002EC806 /* CleanAreaApp.swift */; };
 		734E982A2B216221002EC806 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E98292B216221002EC806 /* ContentView.swift */; };
 		734E982F2B216223002EC806 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 734E982E2B216223002EC806 /* Preview Assets.xcassets */; };
@@ -89,6 +91,8 @@
 		5C9A178B2B26C7C0003FF8C9 /* ApiKeys.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ApiKeys.xcconfig; sourceTree = "<group>"; };
 		5C9A178F2B26DADF003FF8C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5CC873EC2B2180A400D6497D /* YouthPolicyListParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouthPolicyListParser.swift; sourceTree = "<group>"; };
+		731327702B26F04B00564388 /* WebSiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteView.swift; sourceTree = "<group>"; };
+		731327722B26F05F00564388 /* WebSiteLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteLinkView.swift; sourceTree = "<group>"; };
 		734E98242B216221002EC806 /* CleanArea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		734E98272B216221002EC806 /* CleanAreaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanAreaApp.swift; sourceTree = "<group>"; };
 		734E98292B216221002EC806 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 				5AC3EF482B2541F7001BB1F5 /* Start */,
 				1D36305B2B2164F60075939D /* Main */,
 				734E98512B2162DE002EC806 /* Detail */,
+				7313276F2B26F03200564388 /* WebSite */,
 				1D3630592B2164F60075939D /* Model */,
 				1D3630642B2164F60075939D /* Helpers */,
 				41FBE2942B21839800D3AD65 /* UIElement */,
@@ -232,6 +237,15 @@
 				5AC3EF542B2541F7001BB1F5 /* StartTextField.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7313276F2B26F03200564388 /* WebSite */ = {
+			isa = PBXGroup;
+			children = (
+				731327702B26F04B00564388 /* WebSiteView.swift */,
+				731327722B26F05F00564388 /* WebSiteLinkView.swift */,
+			);
+			path = WebSite;
 			sourceTree = "<group>";
 		};
 		734E981B2B216221002EC806 = {
@@ -454,10 +468,12 @@
 				734E985B2B2162DE002EC806 /* DetailScrollView.swift in Sources */,
 				734E98582B2162DE002EC806 /* DetailView.swift in Sources */,
 				734E98282B216221002EC806 /* CleanAreaApp.swift in Sources */,
+				731327712B26F04B00564388 /* WebSiteView.swift in Sources */,
 				41FBE2932B21830600D3AD65 /* DetailModifer.swift in Sources */,
 				734E985D2B2162DE002EC806 /* DetailSummaryView.swift in Sources */,
 				1D3630692B2164F60075939D /* YouthPolicyList.swift in Sources */,
 				734E98592B2162DE002EC806 /* DetailQualificationView.swift in Sources */,
+				731327732B26F05F00564388 /* WebSiteLinkView.swift in Sources */,
 				1D36306B2B2164F60075939D /* RecommandView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
