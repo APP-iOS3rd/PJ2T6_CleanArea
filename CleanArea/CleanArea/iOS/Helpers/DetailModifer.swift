@@ -15,7 +15,7 @@ struct TagModifier: ViewModifier {
             .background(
                 Rectangle()
                     .cornerRadius(10)
-                    .foregroundStyle(Color.init(hex: "E1F1E1"))
+                    .foregroundStyle(.backgroundGreen)
                     .shadow(color: Color(uiColor: UIColor.systemGray3), radius: 5, x: 5, y: 5)
             )
     }
@@ -26,7 +26,6 @@ struct DetailSemiTitleModifier: ViewModifier {
         content
             .multilineTextAlignment(.leading)
             .font(.system(size: 17, weight: .semibold))
-            .foregroundStyle(Color.init(hex: "111111"))
     }
 }
 
@@ -35,5 +34,6 @@ struct DetailSemiContentModifier: ViewModifier {
         content
             .multilineTextAlignment(.leading)
             .font(.system(size: 17))
+            .foregroundStyle(.textGray)
     }
 }

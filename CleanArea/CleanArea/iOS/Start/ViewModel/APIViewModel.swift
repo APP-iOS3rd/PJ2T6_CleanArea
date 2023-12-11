@@ -5,24 +5,12 @@
 //  Created by 김지훈 on 2023/12/06.
 //
 
-import Foundation
+import SwiftUI
 
 class APIViewModel: XMLParser, ObservableObject {
-    
-    @Published var result: YouthPolicyList?
-    
-//    @Published var query: String = ""
-//    @Published var bizTycdSel: String = ""
-//    @Published var srchPolyBizSecd: String = ""
-//    @Published var keyword: String = ""
-//    
-//    let bizTycdSelOptions = ["일자리분야", "주거분야", "교육분야"]
-//    let srchPolyBizSecdOptions = ["중앙부처", "서울", "부산"]
-//    let keywordOptions = ["#취업", "#창업", "#교육", "#주거", "#경제,금융"]
-//    
-    
-    
-    var apiKey: String? {
+    @Published var result: [YouthPolicy]?
+                                  
+    private var apiKey: String? {
         get {
             let keyfilename = "ApiKeys"
             let api_key = "API_KEY"
@@ -43,18 +31,20 @@ class APIViewModel: XMLParser, ObservableObject {
             return value
         }
     }
-    //query: 정책명,정책소개 정보검색 , bizTycdSel: 정책분야,srchPolyBizSecd: 주거지 ,keyword: 키워드
-    func search(query: String, bizTycdSel:String, srchPolyBizSecd:String, keyword: String) {
-        
+          
+    //query: 정책명,정책소개 정보검색, bizTycdSel: 정책분야, srchPolyBizSecd: 주거지 ,keyword: 키워드
+    func search(vm: StartVM) {
         guard let apiKey = apiKey else { return }
-        
-        guard let url = URL(string: "https://www.youthcenter.go.kr/opi/youthPlcyList.do?pageIndex=1&display=10&query=%EC%A3%BC%EA%B1%B0&bizTycdSel=023010,023020&openApiVlak=\(apiKey)&srchPolyBizSecd=\(srchPolyBizSecd)&keyword=") else { return }
-        
+
+        guard let url = URL(string: getURL(apiKey, vm.policyName, vm.residence?.getString() ?? "")) else { return }
+
         fetchAndParseXML(from: url) { youthPolicyList in
             if let youthPolicyList = youthPolicyList {
                 DispatchQueue.main.async {
                     print(youthPolicyList)
-                    self.result = youthPolicyList
+                    print(youthPolicyList.youthPolicies.count)
+                    self.result = self.filter(youthPolicyList.youthPolicies, vm)
+                    //print(self.result?.count)
                 }
             }
         }
@@ -75,5 +65,15 @@ extension APIViewModel {
         }
 
         task.resume()
+    }
+    
+    func getURL(_ apiKey: String, _ query: String? = nil, _ srchPolyBizSecd: String) -> String {
+        let BASE_URL = "https://www.youthcenter.go.kr/opi/youthPlcyList.do"
+        
+        if let query = query {
+            return "\(BASE_URL)?openApiVlak=\(apiKey)&display=100&pageIndex=1&query=\(query)"
+        } else {
+            return "\(BASE_URL)?openApiVlak=\(apiKey)&display=100&pageIndex=1&srchPolyBizSecd=003002008,\(srchPolyBizSecd)"
+        }
     }
 }

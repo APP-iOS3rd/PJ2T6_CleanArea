@@ -10,6 +10,9 @@ import SwiftUI
 struct DetailScrollView: View {
     @State var selectedIndex: Int = 0
     
+    var sphere: String?
+    var youthPolicy: YouthPolicy?
+    
     var body: some View {
         GeometryReader(content: { geometry in
             LazyVStack {
@@ -66,13 +69,13 @@ struct DetailScrollView: View {
                     ScrollView {
                         ForEach(0..<4) { index in
                             if index == 0 {
-                                DetailSummaryView(selectedIndex: $selectedIndex, proxy: proxy)
+                                DetailSummaryView(selectedIndex: $selectedIndex, proxy: proxy, youthPolicy: youthPolicy)
                             } else if index == 1 {
-                                DetailQualificationView(selectedIndex: $selectedIndex, proxy: proxy)
+                                DetailQualificationView(selectedIndex: $selectedIndex, proxy: proxy, youthPolicy: youthPolicy)
                             } else if index == 2 {
-                                DetailWayView(selectedIndex: $selectedIndex, proxy: proxy)
+                                DetailWayView(selectedIndex: $selectedIndex, proxy: proxy, youthPolicy: youthPolicy)
                             } else {
-                                DetailEtcView(selectedIndex: $selectedIndex, proxy: proxy)
+                                DetailEtcView(selectedIndex: $selectedIndex, proxy: proxy, youthPolicy: youthPolicy)
                             }
                         }
                     }
