@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1D3630692B2164F60075939D /* YouthPolicyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36305A2B2164F60075939D /* YouthPolicyList.swift */; };
-		1D36306A2B2164F60075939D /* TempValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36305C2B2164F60075939D /* TempValue.swift */; };
 		1D36306B2B2164F60075939D /* RecommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36305E2B2164F60075939D /* RecommandView.swift */; };
 		1D36306C2B2164F60075939D /* RecommandDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36305F2B2164F60075939D /* RecommandDetailView.swift */; };
 		1D36306D2B2164F60075939D /* RecommandVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3630602B2164F60075939D /* RecommandVM.swift */; };
@@ -68,7 +67,6 @@
 
 /* Begin PBXFileReference section */
 		1D36305A2B2164F60075939D /* YouthPolicyList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouthPolicyList.swift; sourceTree = "<group>"; };
-		1D36305C2B2164F60075939D /* TempValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TempValue.swift; sourceTree = "<group>"; };
 		1D36305E2B2164F60075939D /* RecommandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandView.swift; sourceTree = "<group>"; };
 		1D36305F2B2164F60075939D /* RecommandDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandDetailView.swift; sourceTree = "<group>"; };
 		1D3630602B2164F60075939D /* RecommandVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandVM.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 				1D3630622B2164F60075939D /* ListView.swift */,
 				41E627C22B26BCA6003F893F /* SearchBar.swift */,
 				41E627C02B26BC5E003F893F /* ListItemView.swift */,
-				1D36305C2B2164F60075939D /* TempValue.swift */,
 				1D36305D2B2164F60075939D /* Recommand */,
 			);
 			path = Main;
@@ -443,7 +440,6 @@
 				5AC3EF5C2B2541F7001BB1F5 /* TestView.swift in Sources */,
 				5CC873ED2B2180A400D6497D /* YouthPolicyListParser.swift in Sources */,
 				5AC3EF592B2541F7001BB1F5 /* StartView.swift in Sources */,
-				1D36306A2B2164F60075939D /* TempValue.swift in Sources */,
 				5AC3EF572B2541F7001BB1F5 /* StartVM.swift in Sources */,
 				734E985C2B2162DE002EC806 /* DetailWayView.swift in Sources */,
 				41E627C32B26BCA6003F893F /* SearchBar.swift in Sources */,

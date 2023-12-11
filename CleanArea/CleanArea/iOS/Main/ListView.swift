@@ -61,7 +61,10 @@ struct ListView: View {
             }
         }
     }
-    
+}
+
+//MARK: 추천, 인기, 즐겨찾기
+extension ListView {
     private var filteredPolicies: [YouthPolicy] {
           switch tabType {
           case .hot, .like:
