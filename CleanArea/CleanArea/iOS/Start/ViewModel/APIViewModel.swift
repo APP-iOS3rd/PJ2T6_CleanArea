@@ -43,8 +43,8 @@ class APIViewModel: XMLParser, ObservableObject {
                 DispatchQueue.main.async {
                     print(youthPolicyList)
                     print(youthPolicyList.youthPolicies.count)
-                    self.result = self.filter(youthPolicyList.youthPolicies, vm)
-                    //print(self.result?.count)
+                    let filtered = self.filter(youthPolicyList.youthPolicies, vm)
+                    self.result = filtered
                 }
             }
         }
