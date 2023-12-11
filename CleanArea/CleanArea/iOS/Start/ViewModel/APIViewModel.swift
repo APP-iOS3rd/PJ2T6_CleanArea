@@ -10,6 +10,9 @@ import SwiftUI
 class APIViewModel: XMLParser, ObservableObject {
     @Published var result: [YouthPolicy]?
     @Published var policy: Policy? 
+    @Published var popularPolicies: [YouthPolicy]?
+    @Published var likePolicies: [YouthPolicy]?
+    
     private var apiKey: String? {
         get {
             let keyfilename = "Info"

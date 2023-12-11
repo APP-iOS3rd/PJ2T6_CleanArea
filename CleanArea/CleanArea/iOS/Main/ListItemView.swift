@@ -9,31 +9,20 @@ import Foundation
 import SwiftUI
 
 struct ListItemView: View {
-    var sequenceNumber: Int?
-    var polyBizSjnm: String
-    var bizPrdCn: String
-    var polyCategory: String
+    var policy: YouthPolicy
     
     @State private var isLike: Bool = false
-    @State private var progress: String = ""
+    @State private var currentProgress: String = "진행중"
     
     var body: some View {
-        let dDayText = calculateDday(from: bizPrdCn)
-        let currentProgress = dDayText == "마감" ? "마감" : "진행중"
+        let dDayText = calculateDday(from: policy.bizPrdCn)
         
         HStack {
             VStack(alignment: .leading) {
-                if (sequenceNumber != nil) {
-                    HStack{
-                        Text("\(sequenceNumber!)")
-                            .font(.system(size: 20))
-                        Text(polyBizSjnm)
-                            .font(.system(size: 20))
-                    }
-                } else {
-                    Text(polyBizSjnm)
-                        .font(.system(size: 20))
-                }
+                
+                Text(policy.polyBizSjnm)
+                    .font(.system(size: 20))
+                
                 HStack {
                     ZStack {
                         RoundedRectangle(cornerRadius: 10)
@@ -49,28 +38,29 @@ struct ListItemView: View {
                     .padding(.leading, 10)
                     
                     VStack {
-                        Text(bizPrdCn)
-                            .font(.system(size: 10))
-                            .foregroundColor(.gray)
-                        Text(dDayText)
-                            .font(.system(size: 12))
-                            .foregroundColor(.black)
+                        HStack{
+                            Text(policy.bizPrdCn)
+                                .font(.system(size: 10))
+                                .foregroundColor(.gray)
+                            Spacer()
+                        }
+                        HStack{
+                            Text(dDayText)
+                                .font(.system(size: 12))
+                                .foregroundColor(.black)
+                            Spacer()
+                        }
+                        
                     }
                 }
             }
             Spacer()
             
             VStack {
-                Button(action: {
-                    isLike.toggle()
-                }) {
-                    Image(systemName: isLike ? "star.fill" : "star")
-                        .foregroundColor(.buttonGreen)
-                        .font(.system(size: 20))
-                }
+                StarBtn(policy: policy)
                 .padding(2)
-                
-                Text(polyCategory)
+
+                Text(policy.polyRlmCd)
                     .font(.system(size: 15))
                     .foregroundColor(.gray)
             }
@@ -78,8 +68,8 @@ struct ListItemView: View {
         .padding()
         .background(Color.backgroundGreen)
         .cornerRadius(10)
-        .onAppear {
-            self.progress = currentProgress
+        .onAppear{
+            currentProgress = dDayText == "마감" ? "마감" : "진행중"
         }
         
     }
@@ -101,12 +91,7 @@ struct ListItemView: View {
     }
     
     private var progressColor: Color {
-        switch progress {
-        case "마감":
-            return Color.deadline
-        default:
-            return Color.proceed
-        }
+        currentProgress == "마감" ? Color.deadline : Color.proceed
     }
     
 }

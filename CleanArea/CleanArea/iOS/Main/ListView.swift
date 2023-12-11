@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ListView: View {
-    var policyItems: [PolicyItem]
-        var tabType: TabType
+    var youthPolicies: [YouthPolicy]
+    var tabType: TabType
     @State private var searchText = ""
     
     var body: some View {
@@ -43,12 +43,9 @@ struct ListView: View {
                         .padding(.horizontal)
                 }
                 List {
-                    ForEach(currentItems, id: \.sequenceNumber) { item in
+                    ForEach(filteredPolicies, id: \.self) { policy in
                         ZStack(alignment: .leading) {
-                            ListItemView(sequenceNumber: item.sequenceNumber,
-                                               polyBizSjnm: item.polyBizSjnm,
-                                               bizPrdCn: item.bizPrdCn,
-                                               polyCategory: item.polyCategory)
+                            ListItemView(policy: policy)
                             NavigationLink(destination: DetailView()) {
                                 EmptyView()
                             }
@@ -65,27 +62,22 @@ struct ListView: View {
         }
     }
     
-    private var currentItems: [PolicyItem] {
-            switch tabType {
-            case .hot, .like:
-                return policyItems
-            case .recommand:
-                return policyItems.filter { item in
-                    searchText.isEmpty || item.polyBizSjnm.localizedCaseInsensitiveContains(searchText)
-                }
-            }
-        }
+    private var filteredPolicies: [YouthPolicy] {
+          switch tabType {
+          case .hot, .like:
+              return youthPolicies
+          case .recommand:
+              return youthPolicies.filter { policy in
+                  searchText.isEmpty || policy.polyBizSjnm.localizedCaseInsensitiveContains(searchText)
+              }
+          }
+      }
 }
 
 extension View {
     func hideKeyboard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
-}
-
-
-#Preview {
-    ListView(policyItems: recommandPolicyItems, tabType: .hot)
 }
 
 

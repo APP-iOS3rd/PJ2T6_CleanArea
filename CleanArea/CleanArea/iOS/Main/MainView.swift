@@ -23,13 +23,13 @@ struct MainView: View {
                         }
                         .tag("Home")
                     
-                    ListView(policyItems: popularPolicyItems, tabType: .hot)
+                    ListView(youthPolicies: info, tabType: .hot)
                         .tabItem {
                             Label("Hot", systemImage: "flame")
                         }
                         .tag("Hot")
                     
-                    ListView(policyItems: likePolicyItems, tabType: .like)
+                    ListView(youthPolicies: info, tabType: .like)
                         .tabItem {
                             Label("Like", systemImage: "star")
                         }
