@@ -8,7 +8,9 @@
 import SwiftUI
 
 class StartVM: ObservableObject {
-                        
+    @StateObject var network =  APIViewModel()
+                
+    @Published var info: [YouthPolicy]?
     @Published var residence: City?
     @Published var employmentStatus: String = ""
     @Published var educationLevel: String = ""
