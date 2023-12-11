@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MainView: View {
+    @Query var youthPolicies: [YouthPolicy]
     @State private var selectedTab = "Home"
     var vm: StartVM?
     @StateObject var network = APIViewModel()
@@ -29,7 +31,7 @@ struct MainView: View {
                         }
                         .tag("Hot")
                     
-                    ListView(youthPolicies: info, tabType: .like)
+                    ListView(youthPolicies: youthPolicies, tabType: .like)
                         .tabItem {
                             Label("Like", systemImage: "star")
                         }

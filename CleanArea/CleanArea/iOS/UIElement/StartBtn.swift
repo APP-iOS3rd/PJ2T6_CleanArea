@@ -10,13 +10,19 @@ import SwiftData
 
 struct StarBtn: View {
     @Environment(\.modelContext) var modelContext
-    @State private var isClicked = false
     var policy: YouthPolicy
+    @State private var isClicked: Bool
+
+    init(policy: YouthPolicy) {
+        self.policy = policy
+        self._isClicked = State(initialValue: UserDefaults.standard.getLikedStatus(for: policy.id))
+    }
 
     var body: some View {
         Button {
             isClicked.toggle()
-            
+            UserDefaults.standard.setLikedStatus(for: policy.id, status: isClicked)
+
             if isClicked {
                 modelContext.insert(policy)
             } else {
@@ -24,9 +30,19 @@ struct StarBtn: View {
             }
         } label: {
             Image(systemName: isClicked ? "star.fill" : "star")
-                .foregroundColor(Color(hex: "64A37B")) // 이미지 색상을 설정할 수 있습니다.
+                .foregroundColor(.buttonGreen)
                 .imageScale(.large)
         }
+    }
+}
+
+extension UserDefaults {
+    func setLikedStatus(for policyID: UUID, status: Bool) {
+        set(status, forKey: "isLiked_\(policyID.uuidString)")
+    }
+
+    func getLikedStatus(for policyID: UUID) -> Bool {
+        return bool(forKey: "isLiked_\(policyID.uuidString)")
     }
 }
 

@@ -164,8 +164,8 @@
 			children = (
 				1D3630632B2164F60075939D /* MainView.swift */,
 				1D3630622B2164F60075939D /* ListView.swift */,
-				41E627C22B26BCA6003F893F /* SearchBar.swift */,
 				41E627C02B26BC5E003F893F /* ListItemView.swift */,
+				41E627C22B26BCA6003F893F /* SearchBar.swift */,
 				1D36305D2B2164F60075939D /* Recommand */,
 			);
 			path = Main;
