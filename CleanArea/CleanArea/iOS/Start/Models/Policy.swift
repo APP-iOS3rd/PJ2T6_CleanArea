@@ -15,22 +15,24 @@ enum Field: String {
     case participation = "023050"
 }
 
-class Policy {
-    var job: [YouthPolicy] = []
-    var residence: [YouthPolicy] = []
-    var education: [YouthPolicy] = []
-    var curture: [YouthPolicy] = []
-    var participation: [YouthPolicy] = []
 
-    func getPolicy(_ policys: [YouthPolicy]) {
-        job = filterPolicy(policys, Field.job.rawValue)
-        residence = filterPolicy(policys, Field.residence.rawValue)
-        education = filterPolicy(policys, Field.education.rawValue)
-        curture = filterPolicy(policys, Field.curture.rawValue)
-        participation = filterPolicy(policys, Field.participation.rawValue)
+class Policy: ObservableObject {
+    @Published var job: [YouthPolicy] = []
+    @Published var residence: [YouthPolicy] = []
+    @Published var education: [YouthPolicy] = []
+    @Published var curture: [YouthPolicy] = []
+    @Published var participation: [YouthPolicy] = []
+
+    func getPolicy(_ policies: [YouthPolicy]) {
+        job = filterPolicy(policies, Field.job.rawValue)
+        residence = filterPolicy(policies, Field.residence.rawValue)
+        education = filterPolicy(policies, Field.education.rawValue)
+        curture = filterPolicy(policies, Field.curture.rawValue)
+        participation = filterPolicy(policies, Field.participation.rawValue)
     }
 
-    func filterPolicy(_ policys: [YouthPolicy], _ code: String) -> [YouthPolicy] {
-        return policys.filter { $0.polyRlmCd == code }
+    func filterPolicy(_ policies: [YouthPolicy], _ code: String) -> [YouthPolicy] {
+        return policies.filter { $0.polyRlmCd == code }
     }
 }
+

@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct RecommandView: View {
-    @StateObject var vm = RecommandVM()
+    @ObservedObject var apiViewModel: APIViewModel
+    @StateObject var vm: RecommandVM
+
+    init(apiViewModel: APIViewModel) {
+        self.apiViewModel = apiViewModel
+        self._vm = StateObject(wrappedValue: RecommandVM(policy: apiViewModel.policy!))
+    }
 
     var body: some View {
         NavigationStack {
@@ -23,7 +29,7 @@ struct RecommandView: View {
                 }
                 .frame(width: 330)
                 .padding()
-                
+
                 // 추천 정책 셀을 표시하는 LazyHGrid
                 LazyHGrid(rows: [GridItem(.adaptive(minimum: 85))]) {
                     ForEach(vm.recommandcellModels.indices, id: \.self) { index in
@@ -39,6 +45,7 @@ struct RecommandView: View {
         }
     }
 }
+
 struct RecommandCell: View {
     @Binding var model: RecommandCellModel
 
@@ -72,14 +79,14 @@ struct RecommandCell: View {
     private func destinationView(for key: String, cellName: String) -> some View {
         switch key {
         case "일자리", "주거", "교육", "복지,문화", "참여,권리":
-            RecommandDetailView(modelName: cellName)
+            RecommandDetailView(modelName: cellName, policies: model.policies)
         default:
             Text("Invalid destination key")
         }
     }
 }
 
-
-#Preview {
-    RecommandView()
-}
+//
+//#Preview {
+//    RecommandView()
+//}
