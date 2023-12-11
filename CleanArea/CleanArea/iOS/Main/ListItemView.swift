@@ -11,15 +11,16 @@ import SwiftUI
 struct ListItemView: View {
     var sequenceNumber: Int?
     var polyBizSjnm: String
-    var progress: String
     var bizPrdCn: String
-    var remainDate: String
     var polyCategory: String
-
+    
     @State private var isLike: Bool = false
-
-
+    @State private var progress: String = ""
+    
     var body: some View {
+        let dDayText = calculateDday(from: bizPrdCn)
+        let currentProgress = dDayText == "마감" ? "마감" : "진행중"
+        
         HStack {
             VStack(alignment: .leading) {
                 if (sequenceNumber != nil) {
@@ -38,20 +39,20 @@ struct ListItemView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(progressColor)
                             .frame(width: 70, height: 25)
-
-                        Text(progressText)
+                        
+                        Text(currentProgress)
                             .font(.system(size: 16))
                             .bold()
                             .foregroundStyle(.white)
-
+                        
                     }
                     .padding(.leading, 10)
-
+                    
                     VStack {
                         Text(bizPrdCn)
                             .font(.system(size: 10))
                             .foregroundColor(.gray)
-                        Text(remainDate)
+                        Text(dDayText)
                             .font(.system(size: 12))
                             .foregroundColor(.black)
                     }
@@ -77,29 +78,35 @@ struct ListItemView: View {
         .padding()
         .background(Color.backgroundGreen)
         .cornerRadius(10)
+        .onAppear {
+            self.progress = currentProgress
+        }
         
     }
     
+    func calculateDday(from dateString: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd."
+        dateFormatter.locale = Locale(identifier: "ko_KR")
+        
+        let dates = dateString.split(separator: "~").map(String.init)
+        if let endDateString = dates.last, let endDate = dateFormatter.date(from: endDateString.trimmingCharacters(in: .whitespaces)), endDate >= Date() {
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.day], from: Date(), to: endDate)
+            if let days = components.day {
+                return "D-\(days)"
+            }
+        }
+        return "마감"
+    }
     
     private var progressColor: Color {
         switch progress {
-        case "allTimes":
-            return Color.allTimes
-        case "deadline":
+        case "마감":
             return Color.deadline
         default:
             return Color.proceed
         }
     }
     
-    private var progressText: String {
-        switch progress {
-        case "allTimes":
-            return "상시"
-        case "deadline":
-            return "마감임박"
-        default:
-            return "진행중"
-        }
-    }
 }

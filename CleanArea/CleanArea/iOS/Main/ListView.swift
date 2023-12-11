@@ -47,9 +47,7 @@ struct ListView: View {
                         ZStack(alignment: .leading) {
                             ListItemView(sequenceNumber: item.sequenceNumber,
                                                polyBizSjnm: item.polyBizSjnm,
-                                               progress: item.progress,
                                                bizPrdCn: item.bizPrdCn,
-                                               remainDate: item.remainDate,
                                                polyCategory: item.polyCategory)
                             NavigationLink(destination: DetailView()) {
                                 EmptyView()
