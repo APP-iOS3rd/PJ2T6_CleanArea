@@ -26,7 +26,7 @@ struct DetailScrollView: View {
                         } label: {
                             Text("정책요약")
                                 .font(.system(size: 17, weight: .semibold))
-                                .foregroundStyle(Color.init(hex: selectedIndex == 0 ?  "8AC49F" : "9A9A9A"))
+                                .foregroundStyle(selectedIndex == 0 ? Color.menuGreen : Color.menuGray)
                         }
                         
                         Spacer()
@@ -38,7 +38,7 @@ struct DetailScrollView: View {
                         } label: {
                             Text("신청자격")
                                 .font(.system(size: 17, weight: .semibold))
-                                .foregroundStyle(Color.init(hex: selectedIndex == 1 ?  "8AC49F" : "9A9A9A"))
+                                .foregroundStyle(selectedIndex == 1 ? Color.menuGreen : Color.menuGray)
                         }
                         
                         Spacer()
@@ -50,7 +50,7 @@ struct DetailScrollView: View {
                         } label: {
                             Text("신청방법")
                                 .font(.system(size: 17, weight: .semibold))
-                                .foregroundStyle(Color.init(hex: selectedIndex == 2 ?  "8AC49F" : "9A9A9A"))
+                                .foregroundStyle(selectedIndex == 2 ? Color.menuGreen : Color.menuGray)
                         }
                         
                         Spacer()
@@ -62,7 +62,7 @@ struct DetailScrollView: View {
                         } label: {
                             Text("기타")
                                 .font(.system(size: 17, weight: .semibold))
-                                .foregroundStyle(Color.init(hex: selectedIndex == 3 ?  "8AC49F" : "9A9A9A"))
+                                .foregroundStyle(selectedIndex == 3 ? Color.menuGreen : Color.menuGray)
                         }
                     }
                     
