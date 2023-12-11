@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
+    var cityImage: City?                          //시 이미지
     var sphere: String?                              //분야
     var youthPolicy: YouthPolicy?                    //정책 내용
     
@@ -44,16 +45,17 @@ struct DetailView: View {
                     .foregroundStyle(.mainGreen)
                 
                 Spacer()
-                Image(systemName: "swift")
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    .padding(.leading, 30)
                 
-                /* TODO: 사진 에셋에 넣기(노가다)
-                 Image("시 사진 이름")
+                Image(cityImage?.getCityImage() ?? "")
                  .resizable()
-                 .frame(width: 60, height: 60)
-                 */
+                 .frame(width: 90, height: 60)
+                 .cornerRadius(10)
+                 .background(
+                     Rectangle()
+                         .cornerRadius(10)
+                         .foregroundStyle(.white)
+                         .shadow(color: Color(uiColor: UIColor.systemGray), radius: 1)
+                 )
             }
             .padding(.top)
             
