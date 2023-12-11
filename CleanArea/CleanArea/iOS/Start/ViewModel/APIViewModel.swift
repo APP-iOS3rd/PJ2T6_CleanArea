@@ -12,7 +12,7 @@ class APIViewModel: XMLParser, ObservableObject {
                                   
     private var apiKey: String? {
         get {
-            let keyfilename = "ApiKeys"
+            let keyfilename = "Info"
             let api_key = "API_KEY"
             
             // 생성한 .plist 파일 경로 불러오기
@@ -35,7 +35,7 @@ class APIViewModel: XMLParser, ObservableObject {
     //query: 정책명,정책소개 정보검색, bizTycdSel: 정책분야, srchPolyBizSecd: 주거지 ,keyword: 키워드
     func search(vm: StartVM) {
         guard let apiKey = apiKey else { return }
-
+        print(apiKey)
         guard let url = URL(string: getURL(apiKey, vm.policyName, vm.residence?.getString() ?? "")) else { return }
 
         fetchAndParseXML(from: url) { youthPolicyList in
