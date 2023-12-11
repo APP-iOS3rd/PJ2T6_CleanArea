@@ -17,10 +17,8 @@
 		1D3630712B2164F60075939D /* TFStyleViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3630652B2164F60075939D /* TFStyleViewModifier.swift */; };
 		41E627C12B26BC5E003F893F /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627C02B26BC5E003F893F /* ListItemView.swift */; };
 		41E627C32B26BCA6003F893F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627C22B26BCA6003F893F /* SearchBar.swift */; };
-		41E627D92B278F5E003F893F /* ApiKeys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 41E627D82B278F5E003F893F /* ApiKeys.xcconfig */; };
-		41E627CD2B26FF27003F893F /* ApiKeys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 41E627CC2B26FF27003F893F /* ApiKeys.xcconfig */; };
 		41E627CF2B27039C003F893F /* ListViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627CE2B27039C003F893F /* ListViewModifier.swift */; };
-		41E627D12B275293003F893F /* ApiKeys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 41E627D02B275293003F893F /* ApiKeys.xcconfig */; };
+		41E627DB2B279110003F893F /* ApiKeys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 41E627DA2B279110003F893F /* ApiKeys.xcconfig */; };
 		41FBE2912B2166F100D3AD65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FBE2902B2166F100D3AD65 /* Assets.xcassets */; };
 		41FBE2932B21830600D3AD65 /* DetailModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBE2922B21830600D3AD65 /* DetailModifer.swift */; };
 		5A2E8F162B21699600B3CA70 /* StartBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E8F142B21699500B3CA70 /* StartBtn.swift */; };
@@ -78,10 +76,8 @@
 		1D3630652B2164F60075939D /* TFStyleViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFStyleViewModifier.swift; sourceTree = "<group>"; };
 		41E627C02B26BC5E003F893F /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		41E627C22B26BCA6003F893F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
-		41E627D82B278F5E003F893F /* ApiKeys.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ApiKeys.xcconfig; sourceTree = "<group>"; };
-		41E627CC2B26FF27003F893F /* ApiKeys.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ApiKeys.xcconfig; sourceTree = "<group>"; };
 		41E627CE2B27039C003F893F /* ListViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModifier.swift; sourceTree = "<group>"; };
-		41E627D02B275293003F893F /* ApiKeys.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ApiKeys.xcconfig; sourceTree = "<group>"; };
+		41E627DA2B279110003F893F /* ApiKeys.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ApiKeys.xcconfig; sourceTree = "<group>"; };
 		41FBE2902B2166F100D3AD65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41FBE2922B21830600D3AD65 /* DetailModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModifer.swift; sourceTree = "<group>"; };
 		5A2E8F142B21699500B3CA70 /* StartBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartBtn.swift; sourceTree = "<group>"; };
@@ -281,9 +277,7 @@
 				734E98292B216221002EC806 /* ContentView.swift */,
 				41FBE2902B2166F100D3AD65 /* Assets.xcassets */,
 				734E982E2B216223002EC806 /* Preview Assets.xcassets */,
-				41E627D82B278F5E003F893F /* ApiKeys.xcconfig */,
-				41E627CC2B26FF27003F893F /* ApiKeys.xcconfig */,
-				41E627D02B275293003F893F /* ApiKeys.xcconfig */,
+				41E627DA2B279110003F893F /* ApiKeys.xcconfig */,
 				1D3630542B2164F60075939D /* iOS */,
 			);
 			path = CleanArea;
@@ -423,9 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41E627D92B278F5E003F893F /* ApiKeys.xcconfig in Resources */,
-				41E627CD2B26FF27003F893F /* ApiKeys.xcconfig in Resources */,
-				41E627D12B275293003F893F /* ApiKeys.xcconfig in Resources */,
+				41E627DB2B279110003F893F /* ApiKeys.xcconfig in Resources */,
 				41FBE2912B2166F100D3AD65 /* Assets.xcassets in Resources */,
 				734E982F2B216223002EC806 /* Preview Assets.xcassets in Resources */,
 			);
@@ -523,7 +515,6 @@
 /* Begin XCBuildConfiguration section */
 		734E98462B216223002EC806 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41E627CC2B26FF27003F893F /* ApiKeys.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -587,7 +578,6 @@
 		};
 		734E98472B216223002EC806 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41E627CC2B26FF27003F893F /* ApiKeys.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
