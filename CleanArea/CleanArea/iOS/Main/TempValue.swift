@@ -86,13 +86,6 @@ let recommandPolicyItems = [
                polyCategory: "주거분야"),
 ]
 
-
-enum TabType {
-    case hot
-    case like
-    case recommand
-}
-
 struct PolicyItem {
     var sequenceNumber: Int?
     var polyBizSjnm: String

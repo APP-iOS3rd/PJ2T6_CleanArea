@@ -57,7 +57,7 @@ struct StartView: View {
                 .frame(width: 140, height: 50)
                 .navigationDestination(isPresented: $isSearchButtonTapped) {
                     // 이동할 뷰 (현재 임시 뷰 지정)
-                    TestView(vm: self.vm)
+                    MainView(vm: self.vm)
                 }
                                 
                 Spacer()

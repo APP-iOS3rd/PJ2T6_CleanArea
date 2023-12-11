@@ -9,11 +9,13 @@ import SwiftUI
 
 struct MainView: View {
     @State private var selectedTab = "Home"
+    var vm: StartVM?
+    @StateObject var network = APIViewModel()
     
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.all)
-                
+            if let info = network.result {
                 TabView(selection: $selectedTab) {
                     RecommandView()
                         .tabItem {
@@ -34,7 +36,14 @@ struct MainView: View {
                         .tag("Like")
                 }
                 .accentColor(.buttonGreen)
-            
+            } else {
+                Text("로딩중")
+            }
+        }
+        .onAppear() {
+            if let vm = self.vm {
+                network.search(vm: vm)
+            }
         }
     }
 }
