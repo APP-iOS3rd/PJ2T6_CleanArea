@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @State private var selectedTab = "Home"
-
+    
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.all)
@@ -21,13 +21,13 @@ struct MainView: View {
                         }
                         .tag("Home")
                     
-                    ListView(tabType: .hot)
+                    ListView(policyItems: popularPolicyItems, tabType: .hot)
                         .tabItem {
                             Label("Hot", systemImage: "flame")
                         }
                         .tag("Hot")
                     
-                    ListView(tabType: .like)
+                    ListView(policyItems: likePolicyItems, tabType: .like)
                         .tabItem {
                             Label("Like", systemImage: "star")
                         }

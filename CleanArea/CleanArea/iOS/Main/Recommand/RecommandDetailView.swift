@@ -28,7 +28,7 @@ struct RecommandDetailView: View {
             .frame(width: 330)
             .padding()
             Spacer()
-            ListView(tabType: .recommand)
+            ListView(policyItems: recommandPolicyItems, tabType: .recommand)
         }
         .navigationBarHidden(true)
     }
