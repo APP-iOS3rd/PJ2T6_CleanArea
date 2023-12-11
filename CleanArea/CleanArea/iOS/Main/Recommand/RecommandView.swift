@@ -11,7 +11,7 @@ struct RecommandView: View {
     @StateObject var vm = RecommandVM()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 HStack {
                     Text("추천정책")
@@ -21,9 +21,9 @@ struct RecommandView: View {
                         .padding(.top, 20)
                     Spacer()
                 }
-                .padding()
                 .frame(width: 330)
-
+                .padding()
+                
                 // 추천 정책 셀을 표시하는 LazyHGrid
                 LazyHGrid(rows: [GridItem(.adaptive(minimum: 85))]) {
                     ForEach(vm.recommandcellModels.indices, id: \.self) { index in
