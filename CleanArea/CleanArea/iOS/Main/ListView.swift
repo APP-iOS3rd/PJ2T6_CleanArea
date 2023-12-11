@@ -10,6 +10,9 @@ import SwiftUI
 struct ListView: View {
     @ObservedObject var vm = ListVM()
     var tabType: TabType
+    @State private var searchText = ""
+    @Environment(\.presentationMode) var presentationMode
+    
     
     var body: some View {
         NavigationView {
@@ -37,7 +40,10 @@ struct ListView: View {
                     .frame(width: 330)
                     .padding()
                 }
-                
+                if tabType == .recommand {
+                    SearchBar(text: $searchText)
+                        .padding(.horizontal)
+                }
                 List {
                     ForEach(currentItems, id: \.sequenceNumber) { item in
                         ZStack(alignment: .leading) {
@@ -70,7 +76,9 @@ struct ListView: View {
         case .like:
             return vm.likePolicyItems
         case .recommand:
-            return vm.recommandPolicyItems
+            return vm.recommandPolicyItems.filter { item in
+                searchText.isEmpty || item.polyBizSjnm.localizedCaseInsensitiveContains(searchText)
+            }
         }
     }
 }
@@ -168,6 +176,46 @@ struct PolicyListItemView: View {
         default:
             return "진행중"
         }
+    }
+}
+
+struct SearchBar: View {
+    @Binding var text: String
+    
+    var body: some View {
+        HStack {
+            TextField("정책이름을 검색해 주세요", text: $text)
+                .padding(7)
+                .padding(.horizontal, 25)
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
+                .overlay(
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.gray)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 8)
+                        
+                        if text != "" {
+                            Button(action: {
+                                self.text = ""
+                                hideKeyboard()
+                            }) {
+                                Image(systemName: "multiply.circle.fill")
+                                    .foregroundColor(.gray)
+                                    .padding(.trailing, 8)
+                            }
+                        }
+                    }
+                )
+                .frame(width: 342)
+        }
+    }
+}
+
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
