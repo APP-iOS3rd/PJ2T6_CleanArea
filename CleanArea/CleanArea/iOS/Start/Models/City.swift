@@ -39,7 +39,9 @@ enum City: String, CaseIterable {
     case 포천시 = "003002008027"
     case 하남시 = "003002008018"
     case 화성시 = "003002008024"
-    
+}
+
+extension City {
     func getString() -> String {
         switch self {
         case .가평군:
@@ -104,6 +106,75 @@ enum City: String, CaseIterable {
             return "하남시"
         case .화성시:
             return "화성시"
+        }
+    }
+}
+
+extension City {
+    func getCityImage() -> String {
+        switch self {
+        case .가평군:
+            return "Gapyeong"
+        case .고양시:
+            return "Hanam"
+        case .과천시:
+            return "Goyang"
+        case .광명시:
+            return "Gwangmyeong"
+        case .광주시:
+            return "Gwangju"
+        case .구리시:
+            return "Guri"
+        case .군포시:
+            return "Gunpo"
+        case .김포시:
+            return "Gimpo"
+        case .남양주시:
+            return "Namyangju"
+        case .동두천시:
+            return "Dongducheon"
+        case .부천시:
+            return "Bucheon"
+        case .성남시:
+            return "Seongnam"
+        case .수원시:
+            return "Suwon"
+        case .시흥시:
+            return "Siheung"
+        case .안산시:
+            return "Ansan"
+        case .안성시:
+            return "Anseong"
+        case .안양시:
+            return "Anyang"
+        case .양주시:
+            return "Yangju"
+        case .양평군:
+            return "Yangpyeong"
+        case .여주시:
+            return "Yeoju"
+        case .연천군:
+            return "Yeoncheon"
+        case .오산시:
+            return "Osan"
+        case .용인시:
+            return "Yongin"
+        case .의왕시:
+            return "Uiwang"
+        case .의정부시:
+            return "Uijeongbu"
+        case .이천시:
+            return "Icheon"
+        case .파주시:
+            return "Paju"
+        case .평택시:
+            return "Pyeongtaek"
+        case .포천시:
+            return "Pocheon"
+        case .하남시:
+            return "Hanam"
+        case .화성시:
+            return "Hwaseong"
         }
     }
 }
