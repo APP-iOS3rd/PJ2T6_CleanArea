@@ -52,12 +52,14 @@ struct ListView: View {
                             .opacity(0)
                         }
                         .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                         .listRowInsets(EdgeInsets())
                         .padding(.vertical, 8)
                     }
                 }
                 .background(Color.clear)
                 .scrollContentBackground(.hidden)
+                
             }
         }
     }
