@@ -46,14 +46,14 @@ struct DetailView: View {
                 
                 Spacer()
                 
-                Image(cityImage.getCityImage())
+                Image(cityImage?.getCityImage() ?? "")
                  .resizable()
                  .frame(width: 90, height: 60)
                  .cornerRadius(10)
                  .background(
                      Rectangle()
                          .cornerRadius(10)
-                         .foregroundStyle(.backgroundGreen)
+                         .foregroundStyle(.white)
                          .shadow(color: Color(uiColor: UIColor.systemGray), radius: 1)
                  )
             }
