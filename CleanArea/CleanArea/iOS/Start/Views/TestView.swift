@@ -16,7 +16,7 @@ struct TestView: View {
             if let info = network.result {
                 Text("데이터 들어옴")
                 List {
-                    ForEach(info, id: \.self) { policy in
+                    ForEach(info, id: \.bizId) { policy in
                         Text("정책ID: \(policy.bizId)")
                         Text("정책일련번호: \(policy.polyBizSecd)")
                         Text("기관 및 지자체 구분: \(policy.polyBizTy)")

@@ -33,6 +33,7 @@ struct StarBtn: View {
                 .foregroundColor(.buttonGreen)
                 .imageScale(.large)
         }
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
