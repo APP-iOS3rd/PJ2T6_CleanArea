@@ -17,7 +17,7 @@ struct MainView: View {
             Color.white.edgesIgnoringSafeArea(.all)
             if let info = network.result {
                 TabView(selection: $selectedTab) {
-                    RecommandView()
+                    RecommandView(apiViewModel: network)
                         .tabItem {
                             Label("Home", systemImage: "house")
                         }

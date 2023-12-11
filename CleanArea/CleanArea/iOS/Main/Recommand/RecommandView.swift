@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct RecommandView: View {
-    @StateObject var vm = RecommandVM()
+    @ObservedObject var apiViewModel: APIViewModel
+    @StateObject var vm: RecommandVM
+
+    init(apiViewModel: APIViewModel) {
+        self.apiViewModel = apiViewModel
+        self._vm = StateObject(wrappedValue: RecommandVM(policy: apiViewModel.policy!))
+    }
 
     var body: some View {
         NavigationStack {
@@ -79,7 +85,7 @@ struct RecommandCell: View {
     }
 }
 
-
-#Preview {
-    RecommandView()
-}
+//
+//#Preview {
+//    RecommandView()
+//}
