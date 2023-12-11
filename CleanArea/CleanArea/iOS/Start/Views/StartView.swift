@@ -26,7 +26,7 @@ struct StartView: View {
                 .padding()
                 
                 StartLocationField( type: .residence,
-                                    width: 300)                               
+                                    width: 300)
                                 .environmentObject(vm)
                 StartTextField(text: $vm.employmentStatus,
                                type: .employmentStatus,

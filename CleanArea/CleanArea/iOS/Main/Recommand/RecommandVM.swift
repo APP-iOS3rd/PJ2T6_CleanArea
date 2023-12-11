@@ -22,4 +22,3 @@ class RecommandVM: ObservableObject {
     }
     
 }
-

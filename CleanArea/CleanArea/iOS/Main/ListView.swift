@@ -8,142 +8,87 @@
 import SwiftUI
 
 struct ListView: View {
-    @ObservedObject var vm = ListVM()
-    var tabType: TabType
+    var policyItems: [PolicyItem]
+        var tabType: TabType
+    @State private var searchText = ""
     
     var body: some View {
-        ZStack{
-            List {
-                ForEach(currentItems, id: \.sequenceNumber) { item in
-                    PolicyListItemView(sequenceNumber: item.sequenceNumber,
-                                       polyBizSjnm: item.polyBizSjnm,
-                                       progress: item.progress,
-                                       bizPrdCn: item.bizPrdCn,
-                                       remainDate: item.remainDate,
-                                       polyCategory: item.polyCategory)
-                    .listRowBackground(Color.clear)
-                    .listRowInsets(EdgeInsets())
-                    .padding(.vertical, 8)
+        NavigationView {
+            VStack{
+                if tabType == .hot {
+                    HStack{
+                        Text("인기정책")
+                            .font(.title)
+                            .bold()
+                            .foregroundStyle(.mainGreen)
+                            .padding(.top, 20)
+                        Spacer()
+                    }
+                    .frame(width: 330)
+                    .padding()
+                } else if tabType == .like {
+                    HStack{
+                        Text("즐겨찾기")
+                            .font(.title)
+                            .bold()
+                            .foregroundStyle(.mainGreen)
+                            .padding(.top, 20)
+                        Spacer()
+                    }
+                    .frame(width: 330)
+                    .padding()
                 }
+                if tabType == .recommand {
+                    SearchBar(text: $searchText)
+                        .padding(.horizontal)
+                }
+                List {
+                    ForEach(currentItems, id: \.sequenceNumber) { item in
+                        ZStack(alignment: .leading) {
+                            ListItemView(sequenceNumber: item.sequenceNumber,
+                                               polyBizSjnm: item.polyBizSjnm,
+                                               progress: item.progress,
+                                               bizPrdCn: item.bizPrdCn,
+                                               remainDate: item.remainDate,
+                                               polyCategory: item.polyCategory)
+                            NavigationLink(destination: DetailView()) {
+                                EmptyView()
+                            }
+                            .opacity(0)
+                        }
+                        .listRowBackground(Color.clear)
+                        .listRowInsets(EdgeInsets())
+                        .padding(.vertical, 8)
+                    }
+                }
+                .background(Color.clear)
+                .scrollContentBackground(.hidden)
             }
-            .background(Color.clear)
-            .scrollContentBackground(.hidden)
         }
     }
     
     private var currentItems: [PolicyItem] {
             switch tabType {
-            case .hot:
-                return vm.popularPolicyItems
-            case .like:
-                return vm.likePolicyItems
+            case .hot, .like:
+                return policyItems
             case .recommand:
-                return vm.recommandPolicyItems
+                return policyItems.filter { item in
+                    searchText.isEmpty || item.polyBizSjnm.localizedCaseInsensitiveContains(searchText)
+                }
             }
         }
 }
 
-struct PolicyListItemView: View {
-    var sequenceNumber: Int?
-    var polyBizSjnm: String
-    var progress: String
-    var bizPrdCn: String
-    var remainDate: String
-    var polyCategory: String
-    
-    @State private var isLike: Bool = false
-    
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                if (sequenceNumber != nil) {
-                    HStack{
-                        Text("\(sequenceNumber!)")
-                            .font(.system(size: 20))
-                        Text(polyBizSjnm)
-                            .font(.system(size: 20))
-                    }
-                } else {
-                    Text(polyBizSjnm)
-                        .font(.system(size: 20))
-                }
-                HStack {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color.white)
-                            .frame(width: 60, height: 25)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(progressColor, lineWidth: 2)
-                            )
-                        Text(progressText)
-                            .font(.system(size: 16))
-                            .foregroundStyle(progressColor)
-                        
-                    }
-                    .padding(.leading, 10)
-                    
-                    VStack {
-                        Text(bizPrdCn)
-                            .font(.system(size: 10))
-                            .foregroundColor(.gray)
-                        Text(remainDate)
-                            .font(.system(size: 12))
-                            .foregroundColor(.black)
-                    }
-                }
-            }
-            
-            Spacer()
-            
-            VStack {
-                Button(action: {
-                    isLike.toggle()
-                }) {
-                    Image(systemName: isLike ? "star.fill" : "star")
-                        .foregroundColor(.buttonGreen)
-                        .font(.system(size: 20))
-                }
-                .padding(2)
-                
-                Text(polyCategory)
-                    .font(.system(size: 15))
-                    .foregroundColor(.gray)
-            }
-        }
-        .padding()
-        .background(Color.backgroundGreen)
-        .cornerRadius(10)
-        
-    }
-    
-    
-    private var progressColor: Color {
-        switch progress {
-        case "allTimes":
-            return Color.allTimes
-        case "deadline":
-            return Color.deadline
-        default:
-            return Color.proceed
-        }
-    }
-    
-    private var progressText: String {
-        switch progress {
-        case "allTimes":
-            return "상시"
-        case "deadline":
-            return "마감임박"
-        default:
-            return "진행중"
-        }
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 
 
 #Preview {
-    ListView(tabType: .hot)
+    ListView(policyItems: recommandPolicyItems, tabType: .hot)
 }
+
+
 
