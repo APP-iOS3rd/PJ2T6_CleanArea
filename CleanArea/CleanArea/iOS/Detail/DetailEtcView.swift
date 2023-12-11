@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct DetailEtcView: View {
+    @State var isModaling1: Bool = false
+    @State var isModaling2: Bool = false
+    
     @Binding var selectedIndex: Int
     
     var proxy: ScrollViewProxy?
@@ -26,11 +29,39 @@ struct DetailEtcView: View {
             
             ForEach(0..<5){ index in
                 let choose = chooseTitle(index)
+                
                 Text(choose.0)
                     .modifier(DetailSemiTitleModifier())
-                Text(choose.1)
-                    .modifier(DetailSemiContentModifier())
-                    .padding(.top, -10)
+                
+                if index == 3 && choose.1 != "-" {
+                    Button(action: {
+                        isModaling1.toggle()
+                    }, label: {
+                        Text(choose.1)
+                            .multilineTextAlignment(.leading)
+                            .font(.system(size: 17, weight: .bold))
+                            .foregroundStyle(.blue)
+                    })
+                    .fullScreenCover(isPresented: $isModaling1) {
+                        WebSiteView(url: choose.1, isModaling: $isModaling1)
+                    }
+                } else if index == 4 && choose.1 != "-" {
+                    Button(action: {
+                        isModaling2.toggle()
+                    }, label: {
+                        Text(choose.1)
+                            .multilineTextAlignment(.leading)
+                            .font(.system(size: 17, weight: .bold))
+                            .foregroundStyle(.blue)
+                    })
+                    .fullScreenCover(isPresented: $isModaling2) {
+                        WebSiteView(url: choose.1, isModaling: $isModaling2)
+                    }
+                } else {
+                    Text(choose.1)
+                        .modifier(DetailSemiContentModifier())
+                        .padding(.top, -10)
+                }
             }
         }
         .id(3)
