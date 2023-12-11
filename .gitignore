@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos,swift,xcode
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,swift,xcode
 
+ApiKeys.plist
+
 ### macOS ###
 # General
 .DS_Store
@@ -132,3 +134,5 @@ iOSInjectionProject/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,swift,xcodei
+
+
