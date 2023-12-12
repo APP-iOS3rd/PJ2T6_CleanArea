@@ -9,10 +9,7 @@ import SwiftUI
 
 struct DetailWayView: View {
     @State var isModaling: Bool = false
-    
-    @Binding var selectedIndex: Int
-    
-    var proxy: ScrollViewProxy?
+
     var youthPolicy: YouthPolicy?
     
     var body: some View {
@@ -51,7 +48,6 @@ struct DetailWayView: View {
                 }
             }
         }
-        .id(2)
         .padding(.horizontal, 20)
     }
     

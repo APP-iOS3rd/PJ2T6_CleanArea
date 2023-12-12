@@ -11,9 +11,6 @@ struct DetailEtcView: View {
     @State var isModaling1: Bool = false
     @State var isModaling2: Bool = false
     
-    @Binding var selectedIndex: Int
-    
-    var proxy: ScrollViewProxy?
     var youthPolicy: YouthPolicy?
     
     var body: some View {
@@ -64,9 +61,7 @@ struct DetailEtcView: View {
                 }
             }
         }
-        .id(3)
         .padding(.horizontal, 20)
-        .padding(.bottom, 250)
     }
     
     private func chooseTitle(_ index: Int) -> (String, String){

@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct DetailQualificationView: View {
-    @Binding var selectedIndex: Int
-    
-    var proxy: ScrollViewProxy?
     var youthPolicy: YouthPolicy?
     
     var body: some View {
@@ -33,7 +30,6 @@ struct DetailQualificationView: View {
                     .padding(.top, -10)
             }
         }
-        .id(1)
         .padding(.horizontal, 20)
     }
     

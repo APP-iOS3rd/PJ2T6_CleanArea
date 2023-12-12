@@ -66,19 +66,53 @@ struct DetailScrollView: View {
                     }
                     
                     ScrollView {
-                        ForEach(0..<4) { index in
-                            if index == 0 {
-                                DetailSummaryView(selectedIndex: $selectedIndex, proxy: proxy, youthPolicy: youthPolicy)
-                            } else if index == 1 {
-                                DetailQualificationView(selectedIndex: $selectedIndex, proxy: proxy, youthPolicy: youthPolicy)
-                            } else if index == 2 {
-                                DetailWayView(selectedIndex: $selectedIndex, proxy: proxy, youthPolicy: youthPolicy)
-                            } else {
-                                DetailEtcView(selectedIndex: $selectedIndex, proxy: proxy, youthPolicy: youthPolicy)
+                        LazyVStack(spacing: 30) {
+                            VStack {
+                                DetailSummaryView(youthPolicy: youthPolicy)
+                                Spacer()
                             }
+                            .frame(minHeight: geometry.size.height - 20)
+                            .id(0)
+                            .onAppear(perform: {
+                                print("0")
+                                selectedIndex = 0
+                            })
+                            
+                            VStack {
+                                DetailQualificationView(youthPolicy: youthPolicy)
+                                Spacer()
+                            }
+                            .frame(minHeight: geometry.size.height - 20)
+                            .id(1)
+                            .onAppear(perform: {
+                                print("1")
+                                selectedIndex = 1
+                            })
+                            
+                            VStack {
+                                DetailWayView(youthPolicy: youthPolicy)
+                                Spacer()
+                            }
+                            .frame(minHeight: geometry.size.height - 20)
+                            .id(2)
+                            .onAppear(perform: {
+                                print("2")
+                                selectedIndex = 2
+                            })
+                            
+                            VStack {
+                                DetailEtcView(youthPolicy: youthPolicy)
+                                Spacer()
+                            }
+                            .frame(minHeight: geometry.size.height - 20)
+                            .id(3)
+                            .onAppear(perform: {
+                                print("3")
+                                selectedIndex = 3
+                            })
                         }
                     }
-                    .frame(maxWidth: .infinity, maxHeight: geometry.size.height - 30)
+                    .frame(width: geometry.size.width + 40, height: geometry.size.height - 30)
                 })
                 .padding(.top, 20)
             }
@@ -86,6 +120,6 @@ struct DetailScrollView: View {
     }
 }
 /*
-#Preview {
-    DetailScrollView()
-}*/
+ #Preview {
+ DetailScrollView()
+ }*/

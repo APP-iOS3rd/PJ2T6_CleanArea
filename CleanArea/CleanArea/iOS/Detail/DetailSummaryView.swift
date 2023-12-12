@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct DetailSummaryView: View {
-    @Binding var selectedIndex: Int
-    
-    var proxy: ScrollViewProxy?
     var youthPolicy: YouthPolicy?
     
     var body: some View {
@@ -54,7 +51,6 @@ struct DetailSummaryView: View {
                 }
             }
         }
-        .id(0)
         .padding(.horizontal, 20)
     }
 }
