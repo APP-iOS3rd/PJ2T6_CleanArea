@@ -42,7 +42,7 @@ struct MainView: View {
                 .accentColor(.buttonGreen)
 
             case .none:
-                Text("로딩중")
+                LoadingCircleView()
             }
         }
         .onAppear() {
