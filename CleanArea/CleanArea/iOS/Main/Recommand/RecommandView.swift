@@ -4,7 +4,6 @@
 //
 //  Created by 김건호 on 12/6/23.
 //
-
 import SwiftUI
 
 struct RecommandView: View {
@@ -22,33 +21,21 @@ struct RecommandView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                HStack {
-                    Button(action: {
-                        self.presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .bold()
-                            .foregroundStyle(.mainGreen)
-                            .padding(.top, 20)
-                    }
-                    Text("추천정책")
-                        .font(.title)
-                        .bold()
-                        .foregroundStyle(.mainGreen)
-                        .padding(.top, 20)
-                    Spacer()
-                }
-                .padding(.horizontal)
-                
-                // 추천 정책 셀을 표시하는 LazyHGrid
-                LazyHGrid(rows: [GridItem(.adaptive(minimum: 85))]) {
+                headerView(title: "추천정책")
+                Spacer()
+                LazyVGrid(columns: [GridItem(.flexible())]) {
                     ForEach(vm.recommandcellModels.indices, id: \.self) { index in
                         RecommandCell(model: $vm.recommandcellModels[index], residence: residence)
+                        .frame(height: 70)
+                        .padding()
+                        
                     }
                 }
                 .onAppear {
                     vm.updateModels()
                 }
+                Spacer()
+                
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(false)
@@ -79,7 +66,7 @@ struct RecommandCell: View {
                     .foregroundColor(Color.buttonGreen)
                     .bold()
             }
-            .padding(.horizontal)
+            .padding()
             .frame(height: 85)
             .background(Color.backgroundGreen)
             .cornerRadius(10)
@@ -97,7 +84,24 @@ struct RecommandCell: View {
     }
 }
 
-//
-//#Preview {
-//    RecommandView()
-//}
+extension RecommandView {
+    private func headerView(title: String) -> some View {
+        HStack {
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "chevron.left")
+                    .bold()
+                    .foregroundStyle(.mainGreen)
+                    .padding(.top, 20)
+            }
+            Text(title)
+                .font(.title)
+                .bold()
+                .foregroundStyle(.mainGreen)
+                .padding(.top, 20)
+            Spacer()
+        }
+        .padding(.horizontal)
+    }
+}
