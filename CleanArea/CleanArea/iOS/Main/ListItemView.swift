@@ -32,7 +32,6 @@ struct ListItemView: View {
                             .font(.system(size: 16))
                             .bold()
                             .foregroundStyle(.white)
-                        
                     }
                     if dDayText != "마감" && dDayText != "진행중" {
                         HStack{
@@ -53,6 +52,9 @@ struct ListItemView: View {
                 Text(convertCodeToCategory(policy.polyRlmCd))
                     .font(.system(size: 15))
                     .foregroundColor(.gray)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .frame(width: UIScreen.main.bounds.width * 0.2)
             }
         }
         .padding()
