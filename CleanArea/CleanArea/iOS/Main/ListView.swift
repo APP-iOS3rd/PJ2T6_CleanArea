@@ -11,12 +11,22 @@ struct ListView: View {
     var youthPolicies: [YouthPolicy]
     var tabType: TabType
     @State private var searchText = ""
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
-            VStack{
-                if tabType == .hot {
-                    HStack{
+            VStack {
+                switch tabType {
+                case .hot:
+                    HStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .bold()
+                                .foregroundStyle(.mainGreen)
+                                .padding(.top, 20)
+                        }
                         Text("인기정책")
                             .font(.title)
                             .bold()
@@ -26,8 +36,17 @@ struct ListView: View {
                     }
                     .frame(width: 330)
                     .padding()
-                } else if tabType == .like {
-                    HStack{
+
+                case .like:
+                    HStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .bold()
+                                .foregroundStyle(.mainGreen)
+                                .padding(.top, 20)
+                        }
                         Text("즐겨찾기")
                             .font(.title)
                             .bold()
@@ -37,11 +56,12 @@ struct ListView: View {
                     }
                     .frame(width: 330)
                     .padding()
-                }
-                if tabType == .recommand {
+
+                case .recommand:
                     SearchBar(text: $searchText)
                         .padding(.horizontal)
                 }
+                
                 List {
                     ForEach(filteredPolicies, id: \.self) { policy in
                         ZStack(alignment: .leading) {
@@ -59,7 +79,6 @@ struct ListView: View {
                 }
                 .background(Color.clear)
                 .scrollContentBackground(.hidden)
-                
             }
         }
     }

@@ -58,6 +58,7 @@ struct StartView: View {
                 .navigationDestination(isPresented: $isSearchButtonTapped) {
                     // 이동할 뷰 (현재 임시 뷰 지정)
                     MainView(vm: self.vm)
+                        .navigationBarBackButtonHidden(true)
                 }
                                 
                 Spacer()
