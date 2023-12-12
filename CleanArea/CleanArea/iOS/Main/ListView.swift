@@ -67,7 +67,7 @@ struct ListView: View {
                     ForEach(filteredPolicies, id: \.self) { policy in
                         ZStack(alignment: .leading) {
                             ListItemView(policy: policy)
-                            NavigationLink(destination: DetailView(youthPolicy: policy)) {
+                            NavigationLink(destination: DetailView(cityImage: residence, youthPolicy: policy)) {
                                 EmptyView()
                             }
                             .opacity(0)

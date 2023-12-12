@@ -16,7 +16,7 @@ struct DetailQualificationView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
-                Text("신청 자격")
+                Text("🪪 신청 자격")
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(.mainGreen)
                 Spacer()

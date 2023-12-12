@@ -116,9 +116,9 @@ extension City {
         case .가평군:
             return "Gapyeong"
         case .고양시:
-            return "Hanam"
-        case .과천시:
             return "Goyang"
+        case .과천시:
+            return "Gwacheon"
         case .광명시:
             return "Gwangmyeong"
         case .광주시:

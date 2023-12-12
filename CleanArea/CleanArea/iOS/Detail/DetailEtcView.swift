@@ -19,7 +19,7 @@ struct DetailEtcView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
-                Text("기타")
+                Text("⭐️ 기타")
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(.mainGreen)
                 Spacer()

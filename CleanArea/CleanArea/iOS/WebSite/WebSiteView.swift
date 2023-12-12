@@ -20,21 +20,18 @@ struct WebSiteView: View {
                     isModaling.toggle()
                 } label: {
                     Image(systemName: "chevron.down")
-                        .resizable()
-                        .frame(width: 22, height: 17)
                         .foregroundStyle(.mainGreen)
                         .padding(.top, 5)
                 }
                 Spacer()
             }
-            .padding(.horizontal, 20)
+            .padding(20)
             
             ZStack {
                 WebSiteLinkView(isLoading: $isLoading, url: url)
                     
                 if isLoading {
-                    ProgressView()
-                        .frame(width: 200, height: 200)
+                    LoadingCircleView()
                 }
             }
         }

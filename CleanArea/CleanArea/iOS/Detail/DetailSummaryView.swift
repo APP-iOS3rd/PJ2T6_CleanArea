@@ -15,34 +15,8 @@ struct DetailSummaryView: View {
     
     var body: some View {
         VStack {
-            VStack(spacing: 15) {
-                HStack {
-                    Text(convertCodeToCategory(youthPolicy?.polyRlmCd ?? ""))
-                        .frame(width: (UIScreen.main.bounds.width - 70)/3, height: 50)
-                        .modifier(TagModifier())
-                
-                    Spacer()
-                    Text(youthPolicy?.ageInfo ?? "")
-                        .frame(width: (UIScreen.main.bounds.width - 70)/3, height: 50)
-                        .modifier(TagModifier())
-                    
-                    Spacer()
-                    Text(youthPolicy?.sporScvl ?? "")
-                        .frame(width: (UIScreen.main.bounds.width - 70)/3, height: 50)
-                        .modifier(TagModifier())
-                }
-                
-                Text("운영 기간: \(youthPolicy?.bizPrdCn ?? "")")
-                    .frame(width: UIScreen.main.bounds.width - 40, height: 50)
-                    .modifier(TagModifier())
-                
-                Text("신청 기간: \(youthPolicy?.rqutPrdCn ?? "")")
-                    .frame(width: UIScreen.main.bounds.width - 40, height: 50)
-                    .modifier(TagModifier())
-            }
-            
             VStack(alignment: .leading, spacing: 20) {
-                Text("한 눈에 보는 정책 요약")
+                Text("🔍 한 눈에 보는 정책 요약")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(.mainGreen)

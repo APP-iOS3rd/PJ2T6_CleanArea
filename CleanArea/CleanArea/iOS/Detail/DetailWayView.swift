@@ -18,7 +18,7 @@ struct DetailWayView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
-                Text("신청방법")
+                Text("🤔 신청방법")
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(.mainGreen)
                 Spacer()
