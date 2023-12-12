@@ -50,7 +50,7 @@ struct DetailView: View {
                          .shadow(color: Color(uiColor: UIColor.systemGray), radius: 1)
                  )
             }
-            .padding(.top)
+            .padding(.top, 30)
             
             DetailScrollView(youthPolicy: youthPolicy)
         }

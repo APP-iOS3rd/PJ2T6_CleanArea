@@ -9,16 +9,13 @@ import SwiftUI
 
 struct DetailWayView: View {
     @State var isModaling: Bool = false
-    
-    @Binding var selectedIndex: Int
-    
-    var proxy: ScrollViewProxy?
+
     var youthPolicy: YouthPolicy?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
-                Text("신청방법")
+                Text("🤔 신청방법")
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundStyle(.mainGreen)
                 Spacer()
@@ -51,7 +48,6 @@ struct DetailWayView: View {
                 }
             }
         }
-        .id(2)
         .padding(.horizontal, 20)
     }
     

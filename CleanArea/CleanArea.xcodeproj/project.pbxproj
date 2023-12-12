@@ -96,6 +96,7 @@
 		5CC873EC2B2180A400D6497D /* YouthPolicyListParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouthPolicyListParser.swift; sourceTree = "<group>"; };
 		731327702B26F04B00564388 /* WebSiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteView.swift; sourceTree = "<group>"; };
 		731327722B26F05F00564388 /* WebSiteLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteLinkView.swift; sourceTree = "<group>"; };
+		734214492B2835E8000D4168 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		734E98242B216221002EC806 /* CleanArea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		734E98272B216221002EC806 /* CleanAreaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanAreaApp.swift; sourceTree = "<group>"; };
 		734E98292B216221002EC806 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -252,6 +253,14 @@
 			path = WebSite;
 			sourceTree = "<group>";
 		};
+		734214482B2835E8000D4168 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				734214492B2835E8000D4168 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		734E981B2B216221002EC806 = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +268,7 @@
 				734E98372B216223002EC806 /* CleanAreaTests */,
 				734E98412B216223002EC806 /* CleanAreaUITests */,
 				734E98252B216221002EC806 /* Products */,
+				734214482B2835E8000D4168 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -646,6 +656,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanArea/Info.plist;
@@ -675,6 +686,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanArea/Info.plist;
