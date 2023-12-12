@@ -10,6 +10,7 @@ import SwiftUI
 struct ListView: View {
     var youthPolicies: [YouthPolicy]
     var tabType: TabType
+    var residence: City?
     @State private var searchText = ""
     @Environment(\.presentationMode) var presentationMode
     
@@ -66,7 +67,7 @@ struct ListView: View {
                     ForEach(filteredPolicies, id: \.self) { policy in
                         ZStack(alignment: .leading) {
                             ListItemView(policy: policy)
-                            NavigationLink(destination: DetailView()) {
+                            NavigationLink(destination: DetailView(youthPolicy: policy)) {
                                 EmptyView()
                             }
                             .opacity(0)

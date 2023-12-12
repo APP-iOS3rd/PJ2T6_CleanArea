@@ -10,7 +10,6 @@ import SwiftUI
 struct DetailScrollView: View {
     @State var selectedIndex: Int = 0
     
-    var sphere: String?
     var youthPolicy: YouthPolicy?
     
     var body: some View {
