@@ -17,20 +17,22 @@ struct MainView: View {
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.all)
-            if let info = network.result {
+
+            switch network.result {
+            case .some(let info):
                 TabView(selection: $selectedTab) {
                     RecommandView(apiViewModel: network)
                         .tabItem {
                             Label("Home", systemImage: "house")
                         }
                         .tag("Home")
-                    
+
                     ListView(youthPolicies: info, tabType: .hot)
                         .tabItem {
                             Label("Hot", systemImage: "flame")
                         }
                         .tag("Hot")
-                    
+
                     ListView(youthPolicies: youthPolicies, tabType: .like)
                         .tabItem {
                             Label("Like", systemImage: "star")
@@ -38,7 +40,8 @@ struct MainView: View {
                         .tag("Like")
                 }
                 .accentColor(.buttonGreen)
-            } else {
+
+            case .none:
                 Text("로딩중")
             }
         }

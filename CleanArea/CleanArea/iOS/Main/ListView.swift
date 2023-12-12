@@ -14,9 +14,10 @@ struct ListView: View {
     
     var body: some View {
         NavigationView {
-            VStack{
-                if tabType == .hot {
-                    HStack{
+            VStack {
+                switch tabType {
+                case .hot:
+                    HStack {
                         Text("인기정책")
                             .font(.title)
                             .bold()
@@ -26,8 +27,9 @@ struct ListView: View {
                     }
                     .frame(width: 330)
                     .padding()
-                } else if tabType == .like {
-                    HStack{
+
+                case .like:
+                    HStack {
                         Text("즐겨찾기")
                             .font(.title)
                             .bold()
@@ -37,11 +39,12 @@ struct ListView: View {
                     }
                     .frame(width: 330)
                     .padding()
-                }
-                if tabType == .recommand {
+
+                case .recommand:
                     SearchBar(text: $searchText)
                         .padding(.horizontal)
                 }
+                
                 List {
                     ForEach(filteredPolicies, id: \.self) { policy in
                         ZStack(alignment: .leading) {
@@ -59,7 +62,6 @@ struct ListView: View {
                 }
                 .background(Color.clear)
                 .scrollContentBackground(.hidden)
-                
             }
         }
     }

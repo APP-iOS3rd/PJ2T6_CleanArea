@@ -10,7 +10,6 @@ import SwiftUI
 
 struct ListItemView: View {
     var policy: YouthPolicy
-    
     @State private var isLike: Bool = false
     @State private var currentProgress: String = "진행중"
     
@@ -50,7 +49,6 @@ struct ListItemView: View {
                                 .foregroundColor(.black)
                             Spacer()
                         }
-                        
                     }
                 }
             }
