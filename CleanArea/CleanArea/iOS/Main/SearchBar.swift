@@ -35,9 +35,8 @@ struct SearchBar: View {
                                     .padding(.trailing, 8)
                             }
                         }
-                    }
-                )
-                .frame(width: 352)
+                    })
+            
         }
     }
 }

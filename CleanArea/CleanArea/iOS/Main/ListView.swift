@@ -15,54 +15,17 @@ struct ListView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 switch tabType {
-                case .hot:
-                    HStack {
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .bold()
-                                .foregroundStyle(.mainGreen)
-                                .padding(.top, 20)
-                        }
-                        Text("인기정책")
-                            .font(.title)
-                            .bold()
-                            .foregroundStyle(.mainGreen)
-                            .padding(.top, 20)
-                        Spacer()
-                    }
-                    .frame(width: 330)
-                    .padding()
-
-                case .like:
-                    HStack {
-                        Button(action: {
-                            self.presentationMode.wrappedValue.dismiss()
-                        }) {
-                            Image(systemName: "chevron.left")
-                                .bold()
-                                .foregroundStyle(.mainGreen)
-                                .padding(.top, 20)
-                        }
-                        Text("즐겨찾기")
-                            .font(.title)
-                            .bold()
-                            .foregroundStyle(.mainGreen)
-                            .padding(.top, 20)
-                        Spacer()
-                    }
-                    .frame(width: 330)
-                    .padding()
+                case .hot, .like:
+                    headerView(title: tabType == .hot ? "인기정책" : "즐겨찾기")
 
                 case .recommand:
                     SearchBar(text: $searchText)
                         .padding(.horizontal)
                 }
-                
+
                 List {
                     ForEach(filteredPolicies, id: \.self) { policy in
                         ZStack(alignment: .leading) {
@@ -84,6 +47,30 @@ struct ListView: View {
         }
     }
 }
+
+//MARK: 헤더뷰
+extension ListView {
+    private func headerView(title: String) -> some View {
+        HStack {
+            Button(action: {
+                self.presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "chevron.left")
+                    .bold()
+                    .foregroundStyle(.mainGreen)
+                    .padding(.top, 20)
+            }
+            Text(title)
+                .font(.title)
+                .bold()
+                .foregroundStyle(.mainGreen)
+                .padding(.top, 20)
+            Spacer()
+        }
+        .padding(.horizontal)
+    }
+}
+
 
 //MARK: 추천, 인기, 즐겨찾기
 extension ListView {

@@ -12,13 +12,13 @@ struct RecommandView: View {
     @StateObject var vm: RecommandVM
     @Environment(\.presentationMode) var presentationMode
     var residence: City?
-
+    
     init(apiViewModel: APIViewModel, residence: City?) {
         self.apiViewModel = apiViewModel
         self.residence = residence
         self._vm = StateObject(wrappedValue: RecommandVM(policy: apiViewModel.policy!))
     }
-
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -38,9 +38,8 @@ struct RecommandView: View {
                         .padding(.top, 20)
                     Spacer()
                 }
-                .frame(width: 330)
-                .padding()
-
+                .padding(.horizontal)
+                
                 // 추천 정책 셀을 표시하는 LazyHGrid
                 LazyHGrid(rows: [GridItem(.adaptive(minimum: 85))]) {
                     ForEach(vm.recommandcellModels.indices, id: \.self) { index in
@@ -60,7 +59,7 @@ struct RecommandView: View {
 struct RecommandCell: View {
     @Binding var model: RecommandCellModel
     var residence: City?
-
+    
     var body: some View {
         NavigationLink(
             destination: destinationView(for: model.destinationKey, cellName: model.name)
@@ -81,12 +80,12 @@ struct RecommandCell: View {
                     .bold()
             }
             .padding(.horizontal)
-            .frame(width: 342, height: 85)
+            .frame(height: 85)
             .background(Color.backgroundGreen)
             .cornerRadius(10)
         }
     }
-
+    
     @ViewBuilder
     private func destinationView(for key: String, cellName: String) -> some View {
         switch key {
