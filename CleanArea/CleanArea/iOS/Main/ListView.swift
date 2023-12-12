@@ -19,7 +19,7 @@ struct ListView: View {
             VStack {
                 switch tabType {
                 case .hot, .like:
-                    headerView(title: tabType == .hot ? "인기정책" : "즐겨찾기")
+                    HeaderView(title: tabType == .hot ? "인기정책" : "즐겨찾기", action:{ self.presentationMode.wrappedValue.dismiss()})
 
                 case .recommand:
                     SearchBar(text: $searchText)
@@ -48,28 +48,6 @@ struct ListView: View {
     }
 }
 
-//MARK: 헤더뷰
-extension ListView {
-    private func headerView(title: String) -> some View {
-        HStack {
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "chevron.left")
-                    .bold()
-                    .foregroundStyle(.mainGreen)
-                    .padding(.top, 20)
-            }
-            Text(title)
-                .font(.title)
-                .bold()
-                .foregroundStyle(.mainGreen)
-                .padding(.top, 20)
-            Spacer()
-        }
-        .padding(.horizontal)
-    }
-}
 
 
 //MARK: 추천, 인기, 즐겨찾기

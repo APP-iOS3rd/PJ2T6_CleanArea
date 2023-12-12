@@ -21,8 +21,9 @@ struct RecommandView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                headerView(title: "추천정책")
-                Spacer()
+                HeaderView(title: "추천정책", action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                })
                 LazyVGrid(columns: [GridItem(.flexible())]) {
                     ForEach(vm.recommandcellModels.indices, id: \.self) { index in
                         RecommandCell(model: $vm.recommandcellModels[index], residence: residence)
@@ -38,7 +39,7 @@ struct RecommandView: View {
                 
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarHidden(false)
+            .navigationBarHidden(true)
         }
     }
 }
@@ -81,27 +82,5 @@ struct RecommandCell: View {
         default:
             Text("Invalid destination key")
         }
-    }
-}
-
-extension RecommandView {
-    private func headerView(title: String) -> some View {
-        HStack {
-            Button(action: {
-                self.presentationMode.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "chevron.left")
-                    .bold()
-                    .foregroundStyle(.mainGreen)
-                    .padding(.top, 20)
-            }
-            Text(title)
-                .font(.title)
-                .bold()
-                .foregroundStyle(.mainGreen)
-                .padding(.top, 20)
-            Spacer()
-        }
-        .padding(.horizontal)
     }
 }
