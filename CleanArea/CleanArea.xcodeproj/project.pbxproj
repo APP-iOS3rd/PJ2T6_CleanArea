@@ -515,7 +515,6 @@
 /* Begin XCBuildConfiguration section */
 		734E98462B216223002EC806 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41E627DA2B279110003F893F /* ApiKeys.xcconfig */;
 			baseConfigurationReference = 5AE5D30D2B27E16F0019F76C /* ApiKeys.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -580,7 +579,6 @@
 		};
 		734E98472B216223002EC806 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41E627DA2B279110003F893F /* ApiKeys.xcconfig */;
 			baseConfigurationReference = 5AE5D30D2B27E16F0019F76C /* ApiKeys.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;

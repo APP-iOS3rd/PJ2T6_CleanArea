@@ -36,13 +36,15 @@ class APIViewModel: XMLParser, ObservableObject {
     //query: 정책명,정책소개 정보검색, bizTycdSel: 정책분야, srchPolyBizSecd: 주거지 ,keyword: 키워드
     func search(vm: StartVM) {
         guard let apiKey = apiKey else { return }
-        guard let url = URL(string: getURL(apiKey, vm.policyName, vm.residence?.getString() ?? "")) else { return }
+        guard let url = URL(string: getURL(apiKey, vm.policyName, vm.residence?.rawValue ?? "")) else { return }
         
         fetchAndParseXML(from: url) { youthPolicyList in
             if let youthPolicyList = youthPolicyList {
                 DispatchQueue.main.async {
+                    
                     let filtered = self.filter(youthPolicyList.youthPolicies, vm)
-                    self.result = filtered
+                    print(filtered.count)
+                    self.result = youthPolicyList.youthPolicies
                     let policy = Policy()
                     policy.getPolicy(filtered)
                     self.policy = policy                
@@ -68,13 +70,13 @@ extension APIViewModel {
         task.resume()
     }
     
-    func getURL(_ apiKey: String, _ query: String? = nil, _ srchPolyBizSecd: String) -> String {
+    func getURL(_ apiKey: String, _ query: String, _ srchPolyBizSecd: String) -> String {
         let BASE_URL = "https://www.youthcenter.go.kr/opi/youthPlcyList.do"
         
-        if let query = query {
-            return "\(BASE_URL)?openApiVlak=\(apiKey)&display=100&pageIndex=1&query=\(query)"
-        } else {
+        if query.isEmpty  {
             return "\(BASE_URL)?openApiVlak=\(apiKey)&display=100&pageIndex=1&srchPolyBizSecd=003002008,\(srchPolyBizSecd)"
+        } else {
+            return "\(BASE_URL)?openApiVlak=\(apiKey)&display=100&pageIndex=1&query=\(query)"
         }
     }
 }

@@ -31,7 +31,7 @@ extension APIViewModel {
                 continue
             }
             
-            let regex = ".+(?=시)"
+            let regex = ".+(?=시)|.+(?=군)"
             let isOtherCiry = prcp.range(of: regex, options: .regularExpression) != nil
             if !isOtherCiry {
                 result.append(policy)
