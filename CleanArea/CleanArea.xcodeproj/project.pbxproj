@@ -237,8 +237,8 @@
 			children = (
 				5AC3EF502B2541F7001BB1F5 /* StartView.swift */,
 				5AC3EF512B2541F7001BB1F5 /* LocationPicker.swift */,
-				5AC3EF522B2541F7001BB1F5 /* StartLocationField.swift */,
 				5AC3EF542B2541F7001BB1F5 /* StartTextField.swift */,
+				5AC3EF522B2541F7001BB1F5 /* StartLocationField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
