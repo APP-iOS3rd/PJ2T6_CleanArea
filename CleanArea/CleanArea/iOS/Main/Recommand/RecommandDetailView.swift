@@ -8,10 +8,13 @@ import SwiftUI
 struct RecommandDetailView: View {
     var modelName: String
     var policies: [YouthPolicy]
+    
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack {
+        
+        VStack{
+            Spacer()
             HStack {
                 Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
@@ -19,6 +22,7 @@ struct RecommandDetailView: View {
                     Image(systemName: "chevron.left")
                         .foregroundStyle(.mainGreen)
                         .bold()
+                        
                 }
                 Text(modelName)
                     .font(.title)
@@ -27,9 +31,9 @@ struct RecommandDetailView: View {
                 Spacer()
             }
             .frame(width: 330)
-            .padding()
-            Spacer()
+            .padding(.trailing, 15)
             ListView(youthPolicies: policies, tabType: .recommand)
+
         }
         .navigationBarHidden(true)
     }
