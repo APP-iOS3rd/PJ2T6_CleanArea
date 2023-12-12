@@ -8,7 +8,7 @@ import SwiftUI
 struct RecommandDetailView: View {
     var modelName: String
     var policies: [YouthPolicy]
-    
+    var residence: City?
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
@@ -32,8 +32,7 @@ struct RecommandDetailView: View {
             }
             .frame(width: 330)
             .padding(.trailing, 15)
-            ListView(youthPolicies: policies, tabType: .recommand)
-
+            ListView(youthPolicies: policies, tabType: .recommand, residence: residence)
         }
         .navigationBarHidden(true)
     }

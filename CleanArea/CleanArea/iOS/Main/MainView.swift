@@ -21,19 +21,19 @@ struct MainView: View {
             switch network.result {
             case .some(let info):
                 TabView(selection: $selectedTab) {
-                    RecommandView(apiViewModel: network)
+                    RecommandView(apiViewModel: network, residence: vm?.residence)
                         .tabItem {
                             Label("Home", systemImage: "house")
                         }
                         .tag("Home")
 
-                    ListView(youthPolicies: info, tabType: .hot)
+                    ListView(youthPolicies: info, tabType: .hot, residence: vm?.residence)
                         .tabItem {
                             Label("Hot", systemImage: "flame")
                         }
                         .tag("Hot")
 
-                    ListView(youthPolicies: youthPolicies, tabType: .like)
+                    ListView(youthPolicies: youthPolicies, tabType: .like, residence: vm?.residence)
                         .tabItem {
                             Label("Like", systemImage: "star")
                         }
