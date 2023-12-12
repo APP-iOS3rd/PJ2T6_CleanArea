@@ -10,6 +10,7 @@ import SwiftUI
 struct RecommandView: View {
     @ObservedObject var apiViewModel: APIViewModel
     @StateObject var vm: RecommandVM
+    @Environment(\.presentationMode) var presentationMode
 
     init(apiViewModel: APIViewModel) {
         self.apiViewModel = apiViewModel
@@ -20,6 +21,14 @@ struct RecommandView: View {
         NavigationStack {
             VStack {
                 HStack {
+                    Button(action: {
+                        self.presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                            .bold()
+                            .foregroundStyle(.mainGreen)
+                            .padding(.top, 20)
+                    }
                     Text("추천정책")
                         .font(.title)
                         .bold()

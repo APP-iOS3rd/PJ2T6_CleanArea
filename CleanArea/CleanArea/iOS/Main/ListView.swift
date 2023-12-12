@@ -11,6 +11,7 @@ struct ListView: View {
     var youthPolicies: [YouthPolicy]
     var tabType: TabType
     @State private var searchText = ""
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView {
@@ -18,6 +19,14 @@ struct ListView: View {
                 switch tabType {
                 case .hot:
                     HStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .bold()
+                                .foregroundStyle(.mainGreen)
+                                .padding(.top, 20)
+                        }
                         Text("인기정책")
                             .font(.title)
                             .bold()
@@ -30,6 +39,14 @@ struct ListView: View {
 
                 case .like:
                     HStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .bold()
+                                .foregroundStyle(.mainGreen)
+                                .padding(.top, 20)
+                        }
                         Text("즐겨찾기")
                             .font(.title)
                             .bold()

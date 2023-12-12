@@ -17,7 +17,7 @@ struct RecommandDetailView: View {
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(systemName: "chevron.left")
-                        .foregroundColor(Color.buttonGreen)
+                        .foregroundStyle(.mainGreen)
                         .bold()
                 }
                 Text(modelName)
