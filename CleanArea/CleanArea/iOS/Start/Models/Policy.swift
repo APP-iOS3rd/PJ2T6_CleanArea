@@ -24,11 +24,11 @@ class Policy: ObservableObject {
     @Published var participation: [YouthPolicy] = []
 
     func getPolicy(_ policies: [YouthPolicy]) {
-        job = filterPolicy(policies, Field.job.rawValue)
-        residence = filterPolicy(policies, Field.residence.rawValue)
-        education = filterPolicy(policies, Field.education.rawValue)
-        curture = filterPolicy(policies, Field.curture.rawValue)
-        participation = filterPolicy(policies, Field.participation.rawValue)
+        job += filterPolicy(policies, Field.job.rawValue)
+        residence += filterPolicy(policies, Field.residence.rawValue)
+        education += filterPolicy(policies, Field.education.rawValue)
+        curture += filterPolicy(policies, Field.curture.rawValue)
+        participation += filterPolicy(policies, Field.participation.rawValue)
     }
 
     func filterPolicy(_ policies: [YouthPolicy], _ code: String) -> [YouthPolicy] {
