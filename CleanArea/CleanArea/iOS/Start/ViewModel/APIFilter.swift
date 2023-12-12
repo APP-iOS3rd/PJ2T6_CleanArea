@@ -20,6 +20,10 @@ extension APIViewModel {
     func filterResidence (policys: [YouthPolicy], srchPolyBizSecd: String) -> [YouthPolicy] {
         var result: [YouthPolicy] = []
         
+        if srchPolyBizSecd == "" {
+            return policys
+        }
+        
         for policy in policys {
             let prcp = policy.prcpCn
             if prcp.contains(srchPolyBizSecd) {

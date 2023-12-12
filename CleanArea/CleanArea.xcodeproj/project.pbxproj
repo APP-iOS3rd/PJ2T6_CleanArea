@@ -18,7 +18,6 @@
 		41E627C12B26BC5E003F893F /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627C02B26BC5E003F893F /* ListItemView.swift */; };
 		41E627C32B26BCA6003F893F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627C22B26BCA6003F893F /* SearchBar.swift */; };
 		41E627CF2B27039C003F893F /* ListViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627CE2B27039C003F893F /* ListViewModifier.swift */; };
-		41E627DB2B279110003F893F /* ApiKeys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 41E627DA2B279110003F893F /* ApiKeys.xcconfig */; };
 		41FBE2912B2166F100D3AD65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41FBE2902B2166F100D3AD65 /* Assets.xcassets */; };
 		41FBE2932B21830600D3AD65 /* DetailModifer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FBE2922B21830600D3AD65 /* DetailModifer.swift */; };
 		5A2E8F162B21699600B3CA70 /* StartBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A2E8F142B21699500B3CA70 /* StartBtn.swift */; };
@@ -31,6 +30,7 @@
 		5AC3EF5A2B2541F7001BB1F5 /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3EF512B2541F7001BB1F5 /* LocationPicker.swift */; };
 		5AC3EF5B2B2541F7001BB1F5 /* StartLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3EF522B2541F7001BB1F5 /* StartLocationField.swift */; };
 		5AC3EF5D2B2541F7001BB1F5 /* StartTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3EF542B2541F7001BB1F5 /* StartTextField.swift */; };
+		5AE5D30E2B27E16F0019F76C /* ApiKeys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5D30D2B27E16F0019F76C /* ApiKeys.xcconfig */; };
 		5CC873ED2B2180A400D6497D /* YouthPolicyListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC873EC2B2180A400D6497D /* YouthPolicyListParser.swift */; };
 		731327712B26F04B00564388 /* WebSiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731327702B26F04B00564388 /* WebSiteView.swift */; };
 		731327732B26F05F00564388 /* WebSiteLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731327722B26F05F00564388 /* WebSiteLinkView.swift */; };
@@ -77,7 +77,6 @@
 		41E627C02B26BC5E003F893F /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		41E627C22B26BCA6003F893F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		41E627CE2B27039C003F893F /* ListViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModifier.swift; sourceTree = "<group>"; };
-		41E627DA2B279110003F893F /* ApiKeys.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ApiKeys.xcconfig; sourceTree = "<group>"; };
 		41FBE2902B2166F100D3AD65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		41FBE2922B21830600D3AD65 /* DetailModifer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModifer.swift; sourceTree = "<group>"; };
 		5A2E8F142B21699500B3CA70 /* StartBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartBtn.swift; sourceTree = "<group>"; };
@@ -90,6 +89,7 @@
 		5AC3EF512B2541F7001BB1F5 /* LocationPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
 		5AC3EF522B2541F7001BB1F5 /* StartLocationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLocationField.swift; sourceTree = "<group>"; };
 		5AC3EF542B2541F7001BB1F5 /* StartTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTextField.swift; sourceTree = "<group>"; };
+		5AE5D30D2B27E16F0019F76C /* ApiKeys.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ApiKeys.xcconfig; sourceTree = "<group>"; };
 		5C9A178F2B26DADF003FF8C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5CC873EC2B2180A400D6497D /* YouthPolicyListParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouthPolicyListParser.swift; sourceTree = "<group>"; };
 		731327702B26F04B00564388 /* WebSiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteView.swift; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 				734E98292B216221002EC806 /* ContentView.swift */,
 				41FBE2902B2166F100D3AD65 /* Assets.xcassets */,
 				734E982E2B216223002EC806 /* Preview Assets.xcassets */,
-				41E627DA2B279110003F893F /* ApiKeys.xcconfig */,
+				5AE5D30D2B27E16F0019F76C /* ApiKeys.xcconfig */,
 				1D3630542B2164F60075939D /* iOS */,
 			);
 			path = CleanArea;
@@ -417,7 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41E627DB2B279110003F893F /* ApiKeys.xcconfig in Resources */,
+				5AE5D30E2B27E16F0019F76C /* ApiKeys.xcconfig in Resources */,
 				41FBE2912B2166F100D3AD65 /* Assets.xcassets in Resources */,
 				734E982F2B216223002EC806 /* Preview Assets.xcassets in Resources */,
 			);
@@ -516,6 +516,7 @@
 		734E98462B216223002EC806 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41E627DA2B279110003F893F /* ApiKeys.xcconfig */;
+			baseConfigurationReference = 5AE5D30D2B27E16F0019F76C /* ApiKeys.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -580,6 +581,7 @@
 		734E98472B216223002EC806 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 41E627DA2B279110003F893F /* ApiKeys.xcconfig */;
+			baseConfigurationReference = 5AE5D30D2B27E16F0019F76C /* ApiKeys.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
