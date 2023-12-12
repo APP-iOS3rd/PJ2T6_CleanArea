@@ -85,7 +85,7 @@ struct SelectBox: View {
 //struct StartTextField: View {
 //    @EnvironmentObject var vm: StartVM
 //    @Binding var text: String?
-//    
+//
 //    var type: TextFieldType
 //    var width: Int
 //
@@ -99,7 +99,7 @@ struct SelectBox: View {
 //                Spacer()
 //            }
 //            .frame(width: CGFloat(width))
-//            
+//
 //            TextField(type.placeholder, text: Binding<String>(
 //                get: { text ?? "" },
 //                set: { newText in text = newText }
@@ -110,7 +110,7 @@ struct SelectBox: View {
 //                .frame(height: 45)
 //                .background(Color.gray.opacity(0.3))
 //                .clipShape(RoundedRectangle(cornerRadius: 10))
-//            
+//
 //            if type.isSelectable {
 //                SelectBox(text: $text, type: type, width: width)
 //            } else {
@@ -132,7 +132,7 @@ struct SelectBox: View {
 //struct SelectBox: View {
 //    @EnvironmentObject var vm: StartVM
 //    @Binding var text: String?
-//    
+//
 //    var type: TextFieldType
 //    var width: Int
 //

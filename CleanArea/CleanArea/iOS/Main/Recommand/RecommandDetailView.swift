@@ -30,8 +30,7 @@ struct RecommandDetailView: View {
                     .foregroundStyle(.mainGreen)
                 Spacer()
             }
-            .frame(width: 330)
-            .padding(.trailing, 15)
+            .padding(.horizontal)
             ListView(youthPolicies: policies, tabType: .recommand, residence: residence)
         }
         .navigationBarHidden(true)
