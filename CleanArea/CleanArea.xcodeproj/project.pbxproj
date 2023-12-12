@@ -15,6 +15,7 @@
 		1D36306F2B2164F60075939D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3630622B2164F60075939D /* ListView.swift */; };
 		1D3630702B2164F60075939D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3630632B2164F60075939D /* MainView.swift */; };
 		1D3630712B2164F60075939D /* TFStyleViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D3630652B2164F60075939D /* TFStyleViewModifier.swift */; };
+		417683EE2B28172400F00A6D /* LoadingCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417683ED2B28172400F00A6D /* LoadingCircleView.swift */; };
 		41E627C12B26BC5E003F893F /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627C02B26BC5E003F893F /* ListItemView.swift */; };
 		41E627C32B26BCA6003F893F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627C22B26BCA6003F893F /* SearchBar.swift */; };
 		41E627CF2B27039C003F893F /* ListViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627CE2B27039C003F893F /* ListViewModifier.swift */; };
@@ -74,6 +75,7 @@
 		1D3630622B2164F60075939D /* ListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		1D3630632B2164F60075939D /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1D3630652B2164F60075939D /* TFStyleViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TFStyleViewModifier.swift; sourceTree = "<group>"; };
+		417683ED2B28172400F00A6D /* LoadingCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircleView.swift; sourceTree = "<group>"; };
 		41E627C02B26BC5E003F893F /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		41E627C22B26BCA6003F893F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		41E627CE2B27039C003F893F /* ListViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModifier.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				1D3630652B2164F60075939D /* TFStyleViewModifier.swift */,
 				41FBE2922B21830600D3AD65 /* DetailModifer.swift */,
 				41E627CE2B27039C003F893F /* ListViewModifier.swift */,
+				417683ED2B28172400F00A6D /* LoadingCircleView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				734E98282B216221002EC806 /* CleanAreaApp.swift in Sources */,
 				731327712B26F04B00564388 /* WebSiteView.swift in Sources */,
 				41E627CF2B27039C003F893F /* ListViewModifier.swift in Sources */,
+				417683EE2B28172400F00A6D /* LoadingCircleView.swift in Sources */,
 				41FBE2932B21830600D3AD65 /* DetailModifer.swift in Sources */,
 				734E985D2B2162DE002EC806 /* DetailSummaryView.swift in Sources */,
 				1D3630692B2164F60075939D /* YouthPolicyList.swift in Sources */,
