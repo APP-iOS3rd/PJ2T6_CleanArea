@@ -20,6 +20,10 @@ extension APIViewModel {
     func filterResidence (policys: [YouthPolicy], srchPolyBizSecd: String) -> [YouthPolicy] {
         var result: [YouthPolicy] = []
         
+        if srchPolyBizSecd == "" {
+            return policys
+        }
+        
         for policy in policys {
             let prcp = policy.prcpCn
             if prcp.contains(srchPolyBizSecd) {
@@ -27,7 +31,7 @@ extension APIViewModel {
                 continue
             }
             
-            let regex = ".+(?=시)"
+            let regex = ".+(?=시)|.+(?=군)"
             let isOtherCiry = prcp.range(of: regex, options: .regularExpression) != nil
             if !isOtherCiry {
                 result.append(policy)

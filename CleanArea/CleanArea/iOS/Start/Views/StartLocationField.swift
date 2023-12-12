@@ -41,7 +41,7 @@ struct SelectCityBox: View {
             self.showModal = true
         } label: {
             HStack {
-                Text(city?.getString() ?? "거지주를 선택해 주세요")
+                Text(city?.getString() ?? "주거지를 선택해 주세요")
                     .foregroundColor((city == nil) ? .gray : .black)
                 Spacer()
                 Image(systemName: "chevron.down")

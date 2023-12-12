@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LocationPicker: View {
-    @State private var selectedCity: City = .수원시
+    @State private var selectedCity: City = .가평군
     @Binding var showModal: Bool
     @Binding var city: City?
     

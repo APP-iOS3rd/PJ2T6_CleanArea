@@ -14,6 +14,7 @@ struct StartView: View {
     var body: some View {
         NavigationStack {
             VStack {
+                Spacer()
                 HStack {
                     Text("청정구역")
                         .font(.title)
@@ -43,18 +44,19 @@ struct StartView: View {
                                type: .policyName,
                                width: 300)
                 Spacer()
-                                                                
+                                                                                                
                 Button {
                     isSearchButtonTapped = true
                 } label: {
                     Text("정책검색")
                         .font(.title3)
-                        .padding()
+                        .padding(.horizontal, 50)
+                        .frame(height: 50)
                         .background(.buttonGreen)
                         .foregroundColor(.white)
                         .clipShape(RoundedRectangle(cornerRadius: 10))
+                        
                 }
-                .frame(width: 140, height: 50)
                 .navigationDestination(isPresented: $isSearchButtonTapped) {
                     // 이동할 뷰 (현재 임시 뷰 지정)
                     MainView(vm: self.vm)

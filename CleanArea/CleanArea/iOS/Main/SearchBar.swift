@@ -37,7 +37,7 @@ struct SearchBar: View {
                         }
                     }
                 )
-                .frame(width: 342)
+                .frame(width: 352)
         }
     }
 }
