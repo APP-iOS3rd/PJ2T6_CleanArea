@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D06AF982B28929E006E6E35 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D06AF972B28929E006E6E35 /* HeaderView.swift */; };
 		1D3630692B2164F60075939D /* YouthPolicyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36305A2B2164F60075939D /* YouthPolicyList.swift */; };
 		1D36306B2B2164F60075939D /* RecommandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36305E2B2164F60075939D /* RecommandView.swift */; };
 		1D36306C2B2164F60075939D /* RecommandDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D36305F2B2164F60075939D /* RecommandDetailView.swift */; };
@@ -67,6 +68,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D06AF972B28929E006E6E35 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		1D36305A2B2164F60075939D /* YouthPolicyList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouthPolicyList.swift; sourceTree = "<group>"; };
 		1D36305E2B2164F60075939D /* RecommandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandView.swift; sourceTree = "<group>"; };
 		1D36305F2B2164F60075939D /* RecommandDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommandDetailView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			children = (
 				1D3630632B2164F60075939D /* MainView.swift */,
 				1D3630622B2164F60075939D /* ListView.swift */,
+				1D06AF972B28929E006E6E35 /* HeaderView.swift */,
 				41E627C02B26BC5E003F893F /* ListItemView.swift */,
 				41E627C22B26BCA6003F893F /* SearchBar.swift */,
 				1D36305D2B2164F60075939D /* Recommand */,
@@ -467,6 +470,7 @@
 				734E985A2B2162DE002EC806 /* DetailEtcView.swift in Sources */,
 				1D3630712B2164F60075939D /* TFStyleViewModifier.swift in Sources */,
 				5AC3EF582B2541F7001BB1F5 /* City.swift in Sources */,
+				1D06AF982B28929E006E6E35 /* HeaderView.swift in Sources */,
 				1D36306F2B2164F60075939D /* ListView.swift in Sources */,
 				5A5CF2BC2B26FA8900667F1F /* Policy.swift in Sources */,
 				734E985B2B2162DE002EC806 /* DetailScrollView.swift in Sources */,

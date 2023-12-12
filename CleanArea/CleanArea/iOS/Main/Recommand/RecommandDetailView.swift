@@ -10,33 +10,25 @@ struct RecommandDetailView: View {
     var policies: [YouthPolicy]
     var residence: City?
     @Environment(\.presentationMode) var presentationMode
-
+    
     var body: some View {
-        
-        VStack{
-            Spacer()
-            HStack {
-                Button(action: {
+        NavigationStack{
+            VStack{
+                
+                HeaderView(title: modelName, action: {
                     self.presentationMode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "chevron.left")
-                        .foregroundStyle(.mainGreen)
-                        .bold()
-                        
-                }
-                Text(modelName)
-                    .font(.title)
-                    .bold()
-                    .foregroundStyle(.mainGreen)
-                Spacer()
+                })
+                ListView(youthPolicies: policies, tabType: .recommand, residence: residence)
             }
-            .padding(.horizontal)
-            ListView(youthPolicies: policies, tabType: .recommand, residence: residence)
+            .navigationBarTitle("", displayMode: .automatic)
+            .navigationBarHidden(true)
+            
         }
-        .navigationBarHidden(true)
+            
+                
     }
+    
 }
-
 //#Preview {
 //    RecommandDetailView(modelName: "일자리")
 //}
