@@ -39,7 +39,7 @@ struct DetailView: View {
                 
                 Spacer()
                 
-                Image(cityImage?.getCityImage() ?? "")
+                Image(City(rawValue: youthPolicy.polyBizSecd)?.getCityImage() ?? "")
                  .resizable()
                  .frame(width: 90, height: 60)
                  .cornerRadius(10)
