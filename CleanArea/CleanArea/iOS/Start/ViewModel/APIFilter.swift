@@ -9,7 +9,7 @@ import SwiftUI
 
 extension APIViewModel {
     func filter(_ policys: [YouthPolicy], _ vm : StartVM) -> [YouthPolicy] {
-        let filteredResidence = filterResidence(policys: policys, srchPolyBizSecd: vm.residence?.getString() ?? "")
+        let filteredResidence = filterResidence(policys: policys, vm: vm)
         let filterJobStatus = filterJobStatus(policys: filteredResidence, empmSttsCn: vm.employmentStatus)
         let filterEducation = filterEducation(policys: filterJobStatus, accrRqisCn: vm.educationLevel)
         let filterAge = filterAge(policys: filterEducation, ageInfo: vm.age)
@@ -17,29 +17,21 @@ extension APIViewModel {
         return filterAge
     }
     
-    func filterResidence (policys: [YouthPolicy], srchPolyBizSecd: String) -> [YouthPolicy] {
-        var result: [YouthPolicy] = []
-        
-        if srchPolyBizSecd == "" {
+    func filterResidence (policys: [YouthPolicy], vm: StartVM) -> [YouthPolicy] {
+        guard let residence = vm.residence else {
             return policys
         }
         
-        for policy in policys {
-            let prcp = policy.prcpCn
-            if prcp.contains(srchPolyBizSecd) {
-                result.append(policy)
-                continue
-            }
-            
-            let regex = ".+(?=시)|.+(?=군)"
-            let isOtherCiry = prcp.range(of: regex, options: .regularExpression) != nil
-            if !isOtherCiry {
-                result.append(policy)
-            }
+        let excepts = City.allCases.filter { $0 != residence }
+        
+        return policys.filter { policy in
+            (policy.prcpCn.contains(residence.rawValue) ||
+             policy.prcpCn.contains("제한없음") ||
+             policy.prcpCn.contains("경기도")) &&
+            !excepts.contains { policy.prcpCn.contains($0.getString()) }
         }
-        return result
     }
-    
+        
     func filterJobStatus (policys: [YouthPolicy], empmSttsCn: String) -> [YouthPolicy] {
         if empmSttsCn == "제한없음" || empmSttsCn == "" {
             return policys

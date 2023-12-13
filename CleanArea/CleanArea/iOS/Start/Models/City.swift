@@ -45,70 +45,139 @@ extension City {
     func getString() -> String {
         switch self {
         case .가평군:
-            return "가평군"
+            return "가평"
         case .고양시:
-            return "고양시"
+            return "고양"
         case .과천시:
-            return "과천시"
+            return "과천"
         case .광명시:
-            return "광명시"
+            return "광명"
         case .광주시:
-            return "광주시"
+            return "광주"
         case .구리시:
-            return "구리시"
+            return "구리"
         case .군포시:
-            return "군포시"
+            return "군포"
         case .김포시:
-            return "김포시"
+            return "김포"
         case .남양주시:
-            return "남양주시"
+            return "남양주"
         case .동두천시:
-            return "동두천시"
+            return "동두천"
         case .부천시:
-            return "부천시"
+            return "부천"
         case .성남시:
-            return "성남시"
+            return "성남"
         case .수원시:
-            return "수원시"
+            return "수원"
         case .시흥시:
-            return "시흥시"
+            return "시흥"
         case .안산시:
-            return "안산시"
+            return "안산"
         case .안성시:
-            return "안성시"
+            return "안성"
         case .안양시:
-            return "안양시"
+            return "안양"
         case .양주시:
-            return "양주시"
+            return "양주"
         case .양평군:
-            return "양평군"
+            return "양평"
         case .여주시:
-            return "여주시"
+            return "여주"
         case .연천군:
-            return "연천군"
+            return "연천"
         case .오산시:
-            return "오산시"
+            return "오산"
         case .용인시:
-            return "용인시"
+            return "용인"
         case .의왕시:
-            return "의왕시"
+            return "의왕"
         case .의정부시:
-            return "의정부시"
+            return "의정부"
         case .이천시:
-            return "이천시"
+            return "이천"
         case .파주시:
-            return "파주시"
+            return "파주"
         case .평택시:
-            return "평택시"
+            return "평택"
         case .포천시:
-            return "포천시"
+            return "포천"
         case .하남시:
-            return "하남시"
+            return "하남"
         case .화성시:
-            return "화성시"
+            return "화성"
         }
     }
 }
+
+//extension City {
+//    func getString() -> String {
+//        switch self {
+//        case .가평군:
+//            return "가평군"
+//        case .고양시:
+//            return "고양시"
+//        case .과천시:
+//            return "과천시"
+//        case .광명시:
+//            return "광명시"
+//        case .광주시:
+//            return "광주시"
+//        case .구리시:
+//            return "구리시"
+//        case .군포시:
+//            return "군포시"
+//        case .김포시:
+//            return "김포시"
+//        case .남양주시:
+//            return "남양주시"
+//        case .동두천시:
+//            return "동두천시"
+//        case .부천시:
+//            return "부천시"
+//        case .성남시:
+//            return "성남시"
+//        case .수원시:
+//            return "수원시"
+//        case .시흥시:
+//            return "시흥시"
+//        case .안산시:
+//            return "안산시"
+//        case .안성시:
+//            return "안성시"
+//        case .안양시:
+//            return "안양시"
+//        case .양주시:
+//            return "양주시"
+//        case .양평군:
+//            return "양평군"
+//        case .여주시:
+//            return "여주시"
+//        case .연천군:
+//            return "연천군"
+//        case .오산시:
+//            return "오산시"
+//        case .용인시:
+//            return "용인시"
+//        case .의왕시:
+//            return "의왕시"
+//        case .의정부시:
+//            return "의정부시"
+//        case .이천시:
+//            return "이천시"
+//        case .파주시:
+//            return "파주시"
+//        case .평택시:
+//            return "평택시"
+//        case .포천시:
+//            return "포천시"
+//        case .하남시:
+//            return "하남시"
+//        case .화성시:
+//            return "화성시"
+//        }
+//    }
+//}
 
 extension City {
     func getCityImage() -> String {
