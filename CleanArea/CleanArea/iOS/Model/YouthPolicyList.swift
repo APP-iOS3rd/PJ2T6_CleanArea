@@ -6,17 +6,15 @@
 //
 
 import Foundation
+import SwiftData
 
-//받아올 데이터
-struct YouthPolicyList {
-    var pageIndex: Int
-    var totalCnt: Int
-    var youthPolicies: [YouthPolicy]
-}
-
-struct YouthPolicy: Codable,Hashable {
-    var id: UUID? = UUID()
-
+@Model
+class YouthPolicy: Codable, Hashable {
+    enum CodingKeys: CodingKey {
+        case id, rnum, bizId, polyBizSecd, polyBizTy, polyBizSjnm, polyItcnCn, sporCn, sporScvl, bizPrdCn, prdRpttSecd, rqutPrdCn, ageInfo, majrRqisCn, empmSttsCn, splzRlmRqisCn, accrRqisCn, prcpCn, aditRscn, prcpLmttTrgtCn, rqutProcCn, pstnPaprCn, jdgnPresCn, rqutUrla, rfcSiteUrla1, rfcSiteUrla2, mngtMson, mngtMrofCherCn, cherCtpcCn, cnsgNmor, tintCherCn, tintCherCtpcCn, etct, polyRlmCd, minAge, maxAge, startDate, endDate, views
+    }
+    
+    // var id: UUID? = UUID()
     var rnum: Int               // row 번호
     var bizId: String           // 정책 ID
     var polyBizSecd: String     // 정책일련번호
@@ -55,5 +53,132 @@ struct YouthPolicy: Codable,Hashable {
     var startDate: String       // 정책시작일
     var endDate: String       // 정책종료일
     var views: Int              //조회수
-
+    
+    init(id: UUID? = nil, rnum: Int, bizId: String, polyBizSecd: String, polyBizTy: String, polyBizSjnm: String, polyItcnCn: String, sporCn: String, sporScvl: String, bizPrdCn: String, prdRpttSecd: String, rqutPrdCn: String, ageInfo: String, majrRqisCn: String, empmSttsCn: String, splzRlmRqisCn: String, accrRqisCn: String, prcpCn: String, aditRscn: String, prcpLmttTrgtCn: String, rqutProcCn: String, pstnPaprCn: String, jdgnPresCn: String, rqutUrla: String, rfcSiteUrla1: String, rfcSiteUrla2: String, mngtMson: String, mngtMrofCherCn: String, cherCtpcCn: String, cnsgNmor: String, tintCherCn: String, tintCherCtpcCn: String, etct: String, polyRlmCd: String, minAge: String, maxAge: String, startDate: String, endDate: String, views: Int) {
+        // self.id = id
+        self.rnum = rnum
+        self.bizId = bizId
+        self.polyBizSecd = polyBizSecd
+        self.polyBizTy = polyBizTy
+        self.polyBizSjnm = polyBizSjnm
+        self.polyItcnCn = polyItcnCn
+        self.sporCn = sporCn
+        self.sporScvl = sporScvl
+        self.bizPrdCn = bizPrdCn
+        self.prdRpttSecd = prdRpttSecd
+        self.rqutPrdCn = rqutPrdCn
+        self.ageInfo = ageInfo
+        self.majrRqisCn = majrRqisCn
+        self.empmSttsCn = empmSttsCn
+        self.splzRlmRqisCn = splzRlmRqisCn
+        self.accrRqisCn = accrRqisCn
+        self.prcpCn = prcpCn
+        self.aditRscn = aditRscn
+        self.prcpLmttTrgtCn = prcpLmttTrgtCn
+        self.rqutProcCn = rqutProcCn
+        self.pstnPaprCn = pstnPaprCn
+        self.jdgnPresCn = jdgnPresCn
+        self.rqutUrla = rqutUrla
+        self.rfcSiteUrla1 = rfcSiteUrla1
+        self.rfcSiteUrla2 = rfcSiteUrla2
+        self.mngtMson = mngtMson
+        self.mngtMrofCherCn = mngtMrofCherCn
+        self.cherCtpcCn = cherCtpcCn
+        self.cnsgNmor = cnsgNmor
+        self.tintCherCn = tintCherCn
+        self.tintCherCtpcCn = tintCherCtpcCn
+        self.etct = etct
+        self.polyRlmCd = polyRlmCd
+        self.minAge = minAge
+        self.maxAge = maxAge
+        self.startDate = startDate
+        self.endDate = endDate
+        self.views = views
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        // self.id = try container.decode(UUID?.self, forKey: .id)
+        self.rnum = try container.decode(Int.self, forKey: .rnum)
+        self.bizId = try container.decode(String.self, forKey: .bizId)
+        self.polyBizSecd = try container.decode(String.self, forKey: .polyBizSecd)
+        self.polyBizTy = try container.decode(String.self, forKey: .polyBizTy)
+        self.polyBizSjnm = try container.decode(String.self, forKey: .polyBizSjnm)
+        self.polyItcnCn = try container.decode(String.self, forKey: .polyItcnCn)
+        self.sporCn = try container.decode(String.self, forKey: .sporCn)
+        self.sporScvl = try container.decode(String.self, forKey: .sporScvl)
+        self.bizPrdCn = try container.decode(String.self, forKey: .bizPrdCn)
+        self.prdRpttSecd = try container.decode(String.self, forKey: .prdRpttSecd)
+        self.rqutPrdCn = try container.decode(String.self, forKey: .rqutPrdCn)
+        self.ageInfo = try container.decode(String.self, forKey: .ageInfo)
+        self.majrRqisCn = try container.decode(String.self, forKey: .majrRqisCn)
+        self.empmSttsCn = try container.decode(String.self, forKey: .empmSttsCn)
+        self.splzRlmRqisCn = try container.decode(String.self, forKey: .splzRlmRqisCn)
+        self.accrRqisCn = try container.decode(String.self, forKey: .accrRqisCn)
+        self.prcpCn = try container.decode(String.self, forKey: .prcpCn)
+        self.aditRscn = try container.decode(String.self, forKey: .aditRscn)
+        self.prcpLmttTrgtCn = try container.decode(String.self, forKey: .prcpLmttTrgtCn)
+        self.rqutProcCn = try container.decode(String.self, forKey: .rqutProcCn)
+        self.pstnPaprCn = try container.decode(String.self, forKey: .pstnPaprCn)
+        self.jdgnPresCn = try container.decode(String.self, forKey: .jdgnPresCn)
+        self.rqutUrla = try container.decode(String.self, forKey: .rqutUrla)
+        self.rfcSiteUrla1 = try container.decode(String.self, forKey: .rfcSiteUrla1)
+        self.rfcSiteUrla2 = try container.decode(String.self, forKey: .rfcSiteUrla2)
+        self.mngtMson = try container.decode(String.self, forKey: .mngtMson)
+        self.mngtMrofCherCn = try container.decode(String.self, forKey: .mngtMrofCherCn)
+        self.cherCtpcCn = try container.decode(String.self, forKey: .cherCtpcCn)
+        self.cnsgNmor = try container.decode(String.self, forKey: .cnsgNmor)
+        self.tintCherCn = try container.decode(String.self, forKey: .tintCherCn)
+        self.tintCherCtpcCn = try container.decode(String.self, forKey: .tintCherCtpcCn)
+        self.etct = try container.decode(String.self, forKey: .etct)
+        self.polyRlmCd = try container.decode(String.self, forKey: .polyRlmCd)
+        self.minAge = try container.decode(String.self, forKey: .minAge)
+        self.maxAge = try container.decode(String.self, forKey: .maxAge)
+        self.startDate = try container.decode(String.self, forKey: .startDate)
+        self.endDate = try container.decode(String.self, forKey: .endDate)
+        self.views = try container.decode(Int.self, forKey: .views)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        // try container.encode(id, forKey: .id)
+        try container.encode(rnum, forKey: .rnum)
+        try container.encode(bizId, forKey: .bizId)
+        try container.encode(polyBizSecd, forKey: .polyBizSecd)
+        try container.encode(polyBizTy, forKey: .polyBizTy)
+        try container.encode(polyBizSjnm, forKey: .polyBizSjnm)
+        try container.encode(polyItcnCn, forKey: .polyItcnCn)
+        try container.encode(sporCn, forKey: .sporCn)
+        try container.encode(sporScvl, forKey: .sporScvl)
+        try container.encode(bizPrdCn, forKey: .bizPrdCn)
+        try container.encode(prdRpttSecd, forKey: .prdRpttSecd)
+        try container.encode(rqutPrdCn, forKey: .rqutPrdCn)
+        try container.encode(ageInfo, forKey: .ageInfo)
+        try container.encode(majrRqisCn, forKey: .majrRqisCn)
+        try container.encode(empmSttsCn, forKey: .empmSttsCn)
+        try container.encode(splzRlmRqisCn, forKey: .splzRlmRqisCn)
+        try container.encode(accrRqisCn, forKey: .accrRqisCn)
+        try container.encode(prcpCn, forKey: .prcpCn)
+        try container.encode(aditRscn, forKey: .aditRscn)
+        try container.encode(prcpLmttTrgtCn, forKey: .prcpLmttTrgtCn)
+        try container.encode(rqutProcCn, forKey: .rqutProcCn)
+        try container.encode(pstnPaprCn, forKey: .pstnPaprCn)
+        try container.encode(jdgnPresCn, forKey: .jdgnPresCn)
+        try container.encode(rqutUrla, forKey: .rqutUrla)
+        try container.encode(rfcSiteUrla1, forKey: .rfcSiteUrla1)
+        try container.encode(rfcSiteUrla2, forKey: .rfcSiteUrla2)
+        try container.encode(mngtMson, forKey: .mngtMson)
+        try container.encode(mngtMrofCherCn, forKey: .mngtMrofCherCn)
+        try container.encode(cherCtpcCn, forKey: .cherCtpcCn)
+        try container.encode(cnsgNmor, forKey: .cnsgNmor)
+        try container.encode(tintCherCn, forKey: .tintCherCn)
+        try container.encode(tintCherCtpcCn, forKey: .tintCherCtpcCn)
+        try container.encode(etct, forKey: .etct)
+        try container.encode(polyRlmCd, forKey: .polyRlmCd)
+        try container.encode(minAge, forKey: .minAge)
+        try container.encode(maxAge, forKey: .maxAge)
+        try container.encode(startDate, forKey: .startDate)
+        try container.encode(endDate, forKey: .endDate)
+        try container.encode(views, forKey: .views)
+    }
 }
