@@ -4,5 +4,10 @@
 <dict>
 	<key>API_KEY</key>
 	<string>$(YouthPolicy_KEY)</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

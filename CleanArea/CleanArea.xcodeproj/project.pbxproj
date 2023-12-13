@@ -33,7 +33,6 @@
 		5AC3EF5B2B2541F7001BB1F5 /* StartLocationField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3EF522B2541F7001BB1F5 /* StartLocationField.swift */; };
 		5AC3EF5D2B2541F7001BB1F5 /* StartTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3EF542B2541F7001BB1F5 /* StartTextField.swift */; };
 		5AE5D3162B285BD00019F76C /* ApiKeys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 5AE5D3152B285BD00019F76C /* ApiKeys.xcconfig */; };
-		5CC873ED2B2180A400D6497D /* YouthPolicyListParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC873EC2B2180A400D6497D /* YouthPolicyListParser.swift */; };
 		731327712B26F04B00564388 /* WebSiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731327702B26F04B00564388 /* WebSiteView.swift */; };
 		731327732B26F05F00564388 /* WebSiteLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731327722B26F05F00564388 /* WebSiteLinkView.swift */; };
 		734E98282B216221002EC806 /* CleanAreaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E98272B216221002EC806 /* CleanAreaApp.swift */; };
@@ -95,7 +94,6 @@
 		5AC3EF542B2541F7001BB1F5 /* StartTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTextField.swift; sourceTree = "<group>"; };
 		5AE5D3152B285BD00019F76C /* ApiKeys.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = ApiKeys.xcconfig; sourceTree = "<group>"; };
 		5C9A178F2B26DADF003FF8C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		5CC873EC2B2180A400D6497D /* YouthPolicyListParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouthPolicyListParser.swift; sourceTree = "<group>"; };
 		731327702B26F04B00564388 /* WebSiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteView.swift; sourceTree = "<group>"; };
 		731327722B26F05F00564388 /* WebSiteLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteLinkView.swift; sourceTree = "<group>"; };
 		734214492B2835E8000D4168 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -158,7 +156,6 @@
 		1D3630592B2164F60075939D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5CC873EC2B2180A400D6497D /* YouthPolicyListParser.swift */,
 				1D36305A2B2164F60075939D /* YouthPolicyList.swift */,
 				1D3630612B2164F60075939D /* RecommandCellModel.swift */,
 			);
@@ -460,7 +457,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5CC873ED2B2180A400D6497D /* YouthPolicyListParser.swift in Sources */,
 				5AC3EF592B2541F7001BB1F5 /* StartView.swift in Sources */,
 				5AC3EF572B2541F7001BB1F5 /* StartVM.swift in Sources */,
 				734E985C2B2162DE002EC806 /* DetailWayView.swift in Sources */,
@@ -664,6 +660,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanArea/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -694,6 +691,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanArea/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

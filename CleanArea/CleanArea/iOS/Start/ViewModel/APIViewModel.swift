@@ -7,96 +7,70 @@
 
 import SwiftUI
 
-class APIViewModel: XMLParser, ObservableObject {
+import SwiftUI
+
+class APIViewModel: ObservableObject {
     @Published var result: [YouthPolicy]?
-    @Published var policy: Policy? 
-    @Published var popularPolicies: [YouthPolicy]?
-    
-    private var apiKey: String? {
-        get {
-            let keyfilename = "Info"
-            let api_key = "API_KEY"
-            
-            // 생성한 .plist 파일 경로 불러오기
-            guard let filePath = Bundle.main.path(forResource: keyfilename, ofType: "plist") else {
-                fatalError("Couldn't find file '\(keyfilename).plist'")
-            }
-            
-            // .plist 파일 내용을 딕셔너리로 받아오기
-            let plist = NSDictionary(contentsOfFile: filePath)
-            
-            // 딕셔너리에서 키 찾기
-            guard let value = plist?.object(forKey: api_key) as? String else {
-                fatalError("Couldn't find key '\(api_key)'")
-            }
-            
-            return value
-        }
-    }
+    @Published var policy: Policy?
+
     //query: 정책명,정책소개 정보검색, bizTycdSel: 정책분야, srchPolyBizSecd: 주거지 ,keyword: 키워드
     func search(vm: StartVM) {
-        guard let apiKey = apiKey else { return }
-                
-        DispatchQueue.global().async {
-            let dispatchGroup = DispatchGroup()
-            var result: [YouthPolicy] = []
-            let policy = Policy()
 
-            for index in 1...7 {
-                dispatchGroup.enter()
-
-                guard let url = URL(string: self.getURL(apiKey, vm.policyName, index)) else {
-                    dispatchGroup.leave()
+        let residence = vm.residence?.rawValue ?? ""
+        let employmentStatus = vm.employmentStatus
+        let educationLevel = vm.educationLevel
+        let age = vm.age
+        let policyName = vm.policyName
+        
+        print(residence)
+        print(employmentStatus)
+        print(educationLevel)
+        print(age)
+        print(policyName)
+        
+        var urlComponents = URLComponents(string: "http://120.50.73.116:3000/youth-policies")
+        urlComponents?.queryItems = [
+            URLQueryItem(name: "residence", value: residence),
+            URLQueryItem(name: "employmentStatus", value: employmentStatus),
+            URLQueryItem(name: "educationLevel", value: educationLevel),
+            URLQueryItem(name: "age", value: age),
+            URLQueryItem(name: "policyName", value: policyName)
+        ]
+        
+        guard let url = urlComponents?.url else {
+            print("Invalid URL")
+            return
+        }
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let error = error {
+                    print("Error with fetching data: \(error)")
                     return
                 }
 
-                self.fetchAndParseXML(from: url) { youthPolicyList in
-                    defer {
-                        dispatchGroup.leave()
-                    }
+                guard let httpResponse = response as? HTTPURLResponse,
+                      (200...299).contains(httpResponse.statusCode),
+                      let data = data else {
+                    print("Error with the response, unexpected status code: \(String(describing: response))")
+                    return
+                }
 
-                    if let youthPolicyList = youthPolicyList {
-                        let filtered = self.filter(youthPolicyList.youthPolicies, vm)
-                        print(filtered.count)
-                        result += youthPolicyList.youthPolicies
-                        policy.getPolicy(filtered)
+                do {
+                    let decoder = JSONDecoder()
+                    // 여기서 YouthPolicy 배열로 디코드하도록 수정
+                    let policies = try decoder.decode([YouthPolicy].self, from: data)
+                    DispatchQueue.main.async {
+                        // SwiftUI 뷰를 업데이트하는 코드
+                        print(policies)
+                        self.result = policies
+                        let policy = Policy()
+                        self.policy = policy
                     }
+                } catch {
+                    print("JSON Decoding Error: \(error)")
                 }
             }
 
-            dispatchGroup.notify(queue: .main) {
-                // 여기서는 모든 백그라운드 작업이 완료된 후에 실행할 코드를 작성합니다.
-                self.policy = policy
-                self.result = result
-            }
-        }
-
-    }
-}
-
-extension APIViewModel {
-    func fetchAndParseXML(from url: URL, completion: @escaping (YouthPolicyList?) -> Void) {
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                completion(nil)
-                return
-            }
-
-            let parser = YouthPolicyListParser()
-            let youthPolicyList = parser.parse(data: data)
-            completion(youthPolicyList)
-        }
-
-        task.resume()
-    }
-    
-    func getURL(_ apiKey: String, _ query: String, _ index: Int) -> String {
-        let BASE_URL = "https://www.youthcenter.go.kr/opi/youthPlcyList.do"
-        
-        if query.isEmpty  {
-            return "\(BASE_URL)?openApiVlak=\(apiKey)&display=100&pageIndex=\(index)&srchPolyBizSecd=003002008"
-        } else {
-            return "\(BASE_URL)?openApiVlak=\(apiKey)&display=100&pageIndex=1&query=\(query)"
-        }
+            task.resume()
+//        }
     }
 }
