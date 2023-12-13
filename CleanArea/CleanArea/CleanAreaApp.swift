@@ -10,10 +10,12 @@ import SwiftData
 
 @main
 struct CleanAreaApp: App {
-    
+    var likedStatusManager = LikedStatusManager()
+
     var body: some Scene {
         WindowGroup {
             StartView(vm: StartVM())
+                .environmentObject(likedStatusManager)
         }
         .modelContainer(for: YouthPolicy.self)
     }
