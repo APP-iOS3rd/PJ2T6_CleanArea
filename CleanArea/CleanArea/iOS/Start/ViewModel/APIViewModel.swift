@@ -63,6 +63,7 @@ class APIViewModel: ObservableObject {
                         print(policies)
                         self.result = policies
                         let policy = Policy()
+                        policy.getPolicy(policies)
                         self.policy = policy
                     }
                 } catch {

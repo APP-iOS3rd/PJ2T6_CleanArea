@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
-//import SwiftData
+import SwiftData
 
 struct MainView: View {
-//    @Query var youthPolicies: [YouthPolicy]
+    @Query var youthPolicies: [YouthPolicy]
     @State private var selectedTab = "Home"
     var vm: StartVM?
     @StateObject var network = APIViewModel()

@@ -15,19 +15,22 @@ struct StarBtn: View {
 
     init(policy: YouthPolicy) {
         self.policy = policy
-        self._isClicked = State(initialValue: UserDefaults.standard.getLikedStatus(for: policy.id))
+        
+        self._isClicked = State(initialValue: UserDefaults.standard.getLikedStatus(for: policy.bizId))
+        
     }
 
     var body: some View {
         Button {
             isClicked.toggle()
-            UserDefaults.standard.setLikedStatus(for: policy.id, status: isClicked)
+            UserDefaults.standard.setLikedStatus(for: policy.bizId, status: isClicked)
 
             if isClicked {
                 modelContext.insert(policy)
             } else {
                 modelContext.delete(policy)
             }
+            
         } label: {
             Image(systemName: isClicked ? "star.fill" : "star")
                 .foregroundColor(.buttonGreen)
@@ -38,12 +41,12 @@ struct StarBtn: View {
 }
 
 extension UserDefaults {
-    func setLikedStatus(for policyID: UUID, status: Bool) {
-        set(status, forKey: "isLiked_\(policyID.uuidString)")
+    func setLikedStatus(for policyID: String, status: Bool) {
+        set(status, forKey: "isLiked_\(policyID)")
     }
 
-    func getLikedStatus(for policyID: UUID) -> Bool {
-        return bool(forKey: "isLiked_\(policyID.uuidString)")
+    func getLikedStatus(for policyID: String) -> Bool {
+        return bool(forKey: "isLiked_\(policyID)")
     }
 }
 

@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
-//import SwiftData
+import SwiftData
 
 @main
 struct CleanAreaApp: App {
+    
     var body: some Scene {
         WindowGroup {
             StartView(vm: StartVM())
         }
-//        .modelContainer(for: YouthPolicy.self)
+        .modelContainer(for: YouthPolicy.self)
     }
 }
