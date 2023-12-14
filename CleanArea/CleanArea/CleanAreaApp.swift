@@ -14,8 +14,10 @@ struct CleanAreaApp: App {
 
     var body: some Scene {
         WindowGroup {
-            StartView(vm: StartVM())
+            CleanStartView(vm: StartVM())
                 .environmentObject(likedStatusManager)
+           // StartView(vm: StartVM())
+             //   .environmentObject(likedStatusManager)
         }
         .modelContainer(for: YouthPolicy.self)
     }

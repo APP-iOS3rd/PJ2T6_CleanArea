@@ -9,14 +9,17 @@ import Foundation
 import SwiftUI
 
 struct TagModifier: ViewModifier {
+    @Binding var selectIndex: Int
+    var index: Int
+    
     func body(content: Content) -> some View {
         content
             .bold()
             .background(
                 Rectangle()
                     .cornerRadius(10)
-                    .foregroundStyle(.backgroundGreen)
-                    .shadow(color: Color(uiColor: UIColor.systemGray3), radius: 5, x: 5, y: 5)
+                    .foregroundStyle(selectIndex == index ? .mainGreen : .white)
+                    .shadow(color: Color(uiColor: UIColor.systemGray3), radius: 5, x: 1, y: 1)
             )
     }
 }

@@ -46,6 +46,10 @@
 		734E985B2B2162DE002EC806 /* DetailScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E98552B2162DE002EC806 /* DetailScrollView.swift */; };
 		734E985C2B2162DE002EC806 /* DetailWayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E98562B2162DE002EC806 /* DetailWayView.swift */; };
 		734E985D2B2162DE002EC806 /* DetailSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E98572B2162DE002EC806 /* DetailSummaryView.swift */; };
+		73F35DAC2B2A9D3400080D6F /* LocationSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DAB2B2A9D3400080D6F /* LocationSelectView.swift */; };
+		73F35DAE2B2A9D8600080D6F /* StartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DAD2B2A9D8600080D6F /* StartCellView.swift */; };
+		73F35DB02B2AA0AB00080D6F /* TypingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DAF2B2AA0AB00080D6F /* TypingAnimationView.swift */; };
+		73F35DB22B2AB65700080D6F /* CleanStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DB12B2AB65700080D6F /* CleanStartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +114,10 @@
 		734E98552B2162DE002EC806 /* DetailScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailScrollView.swift; sourceTree = "<group>"; };
 		734E98562B2162DE002EC806 /* DetailWayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailWayView.swift; sourceTree = "<group>"; };
 		734E98572B2162DE002EC806 /* DetailSummaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailSummaryView.swift; sourceTree = "<group>"; };
+		73F35DAB2B2A9D3400080D6F /* LocationSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectView.swift; sourceTree = "<group>"; };
+		73F35DAD2B2A9D8600080D6F /* StartCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCellView.swift; sourceTree = "<group>"; };
+		73F35DAF2B2AA0AB00080D6F /* TypingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingAnimationView.swift; sourceTree = "<group>"; };
+		73F35DB12B2AB65700080D6F /* CleanStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanStartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +246,10 @@
 				5AC3EF512B2541F7001BB1F5 /* LocationPicker.swift */,
 				5AC3EF542B2541F7001BB1F5 /* StartTextField.swift */,
 				5AC3EF522B2541F7001BB1F5 /* StartLocationField.swift */,
+				73F35DB12B2AB65700080D6F /* CleanStartView.swift */,
+				73F35DAB2B2A9D3400080D6F /* LocationSelectView.swift */,
+				73F35DAD2B2A9D8600080D6F /* StartCellView.swift */,
+				73F35DAF2B2AA0AB00080D6F /* TypingAnimationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -466,8 +478,10 @@
 				5AC3EF552B2541F7001BB1F5 /* APIViewModel.swift in Sources */,
 				5A2E8F162B21699600B3CA70 /* StartBtn.swift in Sources */,
 				1D36306D2B2164F60075939D /* RecommandVM.swift in Sources */,
+				73F35DB22B2AB65700080D6F /* CleanStartView.swift in Sources */,
 				41E627C12B26BC5E003F893F /* ListItemView.swift in Sources */,
 				1D36306E2B2164F60075939D /* RecommandCellModel.swift in Sources */,
+				73F35DAC2B2A9D3400080D6F /* LocationSelectView.swift in Sources */,
 				5AC3EF5B2B2541F7001BB1F5 /* StartLocationField.swift in Sources */,
 				734E985A2B2162DE002EC806 /* DetailEtcView.swift in Sources */,
 				1D3630712B2164F60075939D /* TFStyleViewModifier.swift in Sources */,
@@ -480,9 +494,11 @@
 				734E98282B216221002EC806 /* CleanAreaApp.swift in Sources */,
 				731327712B26F04B00564388 /* WebSiteView.swift in Sources */,
 				41E627CF2B27039C003F893F /* ListViewModifier.swift in Sources */,
+				73F35DB02B2AA0AB00080D6F /* TypingAnimationView.swift in Sources */,
 				417683EE2B28172400F00A6D /* LoadingCircleView.swift in Sources */,
 				41FBE2932B21830600D3AD65 /* DetailModifer.swift in Sources */,
 				734E985D2B2162DE002EC806 /* DetailSummaryView.swift in Sources */,
+				73F35DAE2B2A9D8600080D6F /* StartCellView.swift in Sources */,
 				1D3630692B2164F60075939D /* YouthPolicyList.swift in Sources */,
 				734E98592B2162DE002EC806 /* DetailQualificationView.swift in Sources */,
 				731327732B26F05F00564388 /* WebSiteLinkView.swift in Sources */,
