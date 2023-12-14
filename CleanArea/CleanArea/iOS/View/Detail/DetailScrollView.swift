@@ -24,7 +24,7 @@ struct DetailScrollView: View {
                             }
                         } label: {
                             Text("정책요약")
-                                .font(.system(size: 17, weight: .semibold))
+                                .font(.pretendardSemiBold17)
                                 .foregroundStyle(selectedIndex == 0 ? Color.menuGreen : Color.menuGray)
                         }
                         
@@ -36,7 +36,7 @@ struct DetailScrollView: View {
                             }
                         } label: {
                             Text("신청자격")
-                                .font(.system(size: 17, weight: .semibold))
+                                .font(.pretendardSemiBold17)
                                 .foregroundStyle(selectedIndex == 1 ? Color.menuGreen : Color.menuGray)
                         }
                         
@@ -48,7 +48,7 @@ struct DetailScrollView: View {
                             }
                         } label: {
                             Text("신청방법")
-                                .font(.system(size: 17, weight: .semibold))
+                                .font(.pretendardSemiBold17)
                                 .foregroundStyle(selectedIndex == 2 ? Color.menuGreen : Color.menuGray)
                         }
                         
@@ -60,7 +60,7 @@ struct DetailScrollView: View {
                             }
                         } label: {
                             Text("기타")
-                                .font(.system(size: 17, weight: .semibold))
+                                .font(.pretendardSemiBold17)
                                 .foregroundStyle(selectedIndex == 3 ? Color.menuGreen : Color.menuGray)
                         }
                     }

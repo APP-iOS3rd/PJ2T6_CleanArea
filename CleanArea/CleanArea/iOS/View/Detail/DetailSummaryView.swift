@@ -15,7 +15,7 @@ struct DetailSummaryView: View {
             VStack(alignment: .leading, spacing: 20) {
                 Text("🔍 한 눈에 보는 정책 요약")
                     .multilineTextAlignment(.leading)
-                    .font(.system(size: 20, weight: .semibold))
+                    .font(.pretendardSemiBold20)
                     .foregroundStyle(.mainGreen)
                     .padding(.top, 30)
                 

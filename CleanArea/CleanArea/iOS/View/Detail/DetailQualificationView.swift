@@ -14,7 +14,7 @@ struct DetailQualificationView: View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
                 Text("🪪 신청 자격")
-                    .font(.system(size: 20, weight: .semibold))
+                    .font(.pretendardSemiBold20)
                     .foregroundStyle(.mainGreen)
                 Spacer()
             }

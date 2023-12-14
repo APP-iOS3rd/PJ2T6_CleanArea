@@ -17,7 +17,7 @@ struct DetailEtcView: View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
                 Text("⭐️ 기타")
-                    .font(.system(size: 20, weight: .semibold))
+                    .font(.pretendardSemiBold20)
                     .foregroundStyle(.mainGreen)
                 Spacer()
             }
@@ -41,7 +41,7 @@ struct DetailEtcView: View {
                     }, label: {
                         Text(choose.1)
                             .multilineTextAlignment(.leading)
-                            .font(.system(size: 17, weight: .bold))
+                            .font(.pretendardBold17)
                             .foregroundStyle(.blue)
                     })
                     .fullScreenCover(isPresented: $isModaling1) {
@@ -61,7 +61,7 @@ struct DetailEtcView: View {
                     }, label: {
                         Text(choose.1)
                             .multilineTextAlignment(.leading)
-                            .font(.system(size: 17, weight: .bold))
+                            .font(.pretendardBold17)
                             .foregroundStyle(.blue)
                     })
                     .fullScreenCover(isPresented: $isModaling2) {

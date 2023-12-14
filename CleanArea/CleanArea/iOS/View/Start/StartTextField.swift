@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct StartTextField: View {
-    @EnvironmentObject var vm: StartVM
+    @EnvironmentObject var vm: APIViewModel
     @Binding var text: String
     
     var type: TextFieldType
@@ -19,7 +19,7 @@ struct StartTextField: View {
         VStack {
             HStack {
                 Text(type.title)
-                    .font(.headline)
+                    .font(.pretendardRegular20)
                     .foregroundStyle(.mainGreen)
                     .padding(.top, 10)
                 Spacer()
@@ -49,7 +49,7 @@ extension TextField {
     func commonTextFieldStyle(width: CGFloat, keyboardType: UIKeyboardType? = nil) -> some View {
         self
             .padding()
-            .bold()
+            .font(.pretendardRegular20)
             .frame(maxWidth: .infinity)
             .frame(maxHeight: 50)
             .background(Color.gray.opacity(0.3))
@@ -60,7 +60,7 @@ extension TextField {
 
 
 struct SelectBox: View {
-    @EnvironmentObject var vm: StartVM
+    @EnvironmentObject var vm: APIViewModel
     @Binding var text: String
     
     var type: TextFieldType

@@ -20,7 +20,7 @@ struct ListItemView: View {
             VStack(alignment: .leading) {
                 
                 Text(policy.polyBizSjnm)
-                    .font(.system(size: 20))
+                    .font(.pretendardRegular20)
                 
                 HStack {
                     ZStack {
@@ -36,7 +36,7 @@ struct ListItemView: View {
                     if dDayText != "마감" && dDayText != "진행중" {
                         HStack{
                             Text(dDayText)
-                                .font(.system(size: 13))
+                                .font(.pretendardRegular13)
                                 .foregroundColor(.black)
                             Spacer()
                         }
@@ -145,6 +145,4 @@ extension ListItemView {
             return "알 수 없음"
         }
     }
-    
-    
 }

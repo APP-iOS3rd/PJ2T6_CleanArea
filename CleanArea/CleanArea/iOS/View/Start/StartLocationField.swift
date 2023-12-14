@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StartLocationField: View {
-    @EnvironmentObject var vm: StartVM
+    @EnvironmentObject var vm: APIViewModel
     var type: TextFieldType
     var width: Int
     
@@ -16,7 +16,7 @@ struct StartLocationField: View {
         VStack {
             HStack {
                 Text(type.title)
-                    .font(.headline)
+                    .font(.pretendardRegular20)
                     .foregroundStyle(.mainGreen)
                     .padding(.top, 10)
                 Spacer()
@@ -29,7 +29,7 @@ struct StartLocationField: View {
 }
 
 struct SelectCityBox: View {
-    @EnvironmentObject var vm: StartVM
+    @EnvironmentObject var vm: APIViewModel
     @State private var showModal = false
     @Binding var city: City?
     
