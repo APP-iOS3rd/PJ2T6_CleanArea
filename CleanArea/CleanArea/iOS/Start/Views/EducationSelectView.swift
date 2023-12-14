@@ -1,5 +1,5 @@
 //
-//  EmploymentSelectView.swift
+//  EducationSelectView.swift
 //  CleanArea
 //
 //  Created by 노주영 on 12/14/23.
@@ -7,10 +7,9 @@
 
 import SwiftUI
 
-struct EmploymentSelectView: View {
+struct EducationSelectView: View {
     @EnvironmentObject var vm: StartVM
     
-    @Binding var isHiddenEmployment: Bool
     @Binding var isHiddenEducation: Bool
     
     @State private var isHidden: Bool = true
@@ -23,7 +22,7 @@ struct EmploymentSelectView: View {
                     .resizable()
                     .frame(width: 50, height: 50)
                 
-                TypingAnimationView(fullText: "취업상태를 선택해주세요", speed: 0.1, onCompleted: {
+                TypingAnimationView(fullText: "학력을 선택해주세요", speed: 0.1, onCompleted: {
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
                         isHidden = false
                     }
@@ -31,10 +30,7 @@ struct EmploymentSelectView: View {
                 Spacer()
                 
                 Button {
-                    isHiddenEmployment = true
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
-                        isHiddenEducation = false
-                    }
+                    
                 } label: {
                     Image(systemName: "chevron.right")
                         .foregroundStyle(.mainGreen)
@@ -44,14 +40,14 @@ struct EmploymentSelectView: View {
             
             if !isHidden {
                 VStack {
-                    ForEach(0..<vm.employmentStatusOptions.count) { index in
+                    ForEach(0..<vm.educationLevelOptions.count) { index in
                         if index%3 == 2 {
                             HStack {
-                                StartCellView(selectIndex: $selectIndex, index: index-2, choose: "2")
+                                StartCellView(selectIndex: $selectIndex, index: index-2, choose: "3")
                                     .environmentObject(vm)
-                                StartCellView(selectIndex: $selectIndex, index: index-1, choose: "2")
+                                StartCellView(selectIndex: $selectIndex, index: index-1, choose: "3")
                                     .environmentObject(vm)
-                                StartCellView(selectIndex: $selectIndex, index: index, choose: "2")
+                                StartCellView(selectIndex: $selectIndex, index: index, choose: "3")
                                     .environmentObject(vm)
                             }
                         }
@@ -63,3 +59,4 @@ struct EmploymentSelectView: View {
         }
     }
 }
+

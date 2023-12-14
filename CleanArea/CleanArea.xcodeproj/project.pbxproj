@@ -51,6 +51,7 @@
 		73F35DB02B2AA0AB00080D6F /* TypingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DAF2B2AA0AB00080D6F /* TypingAnimationView.swift */; };
 		73F35DB22B2AB65700080D6F /* CleanStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DB12B2AB65700080D6F /* CleanStartView.swift */; };
 		73F35DB42B2AB9C500080D6F /* EmploymentSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DB32B2AB9C500080D6F /* EmploymentSelectView.swift */; };
+		73F35DB62B2AC8BC00080D6F /* EducationSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DB52B2AC8BC00080D6F /* EducationSelectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		73F35DAF2B2AA0AB00080D6F /* TypingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingAnimationView.swift; sourceTree = "<group>"; };
 		73F35DB12B2AB65700080D6F /* CleanStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanStartView.swift; sourceTree = "<group>"; };
 		73F35DB32B2AB9C500080D6F /* EmploymentSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentSelectView.swift; sourceTree = "<group>"; };
+		73F35DB52B2AC8BC00080D6F /* EducationSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSelectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 				73F35DB12B2AB65700080D6F /* CleanStartView.swift */,
 				73F35DAB2B2A9D3400080D6F /* LocationSelectView.swift */,
 				73F35DB32B2AB9C500080D6F /* EmploymentSelectView.swift */,
+				73F35DB52B2AC8BC00080D6F /* EducationSelectView.swift */,
 				73F35DAD2B2A9D8600080D6F /* StartCellView.swift */,
 				73F35DAF2B2AA0AB00080D6F /* TypingAnimationView.swift */,
 			);
@@ -495,6 +498,7 @@
 				5A5CF2BC2B26FA8900667F1F /* Policy.swift in Sources */,
 				734E985B2B2162DE002EC806 /* DetailScrollView.swift in Sources */,
 				734E98582B2162DE002EC806 /* DetailView.swift in Sources */,
+				73F35DB62B2AC8BC00080D6F /* EducationSelectView.swift in Sources */,
 				734E98282B216221002EC806 /* CleanAreaApp.swift in Sources */,
 				731327712B26F04B00564388 /* WebSiteView.swift in Sources */,
 				41E627CF2B27039C003F893F /* ListViewModifier.swift in Sources */,

@@ -29,6 +29,11 @@ struct StartCellView: View {
                     .frame(width: (UIScreen.main.bounds.width)/4, height: 40)
                     .foregroundStyle(selectIndex == index ? .white : .mainGreen)
                     .modifier(TagModifier(selectIndex: $selectIndex, index: index))
+            } else {
+                Text(vm.educationLevelOptions[index])
+                    .frame(width: (UIScreen.main.bounds.width)/4, height: 40)
+                    .foregroundStyle(selectIndex == index ? .white : .mainGreen)
+                    .modifier(TagModifier(selectIndex: $selectIndex, index: index))
             }
         }
         .animation(.spring(response: 0.5, dampingFraction: 0.7 ,blendDuration: 1), value: selectIndex)
