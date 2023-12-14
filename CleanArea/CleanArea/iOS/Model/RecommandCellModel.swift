@@ -11,4 +11,5 @@ struct RecommandCellModel {
     var name: String
     var count: Int
     var destinationKey: String
+    var policies: [YouthPolicy]
 }

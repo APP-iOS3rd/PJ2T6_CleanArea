@@ -8,8 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showLaunchScreen = true
+
     var body: some View {
-       StartView(vm: StartVM())
+        Group {
+            if showLaunchScreen {
+                LaunchScreenView()
+                    .onAppear {
+                        Task {
+                            try? await Task.sleep(nanoseconds: 5 * 1_000_000_000)
+                            withAnimation {
+                                showLaunchScreen = false
+                            }
+                        }
+                    }
+            } else {
+                StartView()
+            }
+        }
     }
 }
 
