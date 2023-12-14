@@ -24,12 +24,13 @@ struct RecommandView: View {
                 HeaderView(title: "추천정책", action: {
                     self.presentationMode.wrappedValue.dismiss()
                 })
+                Spacer()
                 LazyVGrid(columns: [GridItem(.flexible())]) {
                     ForEach(vm.recommandcellModels.indices, id: \.self) { index in
                         RecommandCell(model: $vm.recommandcellModels[index], residence: residence)
                         .frame(height: 70)
-                        .padding()
-                        
+                        .padding(.bottom, 22)
+                        .padding(.horizontal, 20)
                     }
                 }
                 .onAppear {

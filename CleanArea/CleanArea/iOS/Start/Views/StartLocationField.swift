@@ -21,7 +21,7 @@ struct StartLocationField: View {
                     .padding(.top, 10)
                 Spacer()
             }
-            .frame(width: CGFloat(width))
+            .frame(maxWidth: .infinity)
             
             SelectCityBox(city: $vm.residence, type: type, width: width)
         }
@@ -46,12 +46,13 @@ struct SelectCityBox: View {
                 Spacer()
                 Image(systemName: "chevron.down")
             }
-            .padding()
-            .frame(width: CGFloat(width), height: 45)
+            .padding()            
             .foregroundColor(.gray)
             .background(Color.gray.opacity(0.3))
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
+        .frame(maxWidth: .infinity)
+        .frame(maxHeight: 50)
         .sheet(isPresented: self.$showModal) {
             LocationPicker(showModal: $showModal, city: $city)
                 .presentationDetents([
