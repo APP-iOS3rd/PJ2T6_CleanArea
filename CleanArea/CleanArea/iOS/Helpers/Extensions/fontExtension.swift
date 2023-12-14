@@ -22,10 +22,14 @@ extension Font {
     static let pretendardBold17: Font = .custom("Pretendard-Bold", size: 17)
     static let pretendardBold20: Font = .custom("Pretendard-Bold", size: 20)
     static let pretendardBold25: Font = .custom("Pretendard-Bold", size: 25)
+    static let pretendardBold30: Font = .custom("Pretendard-Bold", size: 30)
     
     //SemiBold
     static let pretendardSemiBold17: Font = .custom("Pretendard-SemiBold", size: 17)
     static let pretendardSemiBold20: Font = .custom("Pretendard-SemiBold", size: 20)
     static let pretendardSemiBold25: Font = .custom("Pretendard-SemiBold", size: 25)
+    
+    //Black
+    static let pretendardBlack30: Font = .custom("Pretendard-Black", size: 30)
     
 }

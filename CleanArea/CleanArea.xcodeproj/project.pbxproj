@@ -27,6 +27,8 @@
 		417C39392B2ACFC70031DDC7 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 417C39302B2ACFC70031DDC7 /* Pretendard-Thin.otf */; };
 		417C393A2B2ACFC70031DDC7 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 417C39312B2ACFC70031DDC7 /* Pretendard-SemiBold.otf */; };
 		417C393B2B2ACFC70031DDC7 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 417C39322B2ACFC70031DDC7 /* Pretendard-Light.otf */; };
+		417C393E2B2AD6380031DDC7 /* LaunchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C393D2B2AD6380031DDC7 /* LaunchScreenView.swift */; };
+		417C39402B2ADFB80031DDC7 /* PretendardVariable.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 417C393F2B2ADFB70031DDC7 /* PretendardVariable.ttf */; };
 		41E627C12B26BC5E003F893F /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627C02B26BC5E003F893F /* ListItemView.swift */; };
 		41E627C32B26BCA6003F893F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627C22B26BCA6003F893F /* SearchBar.swift */; };
 		41E627CF2B27039C003F893F /* ListViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E627CE2B27039C003F893F /* ListViewModifier.swift */; };
@@ -96,6 +98,8 @@
 		417C39302B2ACFC70031DDC7 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		417C39312B2ACFC70031DDC7 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		417C39322B2ACFC70031DDC7 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		417C393D2B2AD6380031DDC7 /* LaunchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenView.swift; sourceTree = "<group>"; };
+		417C393F2B2ADFB70031DDC7 /* PretendardVariable.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PretendardVariable.ttf; sourceTree = "<group>"; };
 		41E627C02B26BC5E003F893F /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
 		41E627C22B26BCA6003F893F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		41E627CE2B27039C003F893F /* ListViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModifier.swift; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 		1D3630542B2164F60075939D /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				417C393C2B2AD61C0031DDC7 /* Launch */,
 				5AC3EF482B2541F7001BB1F5 /* Start */,
 				1D36305B2B2164F60075939D /* Main */,
 				734E98512B2162DE002EC806 /* Detail */,
@@ -226,6 +231,7 @@
 				417C392B2B2ACFC60031DDC7 /* Pretendard-Regular.otf */,
 				417C39312B2ACFC70031DDC7 /* Pretendard-SemiBold.otf */,
 				417C39302B2ACFC70031DDC7 /* Pretendard-Thin.otf */,
+				417C393F2B2ADFB70031DDC7 /* PretendardVariable.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -246,6 +252,14 @@
 				417C39252B2ACE970031DDC7 /* fontExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		417C393C2B2AD61C0031DDC7 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				417C393D2B2AD6380031DDC7 /* LaunchScreenView.swift */,
+			);
+			path = Launch;
 			sourceTree = "<group>";
 		};
 		41FBE2942B21839800D3AD65 /* UIElement */ = {
@@ -486,6 +500,7 @@
 				417C39382B2ACFC70031DDC7 /* Pretendard-ExtraBold.otf in Resources */,
 				417C39392B2ACFC70031DDC7 /* Pretendard-Thin.otf in Resources */,
 				417C39352B2ACFC70031DDC7 /* Pretendard-Bold.otf in Resources */,
+				417C39402B2ADFB80031DDC7 /* PretendardVariable.ttf in Resources */,
 				417C393B2B2ACFC70031DDC7 /* Pretendard-Light.otf in Resources */,
 				417C39342B2ACFC70031DDC7 /* Pretendard-Regular.otf in Resources */,
 				417C39332B2ACFC70031DDC7 /* Pretendard-Black.otf in Resources */,
@@ -551,6 +566,7 @@
 				734E98592B2162DE002EC806 /* DetailQualificationView.swift in Sources */,
 				731327732B26F05F00564388 /* WebSiteLinkView.swift in Sources */,
 				1D36306B2B2164F60075939D /* RecommandView.swift in Sources */,
+				417C393E2B2AD6380031DDC7 /* LaunchScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

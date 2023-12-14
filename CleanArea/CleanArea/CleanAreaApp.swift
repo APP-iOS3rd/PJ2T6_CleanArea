@@ -10,10 +10,10 @@ import SwiftData
 
 @main
 struct CleanAreaApp: App {
-
+    
     var body: some Scene {
         WindowGroup {
-            StartView(vm: StartVM())
+            ContentView()
                 .environmentObject(LikedStatusManager())
                 .environmentObject(APIViewModel())
         }
