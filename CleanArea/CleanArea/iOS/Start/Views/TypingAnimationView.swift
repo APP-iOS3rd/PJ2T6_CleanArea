@@ -15,6 +15,8 @@ struct TypingAnimationView: View {
     
     var body: some View {
         Text(displayedText)
+            .font(.system(size: 20, weight: .semibold))
+            .foregroundStyle(.mainGreen)
             .onAppear {
                 Task {
                     await displayText()

@@ -10,8 +10,8 @@ import SwiftUI
 struct CleanStartView: View {
     @StateObject var vm = StartVM()
     
-    @State var isHidden = true
-    @State var text: String = "거주지를 선택해주세요"
+    @State var isHiddenLocation = false
+    @State var isHiddenEmployment = true
     
     var body: some View {
         ZStack {
@@ -36,24 +36,19 @@ struct CleanStartView: View {
                 .frame(width: UIScreen.main.bounds.width - 40)
                 .padding(.top, 20)
                 
-                HStack {
-                    Image("CleanImage")
-                        .resizable()
-                        .frame(width: 50, height: 50)
+                ZStack {
+                    if !isHiddenLocation {
+                        LocationSelectView(isHiddenLocation: $isHiddenLocation, isHiddenEmployment: $isHiddenEmployment)
+                            .environmentObject(vm)
+                    }
                     
-                    TypingAnimationView(fullText: text, speed: 0.1, onCompleted: {
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                            isHidden = false
-                        }
-                    })
-                    Spacer()
+                    if !isHiddenEmployment {
+                        EmploymentSelectView(isHiddenEmployment: $isHiddenEmployment)
+                            .environmentObject(vm)
+                    }
                 }
-                .frame(width: UIScreen.main.bounds.width - 40)
+                .padding(.top, 20)
                 
-                if !isHidden {
-                    LocationSelectView()
-                        .environmentObject(vm)
-                }
                 Spacer()
             }
         }

@@ -50,6 +50,7 @@
 		73F35DAE2B2A9D8600080D6F /* StartCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DAD2B2A9D8600080D6F /* StartCellView.swift */; };
 		73F35DB02B2AA0AB00080D6F /* TypingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DAF2B2AA0AB00080D6F /* TypingAnimationView.swift */; };
 		73F35DB22B2AB65700080D6F /* CleanStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DB12B2AB65700080D6F /* CleanStartView.swift */; };
+		73F35DB42B2AB9C500080D6F /* EmploymentSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DB32B2AB9C500080D6F /* EmploymentSelectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		73F35DAD2B2A9D8600080D6F /* StartCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCellView.swift; sourceTree = "<group>"; };
 		73F35DAF2B2AA0AB00080D6F /* TypingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypingAnimationView.swift; sourceTree = "<group>"; };
 		73F35DB12B2AB65700080D6F /* CleanStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanStartView.swift; sourceTree = "<group>"; };
+		73F35DB32B2AB9C500080D6F /* EmploymentSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentSelectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 				5AC3EF522B2541F7001BB1F5 /* StartLocationField.swift */,
 				73F35DB12B2AB65700080D6F /* CleanStartView.swift */,
 				73F35DAB2B2A9D3400080D6F /* LocationSelectView.swift */,
+				73F35DB32B2AB9C500080D6F /* EmploymentSelectView.swift */,
 				73F35DAD2B2A9D8600080D6F /* StartCellView.swift */,
 				73F35DAF2B2AA0AB00080D6F /* TypingAnimationView.swift */,
 			);
@@ -478,6 +481,7 @@
 				5AC3EF552B2541F7001BB1F5 /* APIViewModel.swift in Sources */,
 				5A2E8F162B21699600B3CA70 /* StartBtn.swift in Sources */,
 				1D36306D2B2164F60075939D /* RecommandVM.swift in Sources */,
+				73F35DB42B2AB9C500080D6F /* EmploymentSelectView.swift in Sources */,
 				73F35DB22B2AB65700080D6F /* CleanStartView.swift in Sources */,
 				41E627C12B26BC5E003F893F /* ListItemView.swift in Sources */,
 				1D36306E2B2164F60075939D /* RecommandCellModel.swift in Sources */,
