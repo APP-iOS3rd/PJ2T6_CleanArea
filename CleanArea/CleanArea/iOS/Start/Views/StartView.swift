@@ -85,16 +85,15 @@ struct StartView: View {
                                                 
                 Spacer()
             }
-        }
-        .onTapGesture {
-            UIApplication.shared.closeKeyboard()
+            .onTapGesture {
+                UIApplication.shared.closeKeyboard()
+            }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
             self.isKeyboardViewUp = true
         }.onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
             self.isKeyboardViewUp = false
         }
-        
     }
 }
 
