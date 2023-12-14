@@ -22,11 +22,6 @@ class APIViewModel: ObservableObject {
         let age = vm.age
         let policyName = vm.policyName
         
-        print(residence)
-        print(employmentStatus)
-        print(educationLevel)
-        print(age)
-        print(policyName)
         
         var urlComponents = URLComponents(string: "http://120.50.73.116:3000/youth-policies")
         urlComponents?.queryItems = [
@@ -60,7 +55,6 @@ class APIViewModel: ObservableObject {
                     let policies = try decoder.decode([YouthPolicy].self, from: data)
                     DispatchQueue.main.async {
                         // SwiftUI 뷰를 업데이트하는 코드
-                        print(policies)
                         self.result = policies
                         let policy = Policy()
                         policy.getPolicy(policies)
@@ -74,4 +68,25 @@ class APIViewModel: ObservableObject {
             task.resume()
 //        }
     }
+    func incrementViews(for policyId: String) {
+        guard let url = URL(string: "http://120.50.73.116:3000/youth-policies/views") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        let body: [String: Any] = ["bizId": policyId]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        print(body)
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let _ = data, error == nil else {
+                print(error ?? "Unknown error")
+                return
+            }
+            
+        }
+
+        task.resume()
+    }
+
 }

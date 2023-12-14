@@ -45,7 +45,7 @@ struct MainView: View {
                 LoadingCircleView()
             }
         }
-        .onAppear() {
+        .onAppear() {            
             if let vm = self.vm {
                 network.search(vm: vm)
             }
