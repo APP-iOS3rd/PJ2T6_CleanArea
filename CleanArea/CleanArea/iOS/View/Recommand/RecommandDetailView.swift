@@ -12,9 +12,8 @@ struct RecommandDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        NavigationStack{
-            VStack{
-                
+        NavigationStack {
+            VStack {
                 HeaderView(title: modelName, action: {
                     self.presentationMode.wrappedValue.dismiss()
                 })
@@ -22,12 +21,8 @@ struct RecommandDetailView: View {
             }
             .navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true)
-            
         }
-            
-                
     }
-    
 }
 //#Preview {
 //    RecommandDetailView(modelName: "일자리")

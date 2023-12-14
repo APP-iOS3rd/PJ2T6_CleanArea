@@ -20,8 +20,7 @@ struct HeaderView: View {
                     .padding(.top, 20)
             }
             Text(title)
-                .font(.title)
-                .bold()
+                .font(.pretendardBold30)
                 .foregroundStyle(.mainGreen)
                 .padding(.top, 20)
             Spacer()

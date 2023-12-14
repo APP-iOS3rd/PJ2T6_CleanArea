@@ -8,22 +8,18 @@
 import SwiftUI
 
 struct StartView: View {
-    @StateObject var vm = StartVM()
+    @StateObject var vm = APIViewModel()
     @State private var isSearchButtonTapped = false
     @State var isKeyboardViewUp = false
 
     var body: some View {
         NavigationStack {
             VStack {
-                
                 if !isKeyboardViewUp {
                     HStack {
                         Text("청정구역")
-                            .font(.title)
-                            .bold()
+                            .font(.pretendardBold30)
                             .foregroundStyle(.mainGreen)
-                            .padding(.top, 20)
-                            
                             Spacer()
                     }
                     .frame(maxWidth: .infinity)
@@ -34,11 +30,10 @@ struct StartView: View {
                          )
                     )
                 }
-                
                 Spacer()
                 
                 if !isKeyboardViewUp {
-                    StartLocationField( type: .residence,
+                    StartLocationField(type: .residence,
                                         width: 300)
                                     .environmentObject(vm)
                                     .transition(
@@ -71,7 +66,7 @@ struct StartView: View {
                     } label: {
                        
                             Text("정책검색")
-                                .font(.title3)
+                                .font(.pretendardRegular25)
                                 .padding(.horizontal, 50)
                                 .frame(height: 50)
                                 .background(.buttonGreen)
@@ -116,7 +111,7 @@ extension UIApplication {
 
 
 #Preview {
-    StartView(vm: StartVM())
+    StartView()
 }
 
 

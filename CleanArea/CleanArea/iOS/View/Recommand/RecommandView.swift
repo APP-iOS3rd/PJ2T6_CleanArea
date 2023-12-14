@@ -57,12 +57,11 @@ struct RecommandCell: View {
         ) {
             HStack {
                 Text(model.name)
-                    .bold()
                     .foregroundStyle(.black)
-                    .font(.system(size: 25))
+                    .font(.pretendardBold25)
                 Text("\(model.count)")
                     .foregroundStyle(.gray)
-                    .font(.system(size: 20))
+                    .font(.pretendardMedium20)
                 Spacer()
                 Image(systemName: "chevron.right")
                     .foregroundColor(Color.buttonGreen)

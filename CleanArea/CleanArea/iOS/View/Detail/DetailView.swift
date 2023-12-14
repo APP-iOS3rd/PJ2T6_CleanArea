@@ -23,7 +23,6 @@ struct DetailView: View {
                         .bold()
                         .foregroundStyle(.mainGreen)
                 }
-                
                 Spacer()
                 
                 //TODO: 스타버튼
@@ -34,7 +33,7 @@ struct DetailView: View {
             HStack {
                 Text(youthPolicy.polyBizSjnm)
                     .multilineTextAlignment(.leading)
-                    .font(.system(size: 25, weight: .semibold))
+                    .font(.pretendardSemiBold25)
                     .foregroundStyle(.mainGreen)
                 
                 Spacer()

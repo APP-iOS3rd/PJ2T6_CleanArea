@@ -25,7 +25,7 @@ struct DetailSemiTitleModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .multilineTextAlignment(.leading)
-            .font(.system(size: 17, weight: .semibold))
+            .font(.pretendardSemiBold17)
     }
 }
 
@@ -33,7 +33,7 @@ struct DetailSemiContentModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .multilineTextAlignment(.leading)
-            .font(.system(size: 17))
+            .font(.pretendardRegular17)
             .foregroundStyle(.textGray)
     }
 }

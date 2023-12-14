@@ -16,7 +16,7 @@ struct DetailWayView: View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
                 Text("🤔 신청방법")
-                    .font(.system(size: 20, weight: .semibold))
+                    .font(.pretendardSemiBold20)
                     .foregroundStyle(.mainGreen)
                 Spacer()
             }
@@ -40,7 +40,7 @@ struct DetailWayView: View {
                     }, label: {
                         Text(choose.1)
                             .multilineTextAlignment(.leading)
-                            .font(.system(size: 17, weight: .bold))
+                            .font(.pretendardBold17)
                             .foregroundStyle(.blue)
                     })
                     .fullScreenCover(isPresented: $isModaling) {

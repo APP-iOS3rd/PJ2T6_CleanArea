@@ -13,7 +13,7 @@ struct ListView: View {
     var residence: City?
     @State private var searchText = ""
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject  var apiViewModel: APIViewModel
+    @EnvironmentObject  var vm: APIViewModel
     
     
     var body: some View {
@@ -44,7 +44,7 @@ struct ListView: View {
                     }
                 }
                 .onAppear{
-                    apiViewModel.search(vm: StartVM())
+                    vm.search()
                 }
                 .background(Color.clear)
                 .scrollContentBackground(.hidden)
@@ -52,8 +52,6 @@ struct ListView: View {
         }
     }
 }
-
-
 
 //MARK: 추천, 인기, 즐겨찾기
 extension ListView {
