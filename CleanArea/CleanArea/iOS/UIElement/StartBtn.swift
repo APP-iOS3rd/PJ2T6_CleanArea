@@ -4,32 +4,52 @@
 //
 //  Created by 이민호 on 12/6/23.
 //
-
 import SwiftUI
 import SwiftData
 
+// LikedStatusManager 클래스
+class LikedStatusManager: ObservableObject {
+    @Published var likedStatus: [String: Bool] = [:]
+
+    init() {
+        for (key, value) in UserDefaults.standard.dictionaryRepresentation() {
+            if key.starts(with: "isLiked_") {
+                let policyID = String(key.dropFirst("isLiked_".count))
+                if let status = value as? Bool {
+                    likedStatus[policyID] = status
+                }
+            }
+        }
+    }
+
+    func setLikedStatus(for policyID: String, status: Bool) {
+        likedStatus[policyID] = status
+        UserDefaults.standard.set(status, forKey: "isLiked_\(policyID)")
+    }
+
+    func getLikedStatus(for policyID: String) -> Bool {
+        return likedStatus[policyID] ?? UserDefaults.standard.bool(forKey: "isLiked_\(policyID)")
+    }
+}
+
+// StarBtn 구조체
 struct StarBtn: View {
+    @EnvironmentObject var likedStatusManager: LikedStatusManager
     @Environment(\.modelContext) var modelContext
     var policy: YouthPolicy
-    @State private var isClicked: Bool
-
-    init(policy: YouthPolicy) {
-        self.policy = policy
-        self._isClicked = State(initialValue: UserDefaults.standard.getLikedStatus(for: policy.id))
-    }
 
     var body: some View {
         Button {
-            isClicked.toggle()
-            UserDefaults.standard.setLikedStatus(for: policy.id, status: isClicked)
+            let currentStatus = likedStatusManager.getLikedStatus(for: policy.bizId)
+            likedStatusManager.setLikedStatus(for: policy.bizId, status: !currentStatus)
 
-            if isClicked {
+            if !currentStatus {
                 modelContext.insert(policy)
             } else {
                 modelContext.delete(policy)
             }
         } label: {
-            Image(systemName: isClicked ? "star.fill" : "star")
+            Image(systemName: likedStatusManager.getLikedStatus(for: policy.bizId) ? "star.fill" : "star")
                 .foregroundColor(.buttonGreen)
                 .imageScale(.large)
         }
@@ -37,15 +57,16 @@ struct StarBtn: View {
     }
 }
 
-extension UserDefaults {
-    func setLikedStatus(for policyID: UUID, status: Bool) {
-        set(status, forKey: "isLiked_\(policyID.uuidString)")
-    }
-
-    func getLikedStatus(for policyID: UUID) -> Bool {
-        return bool(forKey: "isLiked_\(policyID.uuidString)")
-    }
-}
+// UserDefaults 확장
+//extension UserDefaults {
+//    func setLikedStatus(for policyID: String, status: Bool) {
+//        set(status, forKey: "isLiked_\(policyID)")
+//    }
+//
+//    func getLikedStatus(for policyID: String) -> Bool {
+//        return bool(forKey: "isLiked_\(policyID)")
+//    }
+//}
 
 
 //extension Color {

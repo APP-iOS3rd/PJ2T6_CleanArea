@@ -15,6 +15,6 @@ class StartVM: ObservableObject {
     @Published var age: String = ""
     @Published var policyName: String = ""
         
-     let employmentStatusOptions = ["전체선택", "재직자", "자영업자", "미취업자", "프리랜서", "일용근로자", "(예비)창업자", "단기근로자", "영농종사자", "제한없음"]
-     let educationLevelOptions = ["전체선택", "고졸 미만", "고교 재학", "고졸 예정", "고교 졸업", "대학 재학", "대졸 예정", "대학 졸업", "석,박사", "제한 없음"]
+     let employmentStatusOptions = ["재직자", "자영업자", "미취업자", "프리랜서", "일용근로자", "(예비)창업자", "단기근로자", "영농종사자", "제한없음"]
+     let educationLevelOptions = ["고졸 미만", "고교 재학", "고졸 예정", "고교 졸업", "대학 재학", "대졸 예정", "대학 졸업", "석,박사", "제한없음"]
 }

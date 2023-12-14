@@ -29,7 +29,15 @@ struct DetailWayView: View {
                 Text(choose.0)
                     .modifier(DetailSemiTitleModifier())
                 
-                if index == 2 && choose.1 != "-" {
+                if index == 2 && String(choose.1.prefix(4)) == "http" {
+                    HStack {
+                        Text(choose.0)
+                            .modifier(DetailSemiTitleModifier())
+                        Spacer()
+                        Text("\(String(isModaling))")
+                            .foregroundStyle(.isModal)
+                    }
+                    
                     Button(action: {
                         isModaling.toggle()
                     }, label: {
@@ -42,6 +50,9 @@ struct DetailWayView: View {
                         WebSiteView(url: choose.1, isModaling: $isModaling)
                     }
                 } else {
+                    Text(choose.0)
+                        .modifier(DetailSemiTitleModifier())
+                    
                     Text(choose.1)
                         .modifier(DetailSemiContentModifier())
                         .padding(.top, -10)

@@ -39,6 +39,7 @@ enum City: String, CaseIterable {
     case 포천시 = "003002008027"
     case 하남시 = "003002008018"
     case 화성시 = "003002008024"
+    case 경기도 = "003002008"
 }
 
 extension City {
@@ -106,6 +107,8 @@ extension City {
             return "하남시"
         case .화성시:
             return "화성시"
+        case .경기도:
+            return "경기도"
         }
     }
 }
@@ -175,6 +178,8 @@ extension City {
             return "Hanam"
         case .화성시:
             return "Hwaseong"
+        case .경기도:
+            return "Gyeonggi"
         }
     }
 }

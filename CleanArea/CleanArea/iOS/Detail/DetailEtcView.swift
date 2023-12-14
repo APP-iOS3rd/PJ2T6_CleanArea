@@ -27,10 +27,15 @@ struct DetailEtcView: View {
             ForEach(0..<5){ index in
                 let choose = chooseTitle(index)
                 
-                Text(choose.0)
-                    .modifier(DetailSemiTitleModifier())
-                
-                if index == 3 && choose.1 != "-" {
+                if index == 3 && String(choose.1.prefix(4)) == "http" {
+                    HStack {
+                        Text(choose.0)
+                            .modifier(DetailSemiTitleModifier())
+                        Spacer()
+                        Text("\(String(isModaling1))")
+                            .foregroundStyle(.isModal)
+                    }
+                    
                     Button(action: {
                         isModaling1.toggle()
                     }, label: {
@@ -42,7 +47,15 @@ struct DetailEtcView: View {
                     .fullScreenCover(isPresented: $isModaling1) {
                         WebSiteView(url: choose.1, isModaling: $isModaling1)
                     }
-                } else if index == 4 && choose.1 != "-" {
+                } else if index == 4 && String(choose.1.prefix(4)) == "http" {
+                    HStack {
+                        Text(choose.0)
+                            .modifier(DetailSemiTitleModifier())
+                        Spacer()
+                        Text("\(String(isModaling2))")
+                            .foregroundStyle(.isModal)
+                    }
+                    
                     Button(action: {
                         isModaling2.toggle()
                     }, label: {
@@ -55,6 +68,9 @@ struct DetailEtcView: View {
                         WebSiteView(url: choose.1, isModaling: $isModaling2)
                     }
                 } else {
+                    Text(choose.0)
+                        .modifier(DetailSemiTitleModifier())
+                    
                     Text(choose.1)
                         .modifier(DetailSemiContentModifier())
                         .padding(.top, -10)

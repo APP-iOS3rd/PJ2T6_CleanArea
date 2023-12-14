@@ -13,6 +13,8 @@ struct ListView: View {
     var residence: City?
     @State private var searchText = ""
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject  var apiViewModel: APIViewModel
+    
     
     var body: some View {
         NavigationStack {
@@ -41,6 +43,9 @@ struct ListView: View {
                         .padding(.vertical, 8)
                     }
                 }
+                .onAppear{
+                    apiViewModel.search(vm: StartVM())
+                }
                 .background(Color.clear)
                 .scrollContentBackground(.hidden)
             }
@@ -54,7 +59,11 @@ struct ListView: View {
 extension ListView {
     private var filteredPolicies: [YouthPolicy] {
           switch tabType {
-          case .hot, .like:
+          case .hot:
+              // 조회수가 높은 순으로 정렬
+              return youthPolicies.sorted { $0.views > $1.views }
+          case .like:
+              // 'like' 탭에 대한 로직 (원래 로직을 유지)
               return youthPolicies
           case .recommand:
               return youthPolicies.filter { policy in
