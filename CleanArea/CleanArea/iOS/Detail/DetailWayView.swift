@@ -26,9 +26,6 @@ struct DetailWayView: View {
             ForEach(0..<4){ index in
                 let choose = chooseTitle(index)
                 
-                Text(choose.0)
-                    .modifier(DetailSemiTitleModifier())
-                
                 if index == 2 && String(choose.1.prefix(4)) == "http" {
                     HStack {
                         Text(choose.0)
