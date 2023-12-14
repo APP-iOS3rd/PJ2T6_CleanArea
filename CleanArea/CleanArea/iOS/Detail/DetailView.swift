@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+    @EnvironmentObject var apiViewModel: APIViewModel
     var cityImage: City?                            //시 이미지
     var youthPolicy: YouthPolicy                    //정책 내용
     
@@ -53,6 +53,9 @@ struct DetailView: View {
             .padding(.top, 30)
             
             DetailScrollView(youthPolicy: youthPolicy)
+        }
+        .onAppear{
+            apiViewModel.incrementViews(for: youthPolicy.bizId)
         }
         .padding(.horizontal, 20)
         .navigationBarBackButtonHidden()
