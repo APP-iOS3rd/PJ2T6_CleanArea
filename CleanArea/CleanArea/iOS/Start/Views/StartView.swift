@@ -26,8 +26,7 @@ struct StartView: View {
                             
                             Spacer()
                     }
-                    .frame(width: 300)
-                    .padding()
+                    .frame(maxWidth: .infinity)
                     .transition(
                         .asymmetric(
                             insertion: .opacity.animation(.easeInOut),
@@ -36,10 +35,19 @@ struct StartView: View {
                     )
                 }
                 
+                Spacer()
                 
-                StartLocationField( type: .residence,
-                                    width: 300)
-                                .environmentObject(vm)
+                if !isKeyboardViewUp {
+                    StartLocationField( type: .residence,
+                                        width: 300)
+                                    .environmentObject(vm)
+                                    .transition(
+                                        .asymmetric(
+                                            insertion: .opacity.animation(.easeInOut),
+                                            removal: .opacity.animation(.easeInOut)
+                                         )
+                                    )
+                }
                 StartTextField(text: $vm.employmentStatus,
                                type: .employmentStatus,
                                width: 300)
@@ -48,6 +56,7 @@ struct StartView: View {
                                type: .educationLevel,
                                width: 300)
                                 .environmentObject(vm)
+                
                 StartTextField(text: $vm.age,
                                type: .age,
                                width: 300)
@@ -85,6 +94,8 @@ struct StartView: View {
                                                 
                 Spacer()
             }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 20)
             .onTapGesture {
                 UIApplication.shared.closeKeyboard()
             }

@@ -24,7 +24,7 @@ struct StartTextField: View {
                     .padding(.top, 10)
                 Spacer()
             }
-            .frame(width: CGFloat(width))
+            .frame(maxWidth: .infinity)
 
             if type.isSelectable {
                 SelectBox(text: $text, type: type, width: width)
@@ -50,8 +50,8 @@ extension TextField {
         self
             .padding()
             .bold()
-            .frame(width: CGFloat(width))
-            .frame(height: 45)
+            .frame(maxWidth: .infinity)
+            .frame(maxHeight: 50)
             .background(Color.gray.opacity(0.3))
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .keyboardType(keyboardType ?? .default)
@@ -92,7 +92,8 @@ struct SelectBox: View {
                 Image(systemName: "chevron.down")
             }
             .padding()
-            .frame(width: CGFloat(width), height: 45)
+            .frame(maxWidth: .infinity)
+            .frame(maxHeight: 50)
             .foregroundColor(.gray)
             .background(Color.gray.opacity(0.3))
             .clipShape(RoundedRectangle(cornerRadius: 10))
