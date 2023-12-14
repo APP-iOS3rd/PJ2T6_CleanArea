@@ -52,6 +52,7 @@
 		73F35DB22B2AB65700080D6F /* CleanStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DB12B2AB65700080D6F /* CleanStartView.swift */; };
 		73F35DB42B2AB9C500080D6F /* EmploymentSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DB32B2AB9C500080D6F /* EmploymentSelectView.swift */; };
 		73F35DB62B2AC8BC00080D6F /* EducationSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DB52B2AC8BC00080D6F /* EducationSelectView.swift */; };
+		73F35DB82B2ACB0E00080D6F /* AgeInterestedSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73F35DB72B2ACB0E00080D6F /* AgeInterestedSelectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +123,7 @@
 		73F35DB12B2AB65700080D6F /* CleanStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanStartView.swift; sourceTree = "<group>"; };
 		73F35DB32B2AB9C500080D6F /* EmploymentSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmploymentSelectView.swift; sourceTree = "<group>"; };
 		73F35DB52B2AC8BC00080D6F /* EducationSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationSelectView.swift; sourceTree = "<group>"; };
+		73F35DB72B2ACB0E00080D6F /* AgeInterestedSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeInterestedSelectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,6 +256,7 @@
 				73F35DAB2B2A9D3400080D6F /* LocationSelectView.swift */,
 				73F35DB32B2AB9C500080D6F /* EmploymentSelectView.swift */,
 				73F35DB52B2AC8BC00080D6F /* EducationSelectView.swift */,
+				73F35DB72B2ACB0E00080D6F /* AgeInterestedSelectView.swift */,
 				73F35DAD2B2A9D8600080D6F /* StartCellView.swift */,
 				73F35DAF2B2AA0AB00080D6F /* TypingAnimationView.swift */,
 			);
@@ -478,6 +481,7 @@
 				734E982A2B216221002EC806 /* ContentView.swift in Sources */,
 				5AC3EF5A2B2541F7001BB1F5 /* LocationPicker.swift in Sources */,
 				5AC3EF562B2541F7001BB1F5 /* APIFilter.swift in Sources */,
+				73F35DB82B2ACB0E00080D6F /* AgeInterestedSelectView.swift in Sources */,
 				5AC3EF5D2B2541F7001BB1F5 /* StartTextField.swift in Sources */,
 				1D36306C2B2164F60075939D /* RecommandDetailView.swift in Sources */,
 				1D3630702B2164F60075939D /* MainView.swift in Sources */,

@@ -11,6 +11,7 @@ struct EducationSelectView: View {
     @EnvironmentObject var vm: StartVM
     
     @Binding var isHiddenEducation: Bool
+    @Binding var isHiddenAge: Bool
     
     @State private var isHidden: Bool = true
     @State private var selectIndex: Int = 0
@@ -30,7 +31,10 @@ struct EducationSelectView: View {
                 Spacer()
                 
                 Button {
-                    
+                    isHiddenEducation = true
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+                        isHiddenAge = false
+                    }
                 } label: {
                     Image(systemName: "chevron.right")
                         .foregroundStyle(.mainGreen)

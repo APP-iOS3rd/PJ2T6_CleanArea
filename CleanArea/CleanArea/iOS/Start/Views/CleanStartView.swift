@@ -13,6 +13,7 @@ struct CleanStartView: View {
     @State var isHiddenLocation = false
     @State var isHiddenEmployment = true
     @State var isHiddenEducation = true
+    @State var isHiddenAge = true
     
     var body: some View {
         ZStack {
@@ -49,7 +50,12 @@ struct CleanStartView: View {
                     }
                     
                     if !isHiddenEducation {
-                        EducationSelectView(isHiddenEducation: $isHiddenEducation)
+                        EducationSelectView(isHiddenEducation: $isHiddenEducation, isHiddenAge: $isHiddenAge)
+                            .environmentObject(vm)
+                    }
+                    
+                    if !isHiddenAge {
+                        AgeInterestedSelectView(isHiddenAge: $isHiddenAge)
                             .environmentObject(vm)
                     }
                 }
