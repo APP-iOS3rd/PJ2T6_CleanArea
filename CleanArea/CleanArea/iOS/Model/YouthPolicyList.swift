@@ -11,11 +11,9 @@ import SwiftData
 @Model
 class YouthPolicy: Codable, Hashable {
     enum CodingKeys: CodingKey {
-        case id, rnum, bizId, polyBizSecd, polyBizTy, polyBizSjnm, polyItcnCn, sporCn, sporScvl, bizPrdCn, prdRpttSecd, rqutPrdCn, ageInfo, majrRqisCn, empmSttsCn, splzRlmRqisCn, accrRqisCn, prcpCn, aditRscn, prcpLmttTrgtCn, rqutProcCn, pstnPaprCn, jdgnPresCn, rqutUrla, rfcSiteUrla1, rfcSiteUrla2, mngtMson, mngtMrofCherCn, cherCtpcCn, cnsgNmor, tintCherCn, tintCherCtpcCn, etct, polyRlmCd, minAge, maxAge, startDate, endDate, views
+        case bizId, polyBizSecd, polyBizTy, polyBizSjnm, polyItcnCn, sporCn, sporScvl, bizPrdCn, prdRpttSecd, rqutPrdCn, ageInfo, majrRqisCn, empmSttsCn, splzRlmRqisCn, accrRqisCn, prcpCn, aditRscn, prcpLmttTrgtCn, rqutProcCn, pstnPaprCn, jdgnPresCn, rqutUrla, rfcSiteUrla1, rfcSiteUrla2, mngtMson, mngtMrofCherCn, cherCtpcCn, cnsgNmor, tintCherCn, tintCherCtpcCn, etct, polyRlmCd, minAge, maxAge, startDate, endDate, views
     }
-    
-    // var id: UUID? = UUID()
-    var rnum: Int               // row 번호
+        
     var bizId: String           // 정책 ID
     var polyBizSecd: String     // 정책일련번호
     var polyBizTy: String       // 기관 및 지자체 구분
@@ -54,9 +52,8 @@ class YouthPolicy: Codable, Hashable {
     var endDate: String       // 정책종료일
     var views: Int              //조회수
     
-    init(id: UUID? = nil, rnum: Int, bizId: String, polyBizSecd: String, polyBizTy: String, polyBizSjnm: String, polyItcnCn: String, sporCn: String, sporScvl: String, bizPrdCn: String, prdRpttSecd: String, rqutPrdCn: String, ageInfo: String, majrRqisCn: String, empmSttsCn: String, splzRlmRqisCn: String, accrRqisCn: String, prcpCn: String, aditRscn: String, prcpLmttTrgtCn: String, rqutProcCn: String, pstnPaprCn: String, jdgnPresCn: String, rqutUrla: String, rfcSiteUrla1: String, rfcSiteUrla2: String, mngtMson: String, mngtMrofCherCn: String, cherCtpcCn: String, cnsgNmor: String, tintCherCn: String, tintCherCtpcCn: String, etct: String, polyRlmCd: String, minAge: String, maxAge: String, startDate: String, endDate: String, views: Int) {
-        // self.id = id
-        self.rnum = rnum
+    init(bizId: String, polyBizSecd: String, polyBizTy: String, polyBizSjnm: String, polyItcnCn: String, sporCn: String, sporScvl: String, bizPrdCn: String, prdRpttSecd: String, rqutPrdCn: String, ageInfo: String, majrRqisCn: String, empmSttsCn: String, splzRlmRqisCn: String, accrRqisCn: String, prcpCn: String, aditRscn: String, prcpLmttTrgtCn: String, rqutProcCn: String, pstnPaprCn: String, jdgnPresCn: String, rqutUrla: String, rfcSiteUrla1: String, rfcSiteUrla2: String, mngtMson: String, mngtMrofCherCn: String, cherCtpcCn: String, cnsgNmor: String, tintCherCn: String, tintCherCtpcCn: String, etct: String, polyRlmCd: String, minAge: String, maxAge: String, startDate: String, endDate: String, views: Int) {
+                
         self.bizId = bizId
         self.polyBizSecd = polyBizSecd
         self.polyBizTy = polyBizTy
@@ -98,8 +95,6 @@ class YouthPolicy: Codable, Hashable {
     
     public required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        // self.id = try container.decode(UUID?.self, forKey: .id)
-        self.rnum = try container.decode(Int.self, forKey: .rnum)
         self.bizId = try container.decode(String.self, forKey: .bizId)
         self.polyBizSecd = try container.decode(String.self, forKey: .polyBizSecd)
         self.polyBizTy = try container.decode(String.self, forKey: .polyBizTy)
@@ -141,8 +136,6 @@ class YouthPolicy: Codable, Hashable {
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        // try container.encode(id, forKey: .id)
-        try container.encode(rnum, forKey: .rnum)
         try container.encode(bizId, forKey: .bizId)
         try container.encode(polyBizSecd, forKey: .polyBizSecd)
         try container.encode(polyBizTy, forKey: .polyBizTy)
