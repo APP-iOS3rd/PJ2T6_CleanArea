@@ -29,6 +29,7 @@ struct DetailView: View {
                 StarBtn(policy: youthPolicy)
             }
             .padding(.top, 20)
+            .padding(.horizontal, 20)
             
             HStack {
                 Text(youthPolicy.polyBizSjnm)
@@ -50,13 +51,13 @@ struct DetailView: View {
                  )
             }
             .padding(.top, 30)
+            .padding(.horizontal, 20)
             
             DetailScrollView(youthPolicy: youthPolicy)
         }
         .onAppear{
             apiViewModel.incrementViews(for: youthPolicy.bizId)
         }
-        .padding(.horizontal, 20)
         .navigationBarBackButtonHidden()
     }
 }
