@@ -15,9 +15,9 @@ struct RecommandView: View {
     init(apiViewModel: APIViewModel, residence: City?) {
         self.apiViewModel = apiViewModel
         self.residence = residence
-        self._vm = StateObject(wrappedValue: RecommandVM(policy: apiViewModel.policy!))
+        self._vm = StateObject(wrappedValue: RecommandVM(apiViewModel: apiViewModel))
     }
-    
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -32,9 +32,6 @@ struct RecommandView: View {
                         .padding(.bottom, 22)
                         .padding(.horizontal, 20)
                     }
-                }
-                .onAppear {
-                    vm.updateModels()
                 }
                 Spacer()
                 
