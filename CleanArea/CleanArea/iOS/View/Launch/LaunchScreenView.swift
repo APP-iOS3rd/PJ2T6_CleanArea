@@ -17,7 +17,7 @@ struct LaunchScreenView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack {
-                Image("청정구역")
+                Image("CleanArea")
                     .resizable()
                     .scaledToFit()
                     .frame(width: geometry.size.width * 0.5)
