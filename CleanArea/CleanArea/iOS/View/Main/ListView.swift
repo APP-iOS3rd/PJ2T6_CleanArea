@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ListView: View {
     var youthPolicies: [YouthPolicy]
@@ -15,6 +16,7 @@ struct ListView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject  var vm: APIViewModel
     @EnvironmentObject var likedStatusManager: LikedStatusManager
+    @Query var policys : [YouthPolicy]
     
     
     var body: some View {
@@ -62,7 +64,7 @@ extension ListView {
               // 조회수가 높은 순으로 정렬
               return youthPolicies.sorted { $0.views > $1.views }
           case .like:
-              return youthPolicies.filter { likedStatusManager.getLikedStatus(for: $0.bizId) }
+              return policys
           case .recommand:
               return youthPolicies.filter { policy in
                   searchText.isEmpty || policy.polyBizSjnm.localizedCaseInsensitiveContains(searchText)

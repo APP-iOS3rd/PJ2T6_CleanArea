@@ -14,7 +14,7 @@ class YouthPolicy: Codable, Hashable {
         case bizId, polyBizSecd, polyBizTy, polyBizSjnm, polyItcnCn, sporCn, sporScvl, bizPrdCn, prdRpttSecd, rqutPrdCn, ageInfo, majrRqisCn, empmSttsCn, splzRlmRqisCn, accrRqisCn, prcpCn, aditRscn, prcpLmttTrgtCn, rqutProcCn, pstnPaprCn, jdgnPresCn, rqutUrla, rfcSiteUrla1, rfcSiteUrla2, mngtMson, mngtMrofCherCn, cherCtpcCn, cnsgNmor, tintCherCn, tintCherCtpcCn, etct, polyRlmCd, minAge, maxAge, startDate, endDate, views
     }
         
-    var bizId: String           // 정책 ID
+    @Attribute(.unique) var bizId: String           // 정책 ID
     var polyBizSecd: String     // 정책일련번호
     var polyBizTy: String       // 기관 및 지자체 구분
     var polyBizSjnm: String     // 정책명
@@ -173,5 +173,15 @@ class YouthPolicy: Codable, Hashable {
         try container.encode(startDate, forKey: .startDate)
         try container.encode(endDate, forKey: .endDate)
         try container.encode(views, forKey: .views)
+    }
+}
+
+extension YouthPolicy {
+    static func == (lhs: YouthPolicy, rhs: YouthPolicy) -> Bool {
+        return lhs.bizId == rhs.bizId
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(bizId)
     }
 }
