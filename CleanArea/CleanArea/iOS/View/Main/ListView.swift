@@ -14,6 +14,7 @@ struct ListView: View {
     @State private var searchText = ""
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject  var vm: APIViewModel
+    @EnvironmentObject var likedStatusManager: LikedStatusManager
     
     
     var body: some View {
@@ -61,8 +62,7 @@ extension ListView {
               // 조회수가 높은 순으로 정렬
               return youthPolicies.sorted { $0.views > $1.views }
           case .like:
-              // 'like' 탭에 대한 로직 (원래 로직을 유지)
-              return youthPolicies
+              return youthPolicies.filter { likedStatusManager.getLikedStatus(for: $0.bizId) }
           case .recommand:
               return youthPolicies.filter { policy in
                   searchText.isEmpty || policy.polyBizSjnm.localizedCaseInsensitiveContains(searchText)
