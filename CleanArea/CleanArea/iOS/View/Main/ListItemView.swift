@@ -21,6 +21,7 @@ struct ListItemView: View {
                 
                 Text(policy.polyBizSjnm)
                     .font(.pretendardRegular20)
+                    .foregroundStyle(.black)
                 
                 HStack {
                     ZStack {

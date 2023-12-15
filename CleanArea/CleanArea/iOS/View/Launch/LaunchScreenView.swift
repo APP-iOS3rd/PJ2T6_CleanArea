@@ -25,15 +25,15 @@ struct LaunchScreenView: View {
                     .offset(x: xOffset, y: 0)
                     .onAppear {
                         xOffset = -geometry.size.width
-                        withAnimation(Animation.easeInOut(duration: 2.5)) {
+                        withAnimation(Animation.easeInOut(duration: 1)) {
                             animateImage = true
                             rotationAngle = 360
                             xOffset = 0
                         }
-                        withAnimation(Animation.easeInOut(duration: 1.0).delay(2.5)) {
+                        withAnimation(Animation.easeInOut(duration: 1.0).delay(0.2)) {
                             yOffset -= 30
                         }
-                        withAnimation(Animation.easeInOut(duration: 1.0).delay(3.5)) {
+                        withAnimation(Animation.easeInOut(duration: 0.8).delay(1.2)) {
                             yOffset = 0
                             showText = true
                         }

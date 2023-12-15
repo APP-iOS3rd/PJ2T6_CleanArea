@@ -15,12 +15,15 @@ struct LoadingCircleView: View {
 
     var body: some View {
         ZStack {
+            Color.isModal.edgesIgnoringSafeArea(.all)
+            
+            
             ForEach(0..<8) { index in
                 createRectangle(index: index)
             }
+            .rotationEffect(.degrees(rotateEntire ? 0 : 180))
+            .animation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true), value: rotateEntire)
         }
-        .rotationEffect(.degrees(rotateEntire ? 0 : 180))
-        .animation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true), value: rotateEntire)
         .onAppear {
             rotateEntire.toggle()
         }

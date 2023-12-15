@@ -48,7 +48,7 @@ struct SelectCityBox: View {
             }
             .padding()            
             .foregroundColor(.gray)
-            .background(Color.gray.opacity(0.3))
+            .background(Color(uiColor: .systemGray6))
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
         .frame(maxWidth: .infinity)
