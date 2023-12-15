@@ -16,7 +16,13 @@ struct StartView: View {
         NavigationStack {
             VStack {
                 if !isKeyboardViewUp {
-                    HStack {
+                    HStack(spacing: 5) {
+                        Image("CleanArea")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 60, height: 60)
+                            .padding(.leading, -6)
+                        
                         Text("청정구역")
                             .font(.pretendardBold30)
                             .foregroundStyle(.mainGreen)

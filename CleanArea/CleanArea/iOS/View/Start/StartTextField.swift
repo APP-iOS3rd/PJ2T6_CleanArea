@@ -52,7 +52,7 @@ extension TextField {
             .font(.pretendardRegular20)
             .frame(maxWidth: .infinity)
             .frame(maxHeight: 50)
-            .background(Color.gray.opacity(0.3))
+            .background(Color(uiColor: .systemGray6))
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .keyboardType(keyboardType ?? .default)
     }
@@ -95,7 +95,7 @@ struct SelectBox: View {
             .frame(maxWidth: .infinity)
             .frame(maxHeight: 50)
             .foregroundColor(.gray)
-            .background(Color.gray.opacity(0.3))
+            .background(Color(uiColor: .systemGray6))
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
     }

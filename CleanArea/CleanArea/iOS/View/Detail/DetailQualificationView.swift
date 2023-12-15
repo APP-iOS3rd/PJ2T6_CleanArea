@@ -13,7 +13,7 @@ struct DetailQualificationView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
-                Text("🪪 신청 자격")
+                Text("🙋 신청 자격")
                     .font(.pretendardSemiBold20)
                     .foregroundStyle(.mainGreen)
                 Spacer()

@@ -26,6 +26,7 @@ struct DetailSemiTitleModifier: ViewModifier {
         content
             .multilineTextAlignment(.leading)
             .font(.pretendardSemiBold17)
+            .foregroundStyle(.textDark)
     }
 }
 
