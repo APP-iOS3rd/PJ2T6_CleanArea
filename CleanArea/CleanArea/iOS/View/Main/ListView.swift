@@ -5,8 +5,8 @@
 //  Created by 최동호 on 12/6/23.
 //
 
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct ListView: View {
     @EnvironmentObject  var vm: APIViewModel
@@ -15,6 +15,8 @@ struct ListView: View {
     
     @State private var searchText = ""
     
+    @Query var policys : [YouthPolicy]
+
     var youthPolicies: [YouthPolicy]
     var tabType: TabType
     var residence: City?
