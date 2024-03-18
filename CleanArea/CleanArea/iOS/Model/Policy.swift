@@ -15,7 +15,6 @@ enum Field: String {
     case participation = "023050"
 }
 
-
 class Policy: ObservableObject {
     @Published var job: [YouthPolicy] = []
     @Published var residence: [YouthPolicy] = []
@@ -35,4 +34,3 @@ class Policy: ObservableObject {
         return policies.filter { $0.polyRlmCd == code }
     }
 }
-

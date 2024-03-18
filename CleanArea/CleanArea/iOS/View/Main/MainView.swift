@@ -9,9 +9,11 @@ import SwiftUI
 import SwiftData
 
 struct MainView: View {
-    @Query var youthPolicies: [YouthPolicy]
-    @State private var selectedTab = "Home"
     @StateObject var vm = APIViewModel()
+    
+    @Query var youthPolicies: [YouthPolicy]
+    
+    @State private var selectedTab = "Home"
     
     var body: some View {
         ZStack {
@@ -48,8 +50,4 @@ struct MainView: View {
             vm.search()
         }
     }
-}
-
-#Preview {
-    MainView()
 }

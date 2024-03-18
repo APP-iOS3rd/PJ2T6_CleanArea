@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StartLocationField: View {
     @EnvironmentObject var vm: APIViewModel
+    
     var type: TextFieldType
     var width: Int
     
@@ -63,7 +64,3 @@ struct SelectCityBox: View {
         }
     }
 }
-
-//#Preview {
-//    StartLocationField()
-//}

@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct LoadingCircleView: View {
     @State private var circleRotates = [Bool](repeating: false, count: 8)
     @State private var rotateEntire = false
@@ -16,7 +14,6 @@ struct LoadingCircleView: View {
     var body: some View {
         ZStack {
             Color.isModal.edgesIgnoringSafeArea(.all)
-            
             
             ForEach(0..<8) { index in
                 createRectangle(index: index)
@@ -54,6 +51,3 @@ struct LoadingCircleView: View {
     }
 }
 
-#Preview {
-    LoadingCircleView()
-}

@@ -9,16 +9,16 @@ import Foundation
 import SwiftUI
 
 struct ListItemView: View {
-    var policy: YouthPolicy
     @State private var isLike: Bool = false
     @State private var currentProgress: String = "진행중"
+    
+    var policy: YouthPolicy
     
     var body: some View {
         let dDayText = calculateDay(from: policy.bizPrdCn)
         
         HStack {
             VStack(alignment: .leading) {
-                
                 Text(policy.polyBizSjnm)
                     .font(.pretendardRegular20)
                     .foregroundStyle(.black)

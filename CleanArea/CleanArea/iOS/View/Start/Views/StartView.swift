@@ -9,6 +9,7 @@ import SwiftUI
 
 struct StartView: View {
     @StateObject var vm = APIViewModel()
+    
     @State private var isSearchButtonTapped = false
     @State var isKeyboardViewUp = false
 
@@ -114,10 +115,3 @@ extension UIApplication {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
-
-
-#Preview {
-    StartView()
-}
-
-

@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var apiViewModel: APIViewModel
+    
     var cityImage: City?                            //시 이미지
     var youthPolicy: YouthPolicy                    //정책 내용
     

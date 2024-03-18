@@ -26,6 +26,4 @@ class RecommandVM: ObservableObject {
             RecommandCellModel(name: "참여,권리", count: policy.participation.count, destinationKey: "참여,권리", policies: policy.participation)
         ]
     }
-
-
 }

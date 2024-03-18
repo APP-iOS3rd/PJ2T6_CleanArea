@@ -7,9 +7,12 @@
 import SwiftUI
 
 struct RecommandView: View {
-    @ObservedObject var apiViewModel: APIViewModel
-    @StateObject var vm: RecommandVM
     @Environment(\.presentationMode) var presentationMode
+    
+    @StateObject var vm: RecommandVM
+    
+    @ObservedObject var apiViewModel: APIViewModel
+
     var residence: City?
     
     init(apiViewModel: APIViewModel, residence: City?) {

@@ -5,11 +5,11 @@
 //  Created by 최동호 on 12/5/23.
 //
 
-import Foundation
 import SwiftUI
 
 struct StartTextField: View {
     @EnvironmentObject var vm: APIViewModel
+    
     @Binding var text: String
     
     var type: TextFieldType

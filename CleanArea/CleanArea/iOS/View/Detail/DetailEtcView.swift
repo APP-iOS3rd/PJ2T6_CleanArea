@@ -91,8 +91,3 @@ struct DetailEtcView: View {
         }
     }
 }
-/*
- #Preview {
- DetailEtcView()
- }
- */

@@ -9,12 +9,12 @@ import SwiftUI
 
 struct LocationPicker: View {
     @State private var selectedCity: City = .가평군
+    
     @Binding var showModal: Bool
     @Binding var city: City?
     
     var body: some View {
         VStack {
-
             Picker("도시 선택", selection: $selectedCity) {
                 ForEach(City.allCases, id: \.self) { city in
                     Text(city.getString()).tag(city)
@@ -29,11 +29,6 @@ struct LocationPicker: View {
             } label: {
                 Text("선택완료")
             }
-            
         }
     }
 }
-
-//#Preview {
-//    LocationPicker(showModal: showModal)
-//}

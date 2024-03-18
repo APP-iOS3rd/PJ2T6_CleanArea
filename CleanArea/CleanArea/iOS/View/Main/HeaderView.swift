@@ -28,4 +28,3 @@ struct HeaderView: View {
         .padding(.horizontal)
     }
 }
-

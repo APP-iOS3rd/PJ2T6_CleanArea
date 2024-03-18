@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ListView: View {
+    @EnvironmentObject  var vm: APIViewModel
+    @EnvironmentObject var likedStatusManager: LikedStatusManager
+    @Environment(\.presentationMode) var presentationMode
+    
+    @State private var searchText = ""
+    
     var youthPolicies: [YouthPolicy]
     var tabType: TabType
     var residence: City?
-    @State private var searchText = ""
-    @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject  var vm: APIViewModel
-    @EnvironmentObject var likedStatusManager: LikedStatusManager
-    
     
     var body: some View {
         NavigationStack {

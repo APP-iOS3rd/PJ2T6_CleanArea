@@ -6,10 +6,11 @@
 //
 import SwiftUI
 struct RecommandDetailView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     var modelName: String
     var policies: [YouthPolicy]
     var residence: City?
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationStack {
