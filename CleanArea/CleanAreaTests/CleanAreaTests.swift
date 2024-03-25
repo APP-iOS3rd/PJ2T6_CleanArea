@@ -5,6 +5,8 @@
 //  Created by 노주영 on 2023/12/07.
 //
 
+import ComposableArchitecture
+
 import XCTest
 @testable import CleanArea
 

@@ -5,18 +5,17 @@
 //  Created by 이민호 on 12/7/23.
 //
 
+import ComposableArchitecture
+
 import SwiftUI
 
 struct StartLocationField: View {
-    @EnvironmentObject var vm: APIViewModel
-    
-    var type: TextFieldType
-    var width: Int
+    @Bindable var store: StoreOf<LocationFeature>
     
     var body: some View {
         VStack {
             HStack {
-                Text(type.title)
+                Text(store.type.title)
                     .font(.pretendardRegular20)
                     .foregroundStyle(.mainGreen)
                     .padding(.top, 10)
@@ -24,26 +23,21 @@ struct StartLocationField: View {
             }
             .frame(maxWidth: .infinity)
             
-            SelectCityBox(city: $vm.residence, type: type, width: width)
+            SelectCityBox(store: store)
         }
     }
 }
 
 struct SelectCityBox: View {
-    @EnvironmentObject var vm: APIViewModel
-    @State private var showModal = false
-    @Binding var city: City?
-    
-    var type: TextFieldType
-    var width: Int
-    
+    @Bindable var store: StoreOf<LocationFeature>
+
     var body: some View {
         Button {
-            self.showModal = true
+            store.send(.toggleModal)
         } label: {
             HStack {
-                Text(city?.getString() ?? "주거지를 선택해 주세요")
-                    .foregroundColor((city == nil) ? .gray : .black)
+                Text(store.city?.getString() ?? "주거지를 선택해 주세요")
+                    .foregroundColor((store.city == nil) ? .gray : .black)
                 Spacer()
                 Image(systemName: "chevron.down")
             }
@@ -54,8 +48,8 @@ struct SelectCityBox: View {
         }
         .frame(maxWidth: .infinity)
         .frame(maxHeight: 50)
-        .sheet(isPresented: self.$showModal) {
-            LocationPicker(showModal: $showModal, city: $city)
+        .sheet(isPresented: $store.showModal.sending(\.showModal)) {
+            LocationPicker(store: store)
                 .presentationDetents([
                     .fraction(0.5),
                     .medium

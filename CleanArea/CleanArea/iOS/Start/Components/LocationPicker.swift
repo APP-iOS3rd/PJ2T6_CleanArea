@@ -5,17 +5,16 @@
 //  Created by 이민호 on 12/7/23.
 //
 
+import ComposableArchitecture
+
 import SwiftUI
 
 struct LocationPicker: View {
-    @State private var selectedCity: City = .가평군
-    
-    @Binding var showModal: Bool
-    @Binding var city: City?
-    
+    @Bindable var store: StoreOf<LocationFeature>
+
     var body: some View {
         VStack {
-            Picker("도시 선택", selection: $selectedCity) {
+            Picker("도시 선택", selection: $store.selectedCity.sending(\.selectCity)) {
                 ForEach(City.allCases, id: \.self) { city in
                     Text(city.getString()).tag(city)
                 }
@@ -24,8 +23,7 @@ struct LocationPicker: View {
             .padding()
             
             Button {
-                showModal = false
-                city = selectedCity
+                store.send(.setCity)
             } label: {
                 Text("선택완료")
             }

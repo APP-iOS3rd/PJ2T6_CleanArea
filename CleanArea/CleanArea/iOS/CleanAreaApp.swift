@@ -4,6 +4,7 @@
 //
 //  Created by 노주영 on 2023/12/07.
 //
+import ComposableArchitecture
 
 import SwiftUI
 import SwiftData
@@ -11,9 +12,16 @@ import SwiftData
 @main
 struct CleanAreaApp: App {
     
+    static let store = Store(initialState: StartFeature.State()) {
+        StartFeature()
+            ._printChanges()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(
+                store: CleanAreaApp.store
+            )
                 .environmentObject(LikedStatusManager())
                 .environmentObject(APIViewModel())
         }

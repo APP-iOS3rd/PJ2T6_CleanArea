@@ -5,9 +5,13 @@
 //  Created by 노주영 on 2023/12/07.
 //
 
+import ComposableArchitecture
+
 import SwiftUI
 
 struct ContentView: View {
+    var store: StoreOf<StartFeature>
+
     @State private var showLaunchScreen = true
 
     var body: some View {
@@ -23,12 +27,8 @@ struct ContentView: View {
                         }
                     }
             } else {
-                StartView()
+                StartView(store: store)
             }
         }
     }
-}
-
-#Preview {
-    ContentView()
 }

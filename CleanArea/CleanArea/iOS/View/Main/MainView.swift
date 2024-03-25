@@ -5,8 +5,29 @@
 //  Created by 최동호 on 12/6/23.
 //
 
+import ComposableArchitecture
 import SwiftUI
 import SwiftData
+
+@Reducer
+struct MainFeature {
+    @ObservableState
+    struct State {
+        var result: [YouthPolicy]?
+        var policy: Policy?
+        
+    }
+    
+    enum Action {
+        
+    }
+    
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            return .none
+        }
+    }
+}
 
 struct MainView: View {
     @StateObject var vm = APIViewModel()
