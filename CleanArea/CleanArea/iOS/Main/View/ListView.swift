@@ -60,7 +60,11 @@ struct ListView: View {
                 List {
                     ForEach(filteredPolicies, id: \.self) { policy in
                         ZStack(alignment: .leading) {
-                            ListItemView(policy: policy)
+                            ListItemView(
+                                store: Store(initialState: ListItemFeature.State(policy: policy)) {
+                                    ListItemFeature()
+                                }
+                            )
                             NavigationLink(destination: DetailView(cityImage: residence, youthPolicy: policy)) {
                                 EmptyView()
                             }

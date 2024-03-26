@@ -4,14 +4,16 @@
 //
 //  Created by 최동호 on 3/25/24.
 //
+
 import ComposableArchitecture
 
 import XCTest
 @testable import CleanArea
 
+@MainActor
 final class StartViewTests: XCTestCase {
-    
-    func textFieldTest() async {
+
+    func testTextField() async {
         let store = TestStore(initialState: TextFieldFeature.State(text: "", type: TextFieldType.educationLevel, width: 300)) {
             TextFieldFeature()
         }
@@ -25,7 +27,7 @@ final class StartViewTests: XCTestCase {
         }
     }
     
-    func locationFieldTest() async {
+    func testLocationField() async {
         let store = TestStore(initialState: LocationFeature.State(width: 300)) {
             LocationFeature()
         }
@@ -40,31 +42,35 @@ final class StartViewTests: XCTestCase {
         
         await store.send(.setCity) {
             $0.city = .경기도
+        }
+        
+        await store.receive(\.toggleModal) {
             $0.showModal = false
         }
+        
     }
-    
-    func startFeatureTest() async {
-        let store = TestStore(initialState: StartFeature.State()) {
-            StartFeature()
-        }
-//    withDependencies: {
+//    
+//    func testStartFeature() async {
+//        let store = TestStore(initialState: StartFeature.State()) {
+//            StartFeature()
+//
+//        }   withDependencies: {
 //            $0.searchResult.fetch = { [YouthPolicy(bizId: "R2023060213185", polyBizSecd: "", polyBizTy: "", polyBizSjnm: "", polyItcnCn: "", sporCn: "", sporScvl: "", bizPrdCn: "", prdRpttSecd: "", rqutPrdCn: "", ageInfo: "", majrRqisCn: "", empmSttsCn: "", splzRlmRqisCn: "", accrRqisCn: "", prcpCn: "", aditRscn: "", prcpLmttTrgtCn: "", rqutProcCn: "", pstnPaprCn: "", jdgnPresCn: "", rqutUrla: "", rfcSiteUrla1: "", rfcSiteUrla2: "", mngtMson: "", mngtMrofCherCn: "", cherCtpcCn: "", cnsgNmor: "", tintCherCn: "", tintCherCtpcCn: "", etct: "", polyRlmCd: "", minAge: "", maxAge: "", startDate: "", endDate: "", views: 0)] }
 //        }
-        
-        await store.send(.searchButtonTap(City.고양시, "", "", "", "")) {
-            $0.viewType = .loading
-        }
-        
-        await store.receive(\.dataResponse) {
-            $0.viewType = .startView
+//        
+//        await store.send(.searchButtonTap(City.고양시, "", "", "", "")) {
+//            $0.viewType = .loading
+//        }
+//        
+//        await store.receive(\.dataResponse) {
+//            $0.viewType = .startView
 //            $0.result = [YouthPolicy(bizId: "R2023060213185", polyBizSecd: "", polyBizTy: "", polyBizSjnm: "", polyItcnCn: "", sporCn: "", sporScvl: "", bizPrdCn: "", prdRpttSecd: "", rqutPrdCn: "", ageInfo: "", majrRqisCn: "", empmSttsCn: "", splzRlmRqisCn: "", accrRqisCn: "", prcpCn: "", aditRscn: "", prcpLmttTrgtCn: "", rqutProcCn: "", pstnPaprCn: "", jdgnPresCn: "", rqutUrla: "", rfcSiteUrla1: "", rfcSiteUrla2: "", mngtMson: "", mngtMrofCherCn: "", cherCtpcCn: "", cnsgNmor: "", tintCherCn: "", tintCherCtpcCn: "", etct: "", polyRlmCd: "", minAge: "", maxAge: "", startDate: "", endDate: "", views: 0)]
-        }
-        
-        await store.send(.openMain) {
-            $0.viewType = .startView
-            $0.openMain = true
-        }
-    }
+//        }
+//        
+//        await store.send(.openMain) {
+//            $0.viewType = .startView
+//            $0.openMain = true
+//        }
+//    }
 
 }

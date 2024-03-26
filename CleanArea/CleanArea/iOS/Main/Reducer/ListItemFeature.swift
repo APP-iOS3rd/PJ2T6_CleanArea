@@ -1,24 +1,23 @@
 //
-//  ListItemView.swift
+//  ListItemFeature.swift
 //  CleanArea
 //
-//  Created by 최동호 on 12/11/23.
+//  Created by 최동호 on 3/26/24.
 //
 
 import ComposableArchitecture
 
 import SwiftUI
 
-
 @Reducer
 struct ListItemFeature {
     @ObservableState
     struct State: Equatable {
         var policy: YouthPolicy
-        var currentProgress: String = ""
+        var currentProgress: String = "진행중"
         var category: String = ""
         var dDayText: String = ""
-        var progressColor: Color
+        var progressColor: Color = .proceed
     }
     
     enum Action {
@@ -89,10 +88,9 @@ struct ListItemFeature {
                         let nextMonthDate = Calendar.current.date(byAdding: .month, value: 1, to: endMonthDate)!
                         return .run { send in
                             await send(.setDDayText(nextMonthDate))
-                        }           
+                        }
                     }
                 }
-                state.currentProgress = "진행중"
                 return .none
             
             case let .convertCodeToCategory(code):
@@ -129,59 +127,3 @@ struct ListItemFeature {
         }
     }
 }
-
-struct ListItemView: View {
-
-    @Bindable var store: StoreOf<ListItemFeature>
-    
-    var body: some View {
-        HStack {
-            VStack(alignment: .leading) {
-                Text(store.policy.polyBizSjnm)
-                    .font(.pretendardRegular20)
-                    .foregroundStyle(.black)
-                
-                HStack {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(store.progressColor)
-                            .frame(width: 70, height: 25)
-                        
-                        Text(store.currentProgress)
-                            .font(.system(size: 16))
-                            .bold()
-                            .foregroundStyle(.white)
-                    }
-                    if store.dDayText != "마감" && store.dDayText != "진행중" {
-                        HStack{
-                            Text(store.dDayText)
-                                .font(.pretendardRegular13)
-                                .foregroundColor(.black)
-                            Spacer()
-                        }
-                    }
-                }
-            }
-            Spacer()
-            
-            VStack {
-                StarBtn(policy: store.policy)
-                    .padding(2)
-                
-                Text(store.category)
-                    .font(.system(size: 15))
-                    .foregroundColor(.gray)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
-                    .frame(width: UIScreen.main.bounds.width * 0.2)
-            }
-        }
-        .padding()
-        .background(Color.backgroundGreen)
-        .cornerRadius(10)
-        .onAppear{
-            store.send(.appearSet(store.policy))
-        }
-    }
-}
-
