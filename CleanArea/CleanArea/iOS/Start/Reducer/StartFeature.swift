@@ -101,7 +101,7 @@ struct StartFeature {
                 state.viewType = .loading
                 let residence = residence?.rawValue ?? ""
                 
-                var urlComponents = URLComponents(string: "http://120.50.73.116:3000/youth-policies")
+                var urlComponents = URLComponents(string: requestIP)
                 urlComponents?.queryItems = [
                     URLQueryItem(name: "residence", value: residence),
                     URLQueryItem(name: "employmentStatus", value: employmentStatus),

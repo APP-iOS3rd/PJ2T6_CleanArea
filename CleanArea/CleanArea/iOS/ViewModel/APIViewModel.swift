@@ -29,7 +29,7 @@ class APIViewModel: ObservableObject {
         let age = self.age
         let policyName = self.policyName
         
-        var urlComponents = URLComponents(string: "http://120.50.73.116:3000/youth-policies")
+        var urlComponents = URLComponents(string: requestIP)
         urlComponents?.queryItems = [
             URLQueryItem(name: "residence", value: residence),
             URLQueryItem(name: "employmentStatus", value: employmentStatus),
@@ -75,7 +75,7 @@ class APIViewModel: ObservableObject {
     }
     
     func incrementViews(for policyId: String) {
-        guard let url = URL(string: "http://120.50.73.116:3000/youth-policies/views") else { return }
+        guard let url = URL(string: requestIP) else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
