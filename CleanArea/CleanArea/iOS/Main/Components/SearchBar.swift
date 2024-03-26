@@ -4,16 +4,42 @@
 //
 //  Created by 최동호 on 12/11/23.
 //
+import ComposableArchitecture
 
-import Foundation
 import SwiftUI
 
+@Reducer
+struct SearchFeature {
+    @ObservableState
+    struct State: Equatable {
+        var text: String = ""
+    }
+    
+    enum Action {
+        case clearTextField
+        case setText(String)
+    }
+    
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .clearTextField:
+                state.text = ""
+                return .none
+            case let .setText(text):
+                state.text = text
+                return .none
+            }
+        }
+    }
+}
+
 struct SearchBar: View {
-    @Binding var text: String
+    @Bindable var store: StoreOf<SearchFeature>
     
     var body: some View {
         HStack {
-            TextField("정책이름을 검색해 주세요", text: $text)
+            TextField("정책이름을 검색해 주세요", text: $store.text.sending(\.setText))
                 .padding(7)
                 .padding(.horizontal, 25)
                 .background(Color(.systemGray6))
@@ -25,9 +51,9 @@ struct SearchBar: View {
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 8)
                         
-                        if text != "" {
+                        if store.text != "" {
                             Button(action: {
-                                self.text = ""
+                                store.send(.clearTextField)
                                 hideKeyboard()
                             }) {
                                 Image(systemName: "multiply.circle.fill")

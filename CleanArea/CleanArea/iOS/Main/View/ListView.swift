@@ -5,11 +5,31 @@
 //  Created by 최동호 on 12/6/23.
 //
 
+import ComposableArchitecture
+
 import SwiftData
 import SwiftUI
 
+@Reducer
+struct ListFeature {
+    @ObservableState
+    struct State: Equatable {
+        
+    }
+    
+    enum Action {
+        
+    }
+    
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            return .none
+        }
+    }
+}
+
+
 struct ListView: View {
-    @EnvironmentObject  var vm: APIViewModel
     @EnvironmentObject var likedStatusManager: LikedStatusManager
     @Environment(\.presentationMode) var presentationMode
     
@@ -29,7 +49,11 @@ struct ListView: View {
                     HeaderView(title: tabType == .hot ? "인기정책" : "즐겨찾기", action:{ self.presentationMode.wrappedValue.dismiss()})
 
                 case .recommand:
-                    SearchBar(text: $searchText)
+                    SearchBar(
+                        store: Store(initialState: SearchFeature.State()) {
+                            SearchFeature()
+                        }
+                    )
                         .padding(.horizontal)
                 }
 
@@ -47,9 +71,6 @@ struct ListView: View {
                         .listRowInsets(EdgeInsets())
                         .padding(.vertical, 8)
                     }
-                }
-                .onAppear{
-                    vm.search()
                 }
                 .background(Color.clear)
                 .scrollContentBackground(.hidden)

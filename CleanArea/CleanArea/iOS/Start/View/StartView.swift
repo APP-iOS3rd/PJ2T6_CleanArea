@@ -83,7 +83,11 @@ struct StartView: View {
                         
                         .navigationDestination(isPresented: $store.openMain.sending(\.setMain)) {
                             // 이동할 뷰 (현재 임시 뷰 지정)
-                            MainView()
+                            MainView(
+                                store: Store(initialState: MainFeature.State(youthPolicies: store.result)) {
+                                    MainFeature()
+                                }
+                            )
                                 .navigationBarBackButtonHidden(true)
                         }
                         .transition(
@@ -99,7 +103,7 @@ struct StartView: View {
                 .padding(.horizontal, 20)
                 .padding(.vertical, 20)
                 .onTapGesture {
-                    UIApplication.shared.closeKeyboard()
+                    hideKeyboard()
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
@@ -109,13 +113,8 @@ struct StartView: View {
             }
         case .loading:
             LoadingCircleView()
-            
+
         }
     }
 }
 
-extension UIApplication {
-    func closeKeyboard() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}

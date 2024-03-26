@@ -124,7 +124,7 @@
 		5A5CF2BB2B26FA8900667F1F /* Policy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Policy.swift; sourceTree = "<group>"; };
 		5AC3EF4A2B2541F7001BB1F5 /* APIViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIViewModel.swift; sourceTree = "<group>"; };
 		5AC3EF4E2B2541F7001BB1F5 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
-		5AC3EF502B2541F7001BB1F5 /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartView.swift; path = Views/StartView.swift; sourceTree = "<group>"; };
+		5AC3EF502B2541F7001BB1F5 /* StartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
 		5AC3EF512B2541F7001BB1F5 /* LocationPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
 		5AC3EF522B2541F7001BB1F5 /* StartLocationField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartLocationField.swift; sourceTree = "<group>"; };
 		5AC3EF542B2541F7001BB1F5 /* StartTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTextField.swift; sourceTree = "<group>"; };
@@ -181,6 +181,7 @@
 				734E98272B216221002EC806 /* CleanAreaApp.swift */,
 				734E98292B216221002EC806 /* ContentView.swift */,
 				418C63592BB26AE000E9B5B5 /* SecretValue.swift */,
+				1D36305B2B2164F60075939D /* Main */,
 				5AC3EF482B2541F7001BB1F5 /* Start */,
 				417C39412B2AEDFB0031DDC7 /* View */,
 				5AC3EF492B2541F7001BB1F5 /* ViewModel */,
@@ -207,12 +208,9 @@
 		1D36305B2B2164F60075939D /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				1D3630632B2164F60075939D /* MainView.swift */,
-				1D3630622B2164F60075939D /* ListView.swift */,
-				1D06AF972B28929E006E6E35 /* HeaderView.swift */,
-				41E627C02B26BC5E003F893F /* ListItemView.swift */,
-				41E627C22B26BCA6003F893F /* SearchBar.swift */,
-				417683ED2B28172400F00A6D /* LoadingCircleView.swift */,
+				418C635D2BB29F0300E9B5B5 /* Reducer */,
+				418C635C2BB29EFB00E9B5B5 /* Components */,
+				418C635B2BB29EEE00E9B5B5 /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -239,6 +237,8 @@
 		417AD9652BB16A3E00EA9D21 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5AC3EF502B2541F7001BB1F5 /* StartView.swift */,
+				417C393D2B2AD6380031DDC7 /* LaunchScreenView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,12 +302,38 @@
 		417C39412B2AEDFB0031DDC7 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1D36305B2B2164F60075939D /* Main */,
 				1D36305D2B2164F60075939D /* Recommand */,
 				734E98512B2162DE002EC806 /* Detail */,
 				7313276F2B26F03200564388 /* WebSite */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		418C635B2BB29EEE00E9B5B5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1D3630632B2164F60075939D /* MainView.swift */,
+				1D3630622B2164F60075939D /* ListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		418C635C2BB29EFB00E9B5B5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1D06AF972B28929E006E6E35 /* HeaderView.swift */,
+				41E627C22B26BCA6003F893F /* SearchBar.swift */,
+				417683ED2B28172400F00A6D /* LoadingCircleView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		418C635D2BB29F0300E9B5B5 /* Reducer */ = {
+			isa = PBXGroup;
+			children = (
+				41E627C02B26BC5E003F893F /* ListItemView.swift */,
+			);
+			path = Reducer;
 			sourceTree = "<group>";
 		};
 		41FBE2942B21839800D3AD65 /* UIElement */ = {
@@ -324,8 +350,6 @@
 				417AD9692BB16A9E00EA9D21 /* Components */,
 				417AD9662BB16A4600EA9D21 /* Reducer */,
 				417AD9652BB16A3E00EA9D21 /* View */,
-				5AC3EF502B2541F7001BB1F5 /* StartView.swift */,
-				417C393D2B2AD6380031DDC7 /* LaunchScreenView.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";
