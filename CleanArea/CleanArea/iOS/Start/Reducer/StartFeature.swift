@@ -44,7 +44,7 @@ struct StartFeature {
         case openMain
         case searchButtonTap(City?, String, String, String, String)
         case setMain(Bool)
-        
+
         case inputBox1(LocationFeature.Action)
         case inputBox2(TextFieldFeature.Action)
         case inputBox3(TextFieldFeature.Action)
@@ -123,6 +123,7 @@ struct StartFeature {
             case let .setMain(openMain):
                 state.openMain = openMain
                 return .none
+
                 
             case .inputBox1(_):
                 return .none

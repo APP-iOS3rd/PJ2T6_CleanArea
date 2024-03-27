@@ -113,7 +113,6 @@ struct StartView: View {
             }
         case .loading:
             LoadingCircleView()
-
         }
     }
 }

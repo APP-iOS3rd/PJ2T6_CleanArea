@@ -4,29 +4,48 @@
 //
 //  Created by 김건호 on 12/6/23.
 //
+
+import ComposableArchitecture
+
 import SwiftUI
+
+@Reducer
+struct RecommandFeature {
+    @ObservableState
+    struct State: Equatable {
+
+    }
+    
+    enum Action {
+        
+    }
+    
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            return .none
+        }
+    }
+}
 
 struct RecommandView: View {
     @Environment(\.presentationMode) var presentationMode
     
-    @StateObject var vm: RecommandVM
+    @StateObject var vm = RecommandVM(apiViewModel: APIViewModel())
     
-    @ObservedObject var apiViewModel: APIViewModel
+    @EnvironmentObject var apiViewModel: APIViewModel
 
     var residence: City?
-    
-    init(apiViewModel: APIViewModel, residence: City?) {
-        self.apiViewModel = apiViewModel
-        self.residence = residence
-        self._vm = StateObject(wrappedValue: RecommandVM(apiViewModel: apiViewModel))
-    }
 
     var body: some View {
         NavigationStack {
             VStack {
-                HeaderView(title: "추천정책", action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                })
+                HeaderView(
+                    store: Store(
+                        initialState: HeaderFeature.State(title: "추천정책")) {
+                        HeaderFeature()
+                    }
+                )
+
                 Spacer()
                 LazyVGrid(columns: [GridItem(.flexible())]) {
                     ForEach(vm.recommandcellModels.indices, id: \.self) { index in

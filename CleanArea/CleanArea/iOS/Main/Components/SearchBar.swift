@@ -9,7 +9,7 @@ import ComposableArchitecture
 import SwiftUI
 
 struct SearchBar: View {
-    @Bindable var store: StoreOf<SearchFeature>
+    @Bindable var store: StoreOf<ListFeature>
     
     var body: some View {
         HStack {

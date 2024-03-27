@@ -4,7 +4,10 @@
 //
 //  Created by 최동호 on 12/6/23.
 //
+import ComposableArchitecture
+
 import SwiftUI
+
 struct RecommandDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
@@ -15,10 +18,14 @@ struct RecommandDetailView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                HeaderView(title: modelName, action: {
-                    self.presentationMode.wrappedValue.dismiss()
-                })
-                ListView(youthPolicies: policies, tabType: .recommand, residence: residence)
+                HeaderView(
+                    store: Store(
+                        initialState: HeaderFeature.State(title: modelName)) {
+                        HeaderFeature()
+                    }
+                )
+         
+//                ListView(youthPolicies: policies, tabType: .recommand, residence: residence)
             }
             .navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true)

@@ -14,58 +14,79 @@ import SwiftUI
 struct ListFeature {
     @ObservableState
     struct State: Equatable {
-        
+        var filteredPolicy : [YouthPolicy] = []
+        var policies: [YouthPolicy]
+        var likePolicies: [YouthPolicy] = []
+        var residence: City?
+        var tabType: TabType
+        var text: String
     }
     
     enum Action {
-        
+        case clearTextField
+        case setText(String)
+        case setFilterPolicy
     }
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
-            return .none
+            switch action {
+            case .clearTextField:
+                state.text = ""
+                return .none
+                
+            case let .setText(text):
+                state.text = text
+                return .none
+                
+            case .setFilterPolicy:
+                switch state.tabType {
+                case .hot:
+                    // 조회수가 높은 순으로 정렬
+                    state.filteredPolicy = state.policies.sorted { $0.views > $1.views }
+                case .like:
+                    state.filteredPolicy = state.likePolicies
+                case .recommand:
+                    state.filteredPolicy = state.policies.filter { policy in
+                        state.text.isEmpty || policy.polyBizSjnm.localizedCaseInsensitiveContains(state.text)
+                    }
+                }
+                return .none
+            }
         }
     }
 }
 
-
 struct ListView: View {
-    @EnvironmentObject var likedStatusManager: LikedStatusManager
-    @Environment(\.presentationMode) var presentationMode
-    
-    @State private var searchText = ""
-    
-    @Query var policys : [YouthPolicy]
-
-    var youthPolicies: [YouthPolicy]
-    var tabType: TabType
-    var residence: City?
-    
+    var store: StoreOf<ListFeature>
+        
     var body: some View {
         NavigationStack {
             VStack {
-                switch tabType {
+                switch store.tabType {
                 case .hot, .like:
-                    HeaderView(title: tabType == .hot ? "인기정책" : "즐겨찾기", action:{ self.presentationMode.wrappedValue.dismiss()})
-
-                case .recommand:
-                    SearchBar(
-                        store: Store(initialState: SearchFeature.State()) {
-                            SearchFeature()
+                    HeaderView(
+                        store: Store(
+                            initialState: HeaderFeature.State(title: store.tabType == .hot ? "인기정책" : "즐겨찾기")) {
+                            HeaderFeature()
                         }
                     )
+                    
+                case .recommand:
+                    SearchBar(store: store)
                         .padding(.horizontal)
                 }
 
                 List {
-                    ForEach(filteredPolicies, id: \.self) { policy in
+                    ForEach(store.filteredPolicy, id: \.self) { policy in
                         ZStack(alignment: .leading) {
                             ListItemView(
-                                store: Store(initialState: ListItemFeature.State(policy: policy)) {
+                                store: Store(
+                                    initialState: ListItemFeature.State(policy: policy)) {
                                     ListItemFeature()
                                 }
                             )
-                            NavigationLink(destination: DetailView(cityImage: residence, youthPolicy: policy)) {
+                            NavigationLink(destination: DetailView(cityImage: store.residence, youthPolicy: policy)) {
                                 EmptyView()
                             }
                             .opacity(0)
@@ -80,24 +101,10 @@ struct ListView: View {
                 .scrollContentBackground(.hidden)
             }
         }
+        .onAppear {
+            store.send(.setFilterPolicy)
+        }
     }
-}
-
-//MARK: 추천, 인기, 즐겨찾기
-extension ListView {
-    private var filteredPolicies: [YouthPolicy] {
-          switch tabType {
-          case .hot:
-              // 조회수가 높은 순으로 정렬
-              return youthPolicies.sorted { $0.views > $1.views }
-          case .like:
-              return policys
-          case .recommand:
-              return youthPolicies.filter { policy in
-                  searchText.isEmpty || policy.polyBizSjnm.localizedCaseInsensitiveContains(searchText)
-              }
-          }
-      }
 }
 
 extension View {
