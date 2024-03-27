@@ -7,13 +7,6 @@
 
 import Foundation
 
-enum Field: String {
-    case job = "023010"
-    case residence = "023020"
-    case education = "023030"
-    case curture = "023040"
-    case participation = "023050"
-}
 
 class Policy: ObservableObject {
     @Published var job: [YouthPolicy] = []

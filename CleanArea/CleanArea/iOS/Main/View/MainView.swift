@@ -14,32 +14,32 @@ import SwiftData
 struct MainFeature {
     @ObservableState
     struct State: Equatable {
-        var youthPolicies: [YouthPolicy]
-        
-        var tab1 = RecommandFeature.State()
-//        var tab2 = ListFeature.State(tabType: .hot, text: "")
-//        var tab3 = ListFeature.State(tabType: .like, text: "")
+        var policies: [YouthPolicy]
+        var recommandPolicies : [YouthPolicy] = []
+        var hotPolicies: [YouthPolicy] = []
+        var likePolicies: [YouthPolicy] = []
+
+        var text = ""
     }
     
     enum Action {
-        case tab1(RecommandFeature.Action)
-//        case tab2(ListFeature.Action)
-//        case tab3(ListFeature.Action)
+        case setFilterPolicy
+
     }
     
     var body: some ReducerOf<Self> {
-        Scope(state: \.tab1, action: \.tab1) {
-            RecommandFeature()
-           }
-//        Scope(state: \.tab2, action: \.tab2) {
-//            ListFeature()
-//           }
-//        Scope(state: \.tab3, action: \.tab3) {
-//            ListFeature()
-//           }
-
         Reduce { state, action in
-            return .none
+            switch action {
+            case .setFilterPolicy:
+                state.hotPolicies = state.policies.sorted { $0.views > $1.views }
+                state.likePolicies = state.likePolicies
+                state.recommandPolicies = state.policies.filter { policy in
+                    state.text.isEmpty || policy.polyBizSjnm.localizedCaseInsensitiveContains(state.text)
+                    
+                }
+                return .none
+
+            }
         }
     }
 }
@@ -55,33 +55,45 @@ struct MainView: View {
             Color.white.edgesIgnoringSafeArea(.all)
             
             TabView {
-                RecommandView()
+                RecommandView(
+                    store: Store(initialState: RecommandFeature.State(
+                        policies: store.recommandPolicies)) {
+                        RecommandFeature()
+                    }
+                )
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
                     .tag("Home")
                 
-                ListView(store: Store(initialState: ListFeature.State(policies: store.youthPolicies,
-                                                                      tabType: .hot,
-                                                                      text: "")) {
-                    ListFeature()
-                })
-                    .tabItem {
-                        Label("Hot", systemImage: "flame")
-                    }
-                    .tag("Hot")
+                ListView(
+                    store: Store(initialState: ListFeature.State(
+                        policies: store.hotPolicies,
+                        tabType: .hot,
+                        text: "")) {
+                            ListFeature()
+                        })
+                .tabItem {
+                    Label("Hot", systemImage: "flame")
+                }
+                .tag("Hot")
                 
-                ListView(store: Store(initialState: ListFeature.State(policies: store.youthPolicies,
-                                                                      tabType: .like,
-                                                                      text: "")) {
-                    ListFeature()
-                })
-                    .tabItem {
-                        Label("Like", systemImage: "star")
-                    }
-                    .tag("Like")
+                ListView(
+                    store: Store(initialState: ListFeature.State(
+                        policies: store.likePolicies,
+                        tabType: .like,
+                        text: "")) {
+                            ListFeature()
+                        })
+                .tabItem {
+                    Label("Like", systemImage: "star")
+                }
+                .tag("Like")
             }
             .accentColor(.buttonGreen)
+        }
+        .onAppear {
+            store.send(.setFilterPolicy)
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecommandCellModel {
+struct RecommandCellModel: Equatable {
     var name: String
     var count: Int
     var destinationKey: String

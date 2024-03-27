@@ -117,7 +117,11 @@ struct StartFeature {
                 }
                 
                 return .run { send in
-                    try await send(.dataResponse(self.searchResult.fetch(url)))
+                    do {
+                        try await send(.dataResponse(self.searchResult.fetch(url)))
+                    } catch {
+                        print("데이터 받아오기 실패: \(error)")
+                    }
                 }
                 
             case let .setMain(openMain):

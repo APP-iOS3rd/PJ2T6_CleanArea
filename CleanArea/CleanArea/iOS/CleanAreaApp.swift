@@ -23,7 +23,7 @@ struct CleanAreaApp: App {
                 store: CleanAreaApp.store
             )
                 .environmentObject(LikedStatusManager())
-                .environmentObject(APIViewModel())
+
         }
         .modelContainer(for: YouthPolicy.self)
     }
