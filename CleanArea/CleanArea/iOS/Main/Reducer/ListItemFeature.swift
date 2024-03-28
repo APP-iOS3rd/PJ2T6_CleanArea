@@ -13,7 +13,7 @@ import SwiftUI
 struct ListItemFeature {
     @ObservableState
     struct State: Equatable {
-        var policy: YouthPolicy
+        var policy: YouthPolicy = .init(bizId: "", polyBizSecd: "", polyBizTy: "", polyBizSjnm: "", polyItcnCn: "", sporCn: "", sporScvl: "", bizPrdCn: "", prdRpttSecd: "", rqutPrdCn: "", ageInfo: "", majrRqisCn: "", empmSttsCn: "", splzRlmRqisCn: "", accrRqisCn: "", prcpCn: "", aditRscn: "", prcpLmttTrgtCn: "", rqutProcCn: "", pstnPaprCn: "", jdgnPresCn: "", rqutUrla: "", rfcSiteUrla1: "", rfcSiteUrla2: "", mngtMson: "", mngtMrofCherCn: "", cherCtpcCn: "", cnsgNmor: "", tintCherCn: "", tintCherCtpcCn: "", etct: "", polyRlmCd: "", minAge: "", maxAge: "", startDate: "", endDate: "", views: 0)
         var currentProgress: String = "진행중"
         var category: String = ""
         var dDayText: String = ""
@@ -33,15 +33,12 @@ struct ListItemFeature {
             switch action {
             case let .appearSet(policy):
                 return .concatenate([
-                    .run(operation: { send in
+                    .run { send in
                         await send(.calculateDay(policy.bizPrdCn))
-                    }),
-                    .run(operation: { send in
-                        await send(.setProgressColor)
-                    }),
-                    .run(operation: { send in
+                    },
+                    .run { send in
                         await send(.convertCodeToCategory(policy.polyRlmCd))
-                    })
+                    }
                 ])
                 
             case let .calculateDay(dateString):
@@ -60,6 +57,7 @@ struct ListItemFeature {
                        endDate >= Date() {
                         return .run { send in
                             await send(.setDDayText(endDate))
+                            await send(.setProgressColor)
                         }
                     }
                     
@@ -68,6 +66,7 @@ struct ListItemFeature {
                        endDate >= Date() {
                         return .run { send in
                             await send(.setDDayText(endDate))
+                            await send(.setProgressColor)
                         }
                     }
                 }
@@ -86,6 +85,7 @@ struct ListItemFeature {
                         let nextMonthDate = Calendar.current.date(byAdding: .month, value: 1, to: endMonthDate)!
                         return .run { send in
                             await send(.setDDayText(nextMonthDate))
+                            await send(.setProgressColor)
                         }
                     }
                     
@@ -94,6 +94,7 @@ struct ListItemFeature {
                         let nextMonthDate = Calendar.current.date(byAdding: .month, value: 1, to: endMonthDate)!
                         return .run { send in
                             await send(.setDDayText(nextMonthDate))
+                            await send(.setProgressColor)
                         }
                     }
                 }
@@ -117,15 +118,16 @@ struct ListItemFeature {
                 return .none
                 
             case .setProgressColor:
-                state.progressColor = state.dDayText == "마감" ? Color.deadline : Color.proceed
+                state.progressColor = state.currentProgress == "마감" ? Color.deadline : Color.proceed
                 return .none
                 
             case let .setDDayText(endDate):
                 let calendar = Calendar.current
                 let components = calendar.dateComponents([.day], from: Date(), to: endDate)
+
                 if let days = components.day, days >= 0 {
                     state.dDayText = "D-\(days)"
-                    return . none
+                    return .none
                 }
                 state.currentProgress = "마감"
                 return .none

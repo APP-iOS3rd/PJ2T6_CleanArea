@@ -31,7 +31,8 @@ struct ListItemView: View {
                             .bold()
                             .foregroundStyle(.white)
                     }
-                    if store.dDayText != "마감" && store.dDayText != "진행중" {
+                    
+                    if store.currentProgress != "마감" && store.dDayText != "" {
                         HStack{
                             Text(store.dDayText)
                                 .font(.pretendardRegular13)

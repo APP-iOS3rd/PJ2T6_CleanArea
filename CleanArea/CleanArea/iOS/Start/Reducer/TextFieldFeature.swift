@@ -14,8 +14,8 @@ struct TextFieldFeature {
     @ObservableState
     struct State: Equatable {
         var text: String = ""
-        var type: TextFieldType
-        var width: Int
+        var type: TextFieldType = .residence
+        var width: Int = 0
     }
     
     enum Action {

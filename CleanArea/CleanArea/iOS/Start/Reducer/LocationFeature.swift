@@ -17,7 +17,7 @@ struct LocationFeature {
         var selectedCity: City = .가평군
         var showModal = false
         var type: TextFieldType = TextFieldType.residence
-        var width: Int
+        var width: Int = 0
     }
     
     enum Action {

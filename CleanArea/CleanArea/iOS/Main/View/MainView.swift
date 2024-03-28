@@ -14,8 +14,7 @@ import SwiftData
 struct MainFeature {
     @ObservableState
     struct State: Equatable {
-        var policies: IdentifiedArrayOf<YouthPolicy>
-        var recommandPolicies : IdentifiedArrayOf<YouthPolicy> = []
+        var policies: IdentifiedArrayOf<YouthPolicy> = []
         var hotPolicies: IdentifiedArrayOf<YouthPolicy> = []
         var likePolicies: IdentifiedArrayOf<YouthPolicy> = []
         
@@ -26,8 +25,6 @@ struct MainFeature {
         var education: IdentifiedArrayOf<YouthPolicy> = []
         var curture: IdentifiedArrayOf<YouthPolicy> = []
         var participation: IdentifiedArrayOf<YouthPolicy> = []
-
-        var text = ""
     }
     
     enum Action {
@@ -43,17 +40,10 @@ struct MainFeature {
         Reduce { state, action in
             switch action {
             case .appearSet:
-                return .concatenate([
-                    .run(operation: { send in
-                        await send(.setFilterPolicy)
-                    }),
-                    .run(operation: { send in
-                        await send(.getPolicy)
-                    }),
-                    .run(operation: { send in
-                        await send(.distributeModel)
-                    })
-                ])
+                return .run { send in
+                    await send(.setFilterPolicy)
+                    await send(.getPolicy)
+                }
                 
             case .distributeModel:
                 let job = state.job
@@ -63,21 +53,21 @@ struct MainFeature {
                 let participation = state.participation
                 
                 return .concatenate([
-                    .run(operation: { send in
+                    .run { [job = state.job] send in
                         await send(.setRecommanModel(job, "일자리"))
-                    }),
-                    .run(operation: { send in
+                    },
+                    .run { [residence = state.residence] send in
                         await send(.setRecommanModel(residence, "주거"))
-                    }),
-                    .run(operation: { send in
+                    },
+                    .run { [education = state.education] send in
                         await send(.setRecommanModel(education, "교육"))
-                    }),
-                    .run(operation: { send in
-                        await send(.setRecommanModel(curture, "복지,문화"))
-                    }),
-                    .run(operation: { send in
-                        await send(.setRecommanModel(participation, "참여,권리"))
-                    })
+                    },
+                    .run { [curture = state.curture] send in
+                        await send(.setRecommanModel(curture, "복지, 문화"))
+                    },
+                    .run { [participation = state.participation] send in
+                        await send(.setRecommanModel(participation, "참여, 권리"))
+                    }
                 ])
                 
                 
@@ -85,39 +75,53 @@ struct MainFeature {
                 switch code {
                 case .job:
                     state.job = policies.filter {  $0.polyRlmCd == code.rawValue }
+                    
                 case .residence:
                     state.residence = policies.filter {  $0.polyRlmCd == code.rawValue }
+                    
                 case .education:
                     state.education = policies.filter {  $0.polyRlmCd == code.rawValue }
+                    
                 case .curture:
                     state.curture = policies.filter {  $0.polyRlmCd == code.rawValue }
+                    
                 case .participation:
                     state.participation = policies.filter {  $0.polyRlmCd == code.rawValue }
                 }
                 return .none
                 
             case .getPolicy:
-                return .run { [policies = state.policies] send in
-                    await send(.filterPolicy(policies, Field.job))
-                    await send(.filterPolicy(policies, Field.residence))
-                    await send(.filterPolicy(policies, Field.education))
-                    await send(.filterPolicy(policies, Field.curture))
-                    await send(.filterPolicy(policies, Field.participation))
-                }
+                let policies = state.policies
+                return .concatenate([
+                    .run { send in
+                        await send(.filterPolicy(policies, Field.job))
+                    },
+                    .run { send in
+                        await send(.filterPolicy(policies, Field.residence))
+                    },
+                    .run { send in
+                        await send(.filterPolicy(policies, Field.education))
+                    },
+                    .run { send in
+                        await send(.filterPolicy(policies, Field.curture))
+                    },
+                    .run { send in
+                        await send(.filterPolicy(policies, Field.participation))
+                    },
+                    .run { send in
+                        await send(.distributeModel)
+                    }
+                ])
                 
             case .setFilterPolicy:
                 state.hotPolicies = IdentifiedArrayOf<YouthPolicy>( uniqueElements: state.policies.sorted { $0.views > $1.views })
                 state.likePolicies = state.likePolicies
-                state.recommandPolicies = state.policies.filter { policy in
-                    state.text.isEmpty || policy.polyBizSjnm.localizedCaseInsensitiveContains(state.text)
-                }
                 return .none
+                
             case let .setRecommanModel(policies, name):
-                let jobModel =  RecommandCellModel(name: name, count: policies.count, destinationKey: name, policies: policies)
-                state.recommandcellModels.append(jobModel)
-
+                let cellModel =  RecommandCellModel(name: name, count: policies.count, destinationKey: name, policies: policies)
+                state.recommandcellModels.append(cellModel)
                 return .none
-
             }
         }
     }

@@ -22,7 +22,7 @@ enum Field: String {
 struct RecommandFeature {
     @ObservableState
     struct State: Equatable {
-        var recommandcellModels: [RecommandCellModel]
+        var recommandcellModels: [RecommandCellModel] = []
     }
     
     enum Action {

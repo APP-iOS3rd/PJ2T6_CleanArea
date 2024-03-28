@@ -14,10 +14,10 @@ import SwiftUI
 struct ListFeature {
     @ObservableState
     struct State: Equatable {
-        var policies: IdentifiedArrayOf<YouthPolicy>
+        var policies: IdentifiedArrayOf<YouthPolicy> = []
         var residence: City?
-        var tabType: TabType
-        var text: String
+        var tabType: TabType = .recommand
+        var text: String = ""
     }
     
     enum Action {
@@ -63,17 +63,15 @@ struct ListView: View {
 
                 ScrollView {
                     ForEach(store.policies, id: \.self) { policy in
-                        ZStack(alignment: .leading) {
+                        NavigationLink {
+                            DetailView(cityImage: store.residence, youthPolicy: policy)
+                        } label: {
                             ListItemView(
                                 store: Store(
                                     initialState: ListItemFeature.State(policy: policy)) {
                                     ListItemFeature()
                                 }
                             )
-                            NavigationLink(destination: DetailView(cityImage: store.residence, youthPolicy: policy)) {
-                                EmptyView()
-                            }
-                            .opacity(0)
                         }
                         .padding(.horizontal)
                         .padding(.vertical, 4)
