@@ -12,7 +12,7 @@ struct RecommandDetailView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var modelName: String
-    var policies: [YouthPolicy]
+    var policies: IdentifiedArrayOf<YouthPolicy>
     var residence: City?
     
     var body: some View {

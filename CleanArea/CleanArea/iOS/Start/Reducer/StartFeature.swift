@@ -15,7 +15,7 @@ struct StartFeature {
     struct State: Equatable {
         var isKeyboardViewUp: Bool = false
         var openMain: Bool = false
-        var result: [YouthPolicy] = []
+        var result: IdentifiedArrayOf<YouthPolicy> = []
         var viewType: StartViewType = .startView
         
         var inputBox1 = LocationFeature.State(width: 300)
@@ -38,7 +38,7 @@ struct StartFeature {
     }
     
     enum Action {
-        case dataResponse([YouthPolicy])
+        case dataResponse(IdentifiedArrayOf<YouthPolicy>)
         case keyboardDown
         case keyboardUp
         case openMain
@@ -117,11 +117,9 @@ struct StartFeature {
                 }
                 
                 return .run { send in
-                    do {
-                        try await send(.dataResponse(self.searchResult.fetch(url)))
-                    } catch {
-                        print("데이터 받아오기 실패: \(error)")
-                    }
+                    try await send(.dataResponse(self.searchResult.fetch(url)))
+                } catch: { error, _ in
+                    print("데이터 받아오기 실패: \(error)")
                 }
                 
             case let .setMain(openMain):

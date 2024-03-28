@@ -22,87 +22,22 @@ enum Field: String {
 struct RecommandFeature {
     @ObservableState
     struct State: Equatable {
-        var policies: [YouthPolicy]
-        var recommandcellModels: [RecommandCellModel] = []
-        var job: [YouthPolicy] = []
-        var residence: [YouthPolicy] = []
-        var education: [YouthPolicy] = []
-        var curture: [YouthPolicy] = []
-        var participation: [YouthPolicy] = []
+        var recommandcellModels: [RecommandCellModel]
     }
     
     enum Action {
-        case appearSet
-        case distributeModel
-        case setRecommanModel([YouthPolicy], String)
-        case getPolicy
-        case filterPolicy([YouthPolicy], Field)
+     
     }
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
+            return .none
             
-            switch action {
-            case .appearSet:
-                return .run { send in
-                    await send(.getPolicy)
-                    await send(.distributeModel)
-                }
-                
-            case .distributeModel:
-                return .run {
-                    [job = state.job,
-                     residence = state.residence,
-                     education = state.education,
-                     curture = state.curture,
-                     participation = state.participation] send in
-                    
-                    await send(.setRecommanModel(job, "일자리"))
-                    await send(.setRecommanModel(residence, "주거"))
-                    await send(.setRecommanModel(education, "교육"))
-                    await send(.setRecommanModel(curture, "복지,문화"))
-                    await send(.setRecommanModel(participation, "참여,권리"))
-                }
-        
-            case let .setRecommanModel(policies, name):
-                let jobModel =  RecommandCellModel(name: name, count: policies.count, destinationKey: name, policies: policies)
-                state.recommandcellModels.append(jobModel)
-
-                return .none
-            
-            case .getPolicy:
-                return .run { [policies = state.policies] send in
-                    await send(.filterPolicy(policies, Field.job))
-                    await send(.filterPolicy(policies, Field.residence))
-                    await send(.filterPolicy(policies, Field.education))
-                    await send(.filterPolicy(policies, Field.curture))
-                    await send(.filterPolicy(policies, Field.participation))
-                }
-                
-            case let .filterPolicy(policies, code):
-                switch code {
-                case .job:
-                    state.job += policies.filter {  $0.polyRlmCd == code.rawValue }
-                case .residence:
-                    state.residence += policies.filter {  $0.polyRlmCd == code.rawValue }
-                case .education:
-                    state.education += policies.filter {  $0.polyRlmCd == code.rawValue }
-                case .curture:
-                    state.curture += policies.filter {  $0.polyRlmCd == code.rawValue }
-                case .participation:
-                    state.participation += policies.filter {  $0.polyRlmCd == code.rawValue }
-                }
-                return .none
-            }
         }
     }
 }
 
 struct RecommandView: View {
-    @Environment(\.presentationMode) var presentationMode
-    
-    @StateObject var vm = RecommandVM(apiViewModel: APIViewModel())
-    
     @Bindable var store: StoreOf<RecommandFeature>
 
     var body: some View {
@@ -120,7 +55,7 @@ struct RecommandView: View {
                     ForEach(store.recommandcellModels.indices, id: \.self) { index in
                         RecommandCell(model: store.recommandcellModels[index])
                         .frame(height: 70)
-                        .padding(.bottom, 22)
+                        .padding(.vertical, 11)
                         .padding(.horizontal, 20)
                     }
                 }
@@ -129,9 +64,6 @@ struct RecommandView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
-        }
-        .onAppear {
-            store.send(.appearSet)
         }
     }
 }

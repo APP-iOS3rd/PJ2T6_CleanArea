@@ -10,7 +10,7 @@ import ComposableArchitecture
 import Foundation
 
 struct SearchResult {
-    var fetch: (URL) async throws -> [YouthPolicy]
+    var fetch: (URL) async throws -> IdentifiedArrayOf<YouthPolicy>
 }
 
 extension SearchResult: DependencyKey {
@@ -21,7 +21,7 @@ extension SearchResult: DependencyKey {
    
             let decoder = JSONDecoder()
             
-            let results = try decoder.decode([YouthPolicy].self, from: data)
+            let results = try decoder.decode(IdentifiedArrayOf<YouthPolicy>.self, from: data)
  
             return results
         }

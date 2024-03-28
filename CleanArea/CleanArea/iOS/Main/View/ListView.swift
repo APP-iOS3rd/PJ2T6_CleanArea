@@ -14,7 +14,7 @@ import SwiftUI
 struct ListFeature {
     @ObservableState
     struct State: Equatable {
-        var policies: [YouthPolicy]
+        var policies: IdentifiedArrayOf<YouthPolicy>
         var residence: City?
         var tabType: TabType
         var text: String
@@ -61,7 +61,7 @@ struct ListView: View {
                         .padding(.horizontal)
                 }
 
-                List {
+                ScrollView {
                     ForEach(store.policies, id: \.self) { policy in
                         ZStack(alignment: .leading) {
                             ListItemView(
@@ -75,13 +75,10 @@ struct ListView: View {
                             }
                             .opacity(0)
                         }
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets())
-                        .padding(.vertical, 8)
+                        .padding(.horizontal)
+                        .padding(.vertical, 4)
                     }
                 }
-                .background(Color.clear)
                 .scrollContentBackground(.hidden)
             }
         }

@@ -32,11 +32,17 @@ struct ListItemFeature {
         Reduce { state, action in
             switch action {
             case let .appearSet(policy):
-                return .run { send in
-                    await send(.calculateDay(policy.bizPrdCn))
-                    await send(.setProgressColor)
-                    await send(.convertCodeToCategory(policy.polyRlmCd))
-                }
+                return .concatenate([
+                    .run(operation: { send in
+                        await send(.calculateDay(policy.bizPrdCn))
+                    }),
+                    .run(operation: { send in
+                        await send(.setProgressColor)
+                    }),
+                    .run(operation: { send in
+                        await send(.convertCodeToCategory(policy.polyRlmCd))
+                    })
+                ])
                 
             case let .calculateDay(dateString):
                 let dateFormatter = DateFormatter()
