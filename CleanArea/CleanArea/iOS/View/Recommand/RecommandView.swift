@@ -100,7 +100,7 @@ struct RecommandCell: View {
     @ViewBuilder
     private func destinationView(for key: String, cellName: String) -> some View {
         switch key {
-        case "일자리", "주거", "교육", "복지,문화", "참여,권리":
+        case "일자리", "주거", "교육", "복지, 문화", "참여, 권리":
             RecommandDetailView(modelName: cellName, policies: model.policies, residence: residence)
         default:
             Text("Invalid destination key")

@@ -10,6 +10,7 @@ import SwiftUI
 import SwiftUI
 
 class APIViewModel: ObservableObject {
+    /*
     @Published var result: [YouthPolicy]?
     @Published var policy: Policy?
     
@@ -92,4 +93,5 @@ class APIViewModel: ObservableObject {
         }
         task.resume()
     }
+     */
 }

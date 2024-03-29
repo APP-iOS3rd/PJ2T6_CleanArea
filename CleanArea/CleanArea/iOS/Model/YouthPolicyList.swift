@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class YouthPolicy: Codable, Hashable {
+class YouthPolicy: Codable, Hashable, Identifiable {
     enum CodingKeys: CodingKey {
         case bizId, polyBizSecd, polyBizTy, polyBizSjnm, polyItcnCn, sporCn, sporScvl, bizPrdCn, prdRpttSecd, rqutPrdCn, ageInfo, majrRqisCn, empmSttsCn, splzRlmRqisCn, accrRqisCn, prcpCn, aditRscn, prcpLmttTrgtCn, rqutProcCn, pstnPaprCn, jdgnPresCn, rqutUrla, rfcSiteUrla1, rfcSiteUrla2, mngtMson, mngtMrofCherCn, cherCtpcCn, cnsgNmor, tintCherCn, tintCherCtpcCn, etct, polyRlmCd, minAge, maxAge, startDate, endDate, views
     }

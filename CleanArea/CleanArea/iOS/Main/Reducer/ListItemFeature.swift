@@ -13,18 +13,18 @@ import SwiftUI
 struct ListItemFeature {
     @ObservableState
     struct State: Equatable {
-        var policy: YouthPolicy = .init(bizId: "", polyBizSecd: "", polyBizTy: "", polyBizSjnm: "", polyItcnCn: "", sporCn: "", sporScvl: "", bizPrdCn: "", prdRpttSecd: "", rqutPrdCn: "", ageInfo: "", majrRqisCn: "", empmSttsCn: "", splzRlmRqisCn: "", accrRqisCn: "", prcpCn: "", aditRscn: "", prcpLmttTrgtCn: "", rqutProcCn: "", pstnPaprCn: "", jdgnPresCn: "", rqutUrla: "", rfcSiteUrla1: "", rfcSiteUrla2: "", mngtMson: "", mngtMrofCherCn: "", cherCtpcCn: "", cnsgNmor: "", tintCherCn: "", tintCherCtpcCn: "", etct: "", polyRlmCd: "", minAge: "", maxAge: "", startDate: "", endDate: "", views: 0)
-        var currentProgress: String = "진행중"
         var category: String = ""
+        var currentProgress: String = "진행중"
         var dDayText: String = ""
+        var policy: YouthPolicy = .init(bizId: "", polyBizSecd: "", polyBizTy: "", polyBizSjnm: "", polyItcnCn: "", sporCn: "", sporScvl: "", bizPrdCn: "", prdRpttSecd: "", rqutPrdCn: "", ageInfo: "", majrRqisCn: "", empmSttsCn: "", splzRlmRqisCn: "", accrRqisCn: "", prcpCn: "", aditRscn: "", prcpLmttTrgtCn: "", rqutProcCn: "", pstnPaprCn: "", jdgnPresCn: "", rqutUrla: "", rfcSiteUrla1: "", rfcSiteUrla2: "", mngtMson: "", mngtMrofCherCn: "", cherCtpcCn: "", cnsgNmor: "", tintCherCn: "", tintCherCtpcCn: "", etct: "", polyRlmCd: "", minAge: "", maxAge: "", startDate: "", endDate: "", views: 0)
         var progressColor: Color = .proceed
     }
     
     enum Action {
         case appearSet(YouthPolicy)
+        case calculateDay(String)
         case convertCodeToCategory(String)
         case setDDayText(Date)
-        case calculateDay(String)
         case setProgressColor
     }
     
@@ -104,14 +104,19 @@ struct ListItemFeature {
                 switch code {
                 case "023010":
                     state.category = "일자리분야"
+                    
                 case "023020":
                     state.category =  "주거분야"
+                    
                 case "023030":
                     state.category =  "교육분야"
+                    
                 case "023040":
                     state.category =  "문화분야"
+                    
                 case "023050":
                     state.category =  "참여,권리분야"
+                    
                 default:
                     state.category =  "알 수 없음"
                 }

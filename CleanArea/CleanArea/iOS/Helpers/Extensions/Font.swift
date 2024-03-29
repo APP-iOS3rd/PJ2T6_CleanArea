@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 extension Font {
-    
     //Regular
     static let pretendardRegular13: Font = .custom("Pretendard-Regular", size: 13)
     static let pretendardRegular17: Font = .custom("Pretendard-Regular", size: 17)
@@ -33,5 +32,4 @@ extension Font {
     
     //Black
     static let pretendardBlack30: Font = .custom("Pretendard-Black", size: 30)
-    
 }

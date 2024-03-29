@@ -9,31 +9,6 @@ import ComposableArchitecture
 
 import SwiftUI
 
-@Reducer
-struct HeaderFeature {
-    @ObservableState
-    struct State: Equatable {
-        let title: String
-    }
-    
-    enum Action {
-        case tabButton
-    }
-    
-    @Dependency(\.dismiss) var dismiss
-
-    var body: some ReducerOf<Self> {
-        Reduce { state, action in
-            switch action {
-            case .tabButton:
-                return .run { _ in
-                    await self.dismiss()
-                }
-            }
-        }
-    }
-}
-
 struct HeaderView: View {
     let store: StoreOf<HeaderFeature>
     

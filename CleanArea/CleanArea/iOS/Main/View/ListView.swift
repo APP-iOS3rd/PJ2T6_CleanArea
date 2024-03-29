@@ -10,37 +10,6 @@ import ComposableArchitecture
 import SwiftData
 import SwiftUI
 
-@Reducer
-struct ListFeature {
-    @ObservableState
-    struct State: Equatable {
-        var policies: IdentifiedArrayOf<YouthPolicy> = []
-        var residence: City?
-        var tabType: TabType = .recommand
-        var text: String = ""
-    }
-    
-    enum Action {
-        case clearTextField
-        case setText(String)
-    }
-    
-    var body: some ReducerOf<Self> {
-        Reduce { state, action in
-            switch action {
-            case .clearTextField:
-                state.text = ""
-                return .none
-                
-            case let .setText(text):
-                state.text = text
-                return .none
-                
-            }
-        }
-    }
-}
-
 struct ListView: View {
     var store: StoreOf<ListFeature>
         
@@ -82,12 +51,3 @@ struct ListView: View {
         }
     }
 }
-
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-
-
-

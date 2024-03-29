@@ -126,7 +126,6 @@ struct StartFeature {
                 state.openMain = openMain
                 return .none
 
-                
             case .inputBox1(_):
                 return .none
                 

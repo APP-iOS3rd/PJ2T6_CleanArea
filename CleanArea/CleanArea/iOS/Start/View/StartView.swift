@@ -80,11 +80,10 @@ struct StartView: View {
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                             
                         }
-                        
                         .navigationDestination(isPresented: $store.openMain.sending(\.setMain)) {
                             // 이동할 뷰 (현재 임시 뷰 지정)
                             MainView(
-                                store: Store(initialState: MainFeature.State(policies: store.result)) {
+                                store: Store(initialState: MainFeature.State(policies: store.result, initialApear: true)) {
                                     MainFeature()
                                 }
                             )
@@ -97,7 +96,6 @@ struct StartView: View {
                             )
                         )
                     }
-                    
                     Spacer()
                 }
                 .padding(.horizontal, 20)
@@ -108,9 +106,11 @@ struct StartView: View {
             }
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
                 store.send(.keyboardUp)
-            }.onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
+            }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
                 store.send(.keyboardDown)
             }
+            
         case .loading:
             LoadingCircleView()
         }

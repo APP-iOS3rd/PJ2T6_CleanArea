@@ -34,23 +34,11 @@ struct StartTextField: View {
                 case .policyName:
                     TextField(store.type.placeholder, text: $store.text.sending(\.setName))
                         .commonTextFieldStyle(width: CGFloat(store.width))
+                    
                 default:
                     fatalError("error")
                 }
             }
         }
-    }
-}
-
-extension TextField {
-    func commonTextFieldStyle(width: CGFloat, keyboardType: UIKeyboardType? = nil) -> some View {
-        self
-            .padding()
-            .font(.pretendardRegular20)
-            .frame(maxWidth: .infinity)
-            .frame(maxHeight: 50)
-            .background(Color(uiColor: .systemGray6))
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .keyboardType(keyboardType ?? .default)
     }
 }

@@ -10,7 +10,6 @@ import ComposableArchitecture
 import SwiftUI
 
 struct ListItemView: View {
-
     @Bindable var store: StoreOf<ListItemFeature>
     
     var body: some View {
