@@ -83,7 +83,7 @@ struct StartView: View {
                         .navigationDestination(isPresented: $store.openMain.sending(\.setMain)) {
                             // 이동할 뷰 (현재 임시 뷰 지정)
                             MainView(
-                                store: Store(initialState: MainFeature.State(policies: store.result, initialApear: true)) {
+                                store: Store(initialState: MainFeature.State(policies: store.result, initialAppear: true)) {
                                     MainFeature()
                                 }
                             )

@@ -14,26 +14,17 @@ struct MainFeature {
     @ObservableState
     struct State: Equatable {
         var policies: IdentifiedArrayOf<YouthPolicy> = []
-        
         var hotPolicies: IdentifiedArrayOf<YouthPolicy> = []
+        var initialAppear: Bool = false
         var likePolicies: IdentifiedArrayOf<YouthPolicy> = []
-        
-        var job: IdentifiedArrayOf<YouthPolicy> = []
-        var residence: IdentifiedArrayOf<YouthPolicy> = []
-        var education: IdentifiedArrayOf<YouthPolicy> = []
-        var curture: IdentifiedArrayOf<YouthPolicy> = []
-        var participation: IdentifiedArrayOf<YouthPolicy> = []
-        
         var recommandcellModels: [RecommandCellModel] = []
-        
-        var initialApear: Bool = false
     }
     
     enum Action {
         case appearSet
-        case distributeModel
         case filterPolicy(IdentifiedArrayOf<YouthPolicy>, Field)
         case getPolicy
+        case initialAppear
         case setFilterPolicy
         case setRecommanModel(IdentifiedArrayOf<YouthPolicy>, String)
     }
@@ -42,52 +33,42 @@ struct MainFeature {
         Reduce { state, action in
             switch action {
             case .appearSet:
-                return .run { [initialApear = state.initialApear] send in
-                    if initialApear {
+                return .run { [initialAppear = state.initialAppear] send in
+                    if initialAppear {
                         await send(.setFilterPolicy)
                         await send(.getPolicy)
+                        await send(.initialAppear)
                     }
                 }
-                
-            case .distributeModel:
-                state.initialApear = false
-                
-                return .concatenate([
-                    .run { [job = state.job] send in
-                        await send(.setRecommanModel(job, "일자리"))
-                    },
-                    .run { [residence = state.residence] send in
-                        await send(.setRecommanModel(residence, "주거"))
-                    },
-                    .run { [education = state.education] send in
-                        await send(.setRecommanModel(education, "교육"))
-                    },
-                    .run { [curture = state.curture] send in
-                        await send(.setRecommanModel(curture, "복지, 문화"))
-                    },
-                    .run { [participation = state.participation] send in
-                        await send(.setRecommanModel(participation, "참여, 권리"))
-                    }
-                ])
                 
             case let .filterPolicy(policies, code):
                 switch code {
                 case .job:
                     let job = policies.filter {  $0.polyRlmCd == code.rawValue }
-                    
+                    return .run { send in
+                        await send(.setRecommanModel(job, "일자리"))
+                    }
                 case .residence:
-                    state.residence = policies.filter {  $0.polyRlmCd == code.rawValue }
-                    
+                    let residence = policies.filter {  $0.polyRlmCd == code.rawValue }
+                    return .run { send in
+                        await send(.setRecommanModel(residence, "주거"))
+                    }
                 case .education:
-                    state.education = policies.filter {  $0.polyRlmCd == code.rawValue }
-                    
+                    let education = policies.filter {  $0.polyRlmCd == code.rawValue }
+                    return .run { send in
+                        await send(.setRecommanModel(education, "교육"))
+                    }
                 case .curture:
-                    state.curture = policies.filter {  $0.polyRlmCd == code.rawValue }
-                    
+                    let curture = policies.filter {  $0.polyRlmCd == code.rawValue }
+                    return .run { send in
+                        await send(.setRecommanModel(curture, "복지, 문화"))
+                    }
                 case .participation:
-                    state.participation = policies.filter {  $0.polyRlmCd == code.rawValue }
+                    let participation = policies.filter {  $0.polyRlmCd == code.rawValue }
+                    return .run { send in
+                        await send(.setRecommanModel(participation, "참여, 권리"))
+                    }
                 }
-                return .none
                 
             case .getPolicy:
                 let policies = state.policies
@@ -106,11 +87,11 @@ struct MainFeature {
                     },
                     .run { send in
                         await send(.filterPolicy(policies, Field.participation))
-                    },
-                    .run { send in
-                        await send(.distributeModel)
                     }
                 ])
+            case .initialAppear:
+                state.initialAppear = false
+                return .none
                 
             case .setFilterPolicy:
                 state.hotPolicies = IdentifiedArrayOf<YouthPolicy>( uniqueElements: state.policies.sorted { $0.views > $1.views })
