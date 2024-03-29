@@ -17,7 +17,7 @@ struct RecommandFeature {
     }
     
     enum Action {
-     
+        
     }
     
     var body: some ReducerOf<Self> {
@@ -30,39 +30,40 @@ struct RecommandFeature {
 
 struct RecommandView: View {
     @Bindable var store: StoreOf<RecommandFeature>
-
+    
     var body: some View {
-        NavigationStack {
-            VStack {
-                HeaderView(
-                    store: Store(
-                        initialState: HeaderFeature.State(title: "추천정책")) {
+        
+        VStack {
+            HeaderView(
+                store: Store(
+                    initialState: HeaderFeature.State(title: "추천정책")) {
                         HeaderFeature()
                     }
-                )
-
-                Spacer()
-                
-                ScrollView {
-                    ForEach(store.recommandcellModels.indices, id: \.self) { index in
-                        NavigationLink {
-                            RecommandDetailView(
-                                modelName: store.recommandcellModels[index].name,
-                                policies: store.recommandcellModels[index].policies
-                            )
-                        } label: {
-                            RecommandCell(model: store.recommandcellModels[index])
-                                .frame(height: 70)
-                                .padding(.vertical, 11)
-                                .padding(.horizontal, 20)
-                        }
+            )
+            
+            Spacer()
+            
+            ScrollView {
+                ForEach(store.recommandcellModels.indices, id: \.self) { index in
+                    NavigationLink {
+                        
+                        ListView(store: Store(initialState: ListFeature.State(
+                            policies: store.recommandcellModels[index].policies,
+                            tabType: .recommand,
+                            hearderTitle: store.recommandcellModels[index].name,
+                            text: "")) {
+                                ListFeature()
+                            })
+                        
+                    } label: {
+                        RecommandCell(model: store.recommandcellModels[index])
+                            .frame(height: 70)
+                            .padding(.vertical, 11)
+                            .padding(.horizontal, 20)
                     }
                 }
-                Spacer()
-                
             }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarHidden(true)
+            Spacer()
         }
     }
     

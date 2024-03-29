@@ -35,6 +35,7 @@ struct MainView: View {
                     store: Store(initialState: ListFeature.State(
                         policies: store.hotPolicies,
                         tabType: .hot,
+                        hearderTitle: "인기정책",
                         text: "")) {
                             ListFeature()
                         })
@@ -47,6 +48,7 @@ struct MainView: View {
                     store: Store(initialState: ListFeature.State(
                         policies: store.likePolicies,
                         tabType: .like,
+                        hearderTitle: "즐겨찾기",
                         text: "")) {
                             ListFeature()
                         })

@@ -16,6 +16,7 @@ struct ListFeature {
         var policies: IdentifiedArrayOf<YouthPolicy> = []
         var residence: City?
         var tabType: TabType = .recommand
+        var hearderTitle: String = ""
         var text: String = ""
     }
     
