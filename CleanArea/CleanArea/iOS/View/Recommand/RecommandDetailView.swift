@@ -25,7 +25,7 @@ struct RecommandDetailView: View {
                     }
                 )
          
-//                ListView(youthPolicies: policies, tabType: .recommand, residence: residence)
+               // ListView(store: <#StoreOf<ListFeature>#>, youthPolicies: policies, tabType: .recommand, residence: residence)
             }
             .navigationBarTitle("", displayMode: .automatic)
             .navigationBarHidden(true)

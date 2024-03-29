@@ -73,6 +73,7 @@
 		73AAFFCF2BB68810000AAC27 /* SelectCityBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AAFFCE2BB68810000AAC27 /* SelectCityBox.swift */; };
 		73AAFFD12BB688AF000AAC27 /* HeaderFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AAFFD02BB688AF000AAC27 /* HeaderFeature.swift */; };
 		73AAFFD32BB68BA0000AAC27 /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AAFFD22BB68BA0000AAC27 /* MainFeature.swift */; };
+		73AAFFD52BB69287000AAC27 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AAFFD42BB69287000AAC27 /* Field.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,7 @@
 		73AAFFCE2BB68810000AAC27 /* SelectCityBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityBox.swift; sourceTree = "<group>"; };
 		73AAFFD02BB688AF000AAC27 /* HeaderFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFeature.swift; sourceTree = "<group>"; };
 		73AAFFD22BB68BA0000AAC27 /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
+		73AAFFD42BB69287000AAC27 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				5AC3EF4E2B2541F7001BB1F5 /* City.swift */,
+				73AAFFD42BB69287000AAC27 /* Field.swift */,
 				417AD9612BB1628900EA9D21 /* StartViewType.swift */,
 				73AAFFCA2BB685B2000AAC27 /* TabType.swift */,
 				73AAFFC82BB68590000AAC27 /* TextFieldType.swift */,
@@ -668,6 +671,7 @@
 				734E98592B2162DE002EC806 /* DetailQualificationView.swift in Sources */,
 				731327732B26F05F00564388 /* WebSiteLinkView.swift in Sources */,
 				1D36306B2B2164F60075939D /* RecommandView.swift in Sources */,
+				73AAFFD52BB69287000AAC27 /* Field.swift in Sources */,
 				417C393E2B2AD6380031DDC7 /* LaunchScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
