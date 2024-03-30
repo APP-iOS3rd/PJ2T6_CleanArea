@@ -73,6 +73,7 @@
 		73AAFFD12BB688AF000AAC27 /* HeaderFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AAFFD02BB688AF000AAC27 /* HeaderFeature.swift */; };
 		73AAFFD32BB68BA0000AAC27 /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AAFFD22BB68BA0000AAC27 /* MainFeature.swift */; };
 		73AAFFD52BB69287000AAC27 /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AAFFD42BB69287000AAC27 /* Field.swift */; };
+		73AAFFD72BB6CB01000AAC27 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73AAFFD62BB6CB01000AAC27 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -163,6 +164,7 @@
 		73AAFFD02BB688AF000AAC27 /* HeaderFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFeature.swift; sourceTree = "<group>"; };
 		73AAFFD22BB68BA0000AAC27 /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
 		73AAFFD42BB69287000AAC27 /* Field.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		73AAFFD62BB6CB01000AAC27 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				734E98272B216221002EC806 /* CleanAreaApp.swift */,
 				734E98292B216221002EC806 /* ContentView.swift */,
 				418C63592BB26AE000E9B5B5 /* SecretValue.swift */,
+				73AAFFD62BB6CB01000AAC27 /* TestView.swift */,
 				5AC3EF482B2541F7001BB1F5 /* Start */,
 				1D36305B2B2164F60075939D /* Main */,
 				417C39412B2AEDFB0031DDC7 /* View */,
@@ -649,6 +652,7 @@
 				418C635F2BB2B8C200E9B5B5 /* ListItemFeature.swift in Sources */,
 				73AAFFC42BB68470000AAC27 /* View.swift in Sources */,
 				1D06AF982B28929E006E6E35 /* HeaderView.swift in Sources */,
+				73AAFFD72BB6CB01000AAC27 /* TestView.swift in Sources */,
 				73AAFFD32BB68BA0000AAC27 /* MainFeature.swift in Sources */,
 				1D36306F2B2164F60075939D /* ListView.swift in Sources */,
 				5A5CF2BC2B26FA8900667F1F /* Policy.swift in Sources */,

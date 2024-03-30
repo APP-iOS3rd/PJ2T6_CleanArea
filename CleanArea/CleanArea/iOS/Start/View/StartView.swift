@@ -11,11 +11,11 @@ import SwiftUI
 
 struct StartView: View {
     @Bindable var store: StoreOf<StartFeature>
-
+    
     var body: some View {
         switch store.viewType {
         case .startView:
-            NavigationStack {
+            NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
                 VStack {
                     if !store.isKeyboardViewUp {
                         HStack(spacing: 5) {
@@ -60,6 +60,18 @@ struct StartView: View {
                     
                     Spacer()
                     
+                    Button {
+                        store.send(.openTest)
+                    } label: {
+                        Text("하이")
+                            .font(.pretendardRegular25)
+                            .padding(.horizontal, 50)
+                            .frame(height: 50)
+                            .background(.buttonGreen)
+                            .foregroundColor(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                    }
+                    
                     if !store.isKeyboardViewUp {
                         Button {
                             store.send(.searchButtonTap(
@@ -87,7 +99,7 @@ struct StartView: View {
                                     MainFeature()
                                 }
                             )
-                                .navigationBarBackButtonHidden(true)
+                            .navigationBarBackButtonHidden(true)
                         }
                         .transition(
                             .asymmetric(
@@ -102,6 +114,16 @@ struct StartView: View {
                 .padding(.vertical, 20)
                 .onTapGesture {
                     hideKeyboard()
+                }
+                .onAppear {
+                    print(store.path)
+                }
+            } destination: { store in
+                switch store.state {
+                case .test:
+                    if let store = store.scope(state: \.test, action: \.test) {
+                        TestView(store: store)
+                    }
                 }
             }
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in

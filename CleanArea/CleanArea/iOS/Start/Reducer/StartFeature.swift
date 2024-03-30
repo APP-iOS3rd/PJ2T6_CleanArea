@@ -35,6 +35,8 @@ struct StartFeature {
             type: TextFieldType.policyName,
             width: 300
         )
+        
+        var path = StackState<Path.State>()
     }
     
     enum Action {
@@ -42,14 +44,17 @@ struct StartFeature {
         case keyboardDown
         case keyboardUp
         case openMain
+        case openTest
         case searchButtonTap(City?, String, String, String, String)
         case setMain(Bool)
-
+        
         case inputBox1(LocationFeature.Action)
         case inputBox2(TextFieldFeature.Action)
         case inputBox3(TextFieldFeature.Action)
         case inputBox4(TextFieldFeature.Action)
         case inputBox5(TextFieldFeature.Action)
+        
+        case path(StackAction<Path.State, Path.Action>)
     }
     
     @Dependency(\.searchResult) var searchResult
@@ -75,11 +80,11 @@ struct StartFeature {
             switch action {
             case let .dataResponse(result):
                 state.result = result
-          
+                
                 return .run { send in
                     await send(.openMain)
                 }
-            
+                
             case .keyboardDown:
                 state.isKeyboardViewUp = false
                 return .none
@@ -91,6 +96,10 @@ struct StartFeature {
             case .openMain:
                 state.viewType = .startView
                 state.openMain = true
+                return .none
+                
+            case .openTest:
+                state.path.append(.test(TestFeature.State()))
                 return .none
                 
             case let .searchButtonTap(residence,
@@ -140,7 +149,52 @@ struct StartFeature {
                 
             case .inputBox5(_):
                 return .none
+            case let .path(action):
+                switch action {
+                    
+                    //                case .element(id: _, action: .mainScene(.getPolicy)):
+                    //                    state.path.append(.mainScene(MainFeature.State()))
+                    //                    return .none
+                case .element(id: _, action: .test(.initialAppear)):
+                    return .none
+                default:
+                    return .none
+                }
             }
+            
+        }
+        .forEach(\.path, action: \.path) {
+            Path()
+        }
+    }
+}
+
+extension StartFeature {
+    @Reducer
+    struct Path {
+        @ObservableState
+        enum State: Equatable {
+            //case startScene(StartFeature.State = .init())
+            //case mainScene(MainFeature.State)
+            case test(TestFeature.State)
+        }
+        
+        enum Action {
+            //case startScene(StartFeature.Action)
+            //case mainScene(MainFeature.Action)
+            case test(TestFeature.Action)
+        }
+        
+        var body: some ReducerOf<Self> {
+            Scope(state: \.test, action: \.test) {
+                TestFeature()
+            }
+            //            Scope(state: \.startScene, action: \.startScene) {
+            //                StartFeature()
+            //            }
+            //            Scope(state: \.mainScene, action: \.mainScene) {
+            //                MainFeature()
+            //            }
         }
     }
 }
