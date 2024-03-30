@@ -28,6 +28,17 @@ struct ListView: View {
             
             ScrollView {
                 ForEach(store.policies, id: \.self) { policy in
+                    /*
+                    NavigationLink(state: StartFeature.Path.State.testFinal(.init(cityImage: cityImage: store.residence, youthPolicy: policy))) {
+                        ListItemView(
+                            store: Store(
+                                initialState: ListItemFeature.State(policy: policy)) {
+                                    ListItemFeature()
+                                }
+                        )
+                    }*/
+                    
+                    
                     NavigationLink {
                         DetailView(cityImage: store.residence, youthPolicy: policy)
                     } label: {

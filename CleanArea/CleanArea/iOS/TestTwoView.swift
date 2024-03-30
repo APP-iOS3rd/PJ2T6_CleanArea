@@ -12,7 +12,7 @@ import ComposableArchitecture
 import Foundation
 
 @Reducer
-struct TestFeature {
+struct TestTwoFeature {
     @ObservableState
     struct State: Equatable {
         var text: String = ""
@@ -21,6 +21,7 @@ struct TestFeature {
     enum Action {
         case initialAppear
         case tabButton
+        case removeAll
     }
     
     @Dependency(\.dismiss) var dismiss
@@ -29,38 +30,42 @@ struct TestFeature {
         Reduce { state, action in
             switch action {
             case .initialAppear:
-                print("하이")
+                print("바이")
                 return .none
                 
             case .tabButton:
                 return .run { _ in
                     await self.dismiss()
                 }
+                
+            case .removeAll:
+            
+                return .none
             }
         }
     }
 }
 
-struct TestView: View {
-    @Bindable var store: StoreOf<TestFeature>
+struct TestTwoView: View {
+    @Bindable var store: StoreOf<TestTwoFeature>
     
     var body: some View {
-        VStack {
-            Button(action: {
-                store.send(.tabButton)
-            }, label: {
-                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-            })
-            
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            
-            NavigationLink(state: StartFeature.Path.State.testFinal(.init(text: <#T##String#>))) {
-                Text("Final")
+            VStack {
+                Button(action: {
+                    store.send(.tabButton)
+                }, label: {
+                    /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                })
+                
+                Button(action: {
+                    store.send(.removeAll)
+                }, label: {
+                    Text("home")
+                })
             }
-        }
-        .onAppear(perform: {
-            store.send(.initialAppear)
-        })
+            .onAppear(perform: {
+                store.send(.initialAppear)
+            })
     }
 }
 

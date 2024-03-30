@@ -12,7 +12,7 @@ import ComposableArchitecture
 import Foundation
 
 @Reducer
-struct TestFeature {
+struct FinalFeature {
     @ObservableState
     struct State: Equatable {
         var text: String = ""
@@ -21,6 +21,8 @@ struct TestFeature {
     enum Action {
         case initialAppear
         case tabButton
+        case finalButton
+        
     }
     
     @Dependency(\.dismiss) var dismiss
@@ -29,38 +31,45 @@ struct TestFeature {
         Reduce { state, action in
             switch action {
             case .initialAppear:
-                print("하이")
+                print("바이")
                 return .none
                 
             case .tabButton:
                 return .run { _ in
                     await self.dismiss()
                 }
+                
+            case .finalButton:
+                print("1234123")
+                return .none
             }
         }
     }
 }
 
-struct TestView: View {
-    @Bindable var store: StoreOf<TestFeature>
+
+struct FinalView: View {
+    var store: StoreOf<FinalFeature>
     
     var body: some View {
         VStack {
             Button(action: {
                 store.send(.tabButton)
             }, label: {
-                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                Text("뒤로")
             })
             
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
             
-            NavigationLink(state: StartFeature.Path.State.testFinal(.init(text: <#T##String#>))) {
-                Text("Final")
-            }
+            Button(action: {
+                store.send(.finalButton)
+            }, label: {
+                Text("앞으로")
+            })
         }
         .onAppear(perform: {
             store.send(.initialAppear)
         })
     }
 }
+
 

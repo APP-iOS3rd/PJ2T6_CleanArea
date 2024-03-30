@@ -120,9 +120,21 @@ struct StartView: View {
                 }
             } destination: { store in
                 switch store.state {
-                case .test:
-                    if let store = store.scope(state: \.test, action: \.test) {
-                        TestView(store: store)
+                case .testTab:
+                    if let store = store.scope(state: \.testTab, action: \.testTab) {
+                        TestTabView(store: store)
+                    }
+                    
+                case .testFinal:
+                    if let store = store.scope(state: \.testFinal, action: \.testFinal) {
+                        FinalView(store: store)
+                    }
+                case .testTest1:
+                    EmptyView()
+                    
+                case .testTest2:
+                    if let store = store.scope(state: \.testTest2, action: \.testTest2) {
+                        TestTwoView(store: store)
                     }
                 }
             }

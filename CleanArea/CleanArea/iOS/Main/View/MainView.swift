@@ -20,6 +20,7 @@ struct MainView: View {
             Color.white.edgesIgnoringSafeArea(.all)
             
             TabView {
+                
                 RecommandView(
                     store: Store(initialState: RecommandFeature.State(
                         recommandcellModels: store.recommandcellModels)) {

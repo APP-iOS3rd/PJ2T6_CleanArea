@@ -52,6 +52,9 @@
 		5AC3EF5D2B2541F7001BB1F5 /* StartTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC3EF542B2541F7001BB1F5 /* StartTextField.swift */; };
 		731327712B26F04B00564388 /* WebSiteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731327702B26F04B00564388 /* WebSiteView.swift */; };
 		731327732B26F05F00564388 /* WebSiteLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731327722B26F05F00564388 /* WebSiteLinkView.swift */; };
+		733B6A162BB8592000A17D6E /* TestTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733B6A152BB8592000A17D6E /* TestTabView.swift */; };
+		733B6A182BB8596800A17D6E /* TestTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733B6A172BB8596800A17D6E /* TestTwoView.swift */; };
+		733B6A1A2BB85A4400A17D6E /* FinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733B6A192BB85A4400A17D6E /* FinalView.swift */; };
 		734E98282B216221002EC806 /* CleanAreaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E98272B216221002EC806 /* CleanAreaApp.swift */; };
 		734E982A2B216221002EC806 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 734E98292B216221002EC806 /* ContentView.swift */; };
 		734E982F2B216223002EC806 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 734E982E2B216223002EC806 /* Preview Assets.xcassets */; };
@@ -139,6 +142,9 @@
 		5C9A178F2B26DADF003FF8C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		731327702B26F04B00564388 /* WebSiteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteView.swift; sourceTree = "<group>"; };
 		731327722B26F05F00564388 /* WebSiteLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteLinkView.swift; sourceTree = "<group>"; };
+		733B6A152BB8592000A17D6E /* TestTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTabView.swift; sourceTree = "<group>"; };
+		733B6A172BB8596800A17D6E /* TestTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTwoView.swift; sourceTree = "<group>"; };
+		733B6A192BB85A4400A17D6E /* FinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalView.swift; sourceTree = "<group>"; };
 		734214492B2835E8000D4168 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		734E98242B216221002EC806 /* CleanArea.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanArea.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		734E98272B216221002EC806 /* CleanAreaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanAreaApp.swift; sourceTree = "<group>"; };
@@ -200,6 +206,9 @@
 				734E98292B216221002EC806 /* ContentView.swift */,
 				418C63592BB26AE000E9B5B5 /* SecretValue.swift */,
 				73AAFFD62BB6CB01000AAC27 /* TestView.swift */,
+				733B6A172BB8596800A17D6E /* TestTwoView.swift */,
+				733B6A192BB85A4400A17D6E /* FinalView.swift */,
+				733B6A152BB8592000A17D6E /* TestTabView.swift */,
 				5AC3EF482B2541F7001BB1F5 /* Start */,
 				1D36305B2B2164F60075939D /* Main */,
 				417C39412B2AEDFB0031DDC7 /* View */,
@@ -655,6 +664,7 @@
 				73AAFFD72BB6CB01000AAC27 /* TestView.swift in Sources */,
 				73AAFFD32BB68BA0000AAC27 /* MainFeature.swift in Sources */,
 				1D36306F2B2164F60075939D /* ListView.swift in Sources */,
+				733B6A1A2BB85A4400A17D6E /* FinalView.swift in Sources */,
 				5A5CF2BC2B26FA8900667F1F /* Policy.swift in Sources */,
 				417AD96B2BB16AF100EA9D21 /* TextFieldFeature.swift in Sources */,
 				734E985B2B2162DE002EC806 /* DetailScrollView.swift in Sources */,
@@ -664,6 +674,8 @@
 				418C635A2BB26AE000E9B5B5 /* SecretValue.swift in Sources */,
 				73AAFFC22BB6841B000AAC27 /* ListFeature.swift in Sources */,
 				731327712B26F04B00564388 /* WebSiteView.swift in Sources */,
+				733B6A162BB8592000A17D6E /* TestTabView.swift in Sources */,
+				733B6A182BB8596800A17D6E /* TestTwoView.swift in Sources */,
 				417683EE2B28172400F00A6D /* LoadingCircleView.swift in Sources */,
 				41FBE2932B21830600D3AD65 /* DetailModifer.swift in Sources */,
 				734E985D2B2162DE002EC806 /* DetailSummaryView.swift in Sources */,

@@ -99,7 +99,7 @@ struct StartFeature {
                 return .none
                 
             case .openTest:
-                state.path.append(.test(TestFeature.State()))
+                state.path.append(.testTab(TestTabFeature.State()))
                 return .none
                 
             case let .searchButtonTap(residence,
@@ -155,7 +155,15 @@ struct StartFeature {
                     //                case .element(id: _, action: .mainScene(.getPolicy)):
                     //                    state.path.append(.mainScene(MainFeature.State()))
                     //                    return .none
-                case .element(id: _, action: .test(.initialAppear)):
+                case .element(id: _, action: .testTab(.initialAppear)):
+                    return .none
+
+                case .element(id: _, action: .testFinal(.finalButton)):
+                    state.path.append(.testTest2(TestTwoFeature.State()))
+                    return .none
+                    
+                case .element(id: _, action: .testTest2(.removeAll)):
+                    state.path.removeAll()
                     return .none
                 default:
                     return .none
@@ -176,19 +184,38 @@ extension StartFeature {
         enum State: Equatable {
             //case startScene(StartFeature.State = .init())
             //case mainScene(MainFeature.State)
-            case test(TestFeature.State)
+            case testTab(TestTabFeature.State)
+            case testTest1(TestFeature.State)
+            case testTest2(TestTwoFeature.State)
+            case testFinal(FinalFeature.State)
         }
         
         enum Action {
             //case startScene(StartFeature.Action)
             //case mainScene(MainFeature.Action)
-            case test(TestFeature.Action)
+            case testTab(TestTabFeature.Action)
+            case testTest1(TestFeature.Action)
+            case testTest2(TestTwoFeature.Action)
+            case testFinal(FinalFeature.Action)
         }
         
         var body: some ReducerOf<Self> {
-            Scope(state: \.test, action: \.test) {
+            Scope(state: \.testTab, action: \.testTab) {
+                TestTabFeature()
+            }
+            
+            Scope(state: \.testTest1, action: \.testTest1) {
                 TestFeature()
             }
+            
+            Scope(state: \.testTest2, action: \.testTest2) {
+                TestTwoFeature()
+            }
+            
+            Scope(state: \.testFinal, action: \.testFinal) {
+                FinalFeature()
+            }
+            
             //            Scope(state: \.startScene, action: \.startScene) {
             //                StartFeature()
             //            }
