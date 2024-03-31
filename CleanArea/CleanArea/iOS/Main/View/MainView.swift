@@ -13,46 +13,101 @@ import SwiftData
 struct MainView: View {
     @Bindable var store: StoreOf<MainFeature>
     
-    @Query var youthPolicies: [YouthPolicy]
+//    @Query var youthPolicies: [YouthPolicy]
     
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.all)
             
             TabView {
-                
-                RecommandView(
-                    store: Store(initialState: RecommandFeature.State(
-                        recommandcellModels: store.recommandcellModels)) {
-                        RecommandFeature()
+                VStack {
+                    HStack {
+                        Button {
+                            store.send(.tabBackButton)
+                        } label: {
+                            Image(systemName: "chevron.left")
+                                .bold()
+                                .foregroundStyle(.mainGreen)
+                                .padding(.top, 20)
+                        }
+                        Text("추천정책")
+                            .font(.pretendardBold30)
+                            .foregroundStyle(.mainGreen)
+                            .padding(.top, 20)
+                        Spacer()
                     }
-                )
+                    .padding(.horizontal)
+                    
+                    RecommandView(
+                        store: Store(initialState: RecommandFeature.State(
+                            recommandcellModels: store.recommandcellModels)) {
+                                RecommandFeature()
+                            }
+                    )
+                }
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
                     .tag("Home")
                 
-                ListView(
-                    store: Store(initialState: ListFeature.State(
-                        policies: store.hotPolicies,
-                        tabType: .hot,
-                        hearderTitle: "인기정책",
-                        text: "")) {
-                            ListFeature()
-                        })
+                VStack {
+                    HStack {
+                        Button {
+                            store.send(.tabBackButton)
+                        } label: {
+                            Image(systemName: "chevron.left")
+                                .bold()
+                                .foregroundStyle(.mainGreen)
+                                .padding(.top, 20)
+                        }
+                        Text("인기정책")
+                            .font(.pretendardBold30)
+                            .foregroundStyle(.mainGreen)
+                            .padding(.top, 20)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    ListView(
+                        store: Store(initialState: ListFeature.State(
+                            policies: store.hotPolicies,
+                            tabType: .hot,
+                            hearderTitle: "인기정책",
+                            text: "")) {
+                                ListFeature()
+                            })
+                }
                 .tabItem {
                     Label("Hot", systemImage: "flame")
                 }
                 .tag("Hot")
                 
-                ListView(
-                    store: Store(initialState: ListFeature.State(
-                        policies: store.likePolicies,
-                        tabType: .like,
-                        hearderTitle: "즐겨찾기",
-                        text: "")) {
-                            ListFeature()
-                        })
+                VStack {
+                    HStack {
+                        Button {
+                            store.send(.tabBackButton)
+                        } label: {
+                            Image(systemName: "chevron.left")
+                                .bold()
+                                .foregroundStyle(.mainGreen)
+                                .padding(.top, 20)
+                        }
+                        Text("즐겨찾기")
+                            .font(.pretendardBold30)
+                            .foregroundStyle(.mainGreen)
+                            .padding(.top, 20)
+                        Spacer()
+                    }
+                    .padding(.horizontal)
+                    
+                    ListView(
+                        store: Store(initialState: ListFeature.State(
+                            policies: store.likePolicies,
+                            tabType: .like,
+                            hearderTitle: "즐겨찾기",
+                            text: "")) {
+                                ListFeature()
+                            })
+                }
                 .tabItem {
                     Label("Like", systemImage: "star")
                 }
@@ -63,5 +118,6 @@ struct MainView: View {
         .onAppear {
             store.send(.appearSet)
         }
+        .navigationBarBackButtonHidden()
     }
 }

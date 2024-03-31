@@ -60,27 +60,17 @@ struct StartView: View {
                     
                     Spacer()
                     
-                    Button {
-                        store.send(.openTest)
-                    } label: {
-                        Text("하이")
-                            .font(.pretendardRegular25)
-                            .padding(.horizontal, 50)
-                            .frame(height: 50)
-                            .background(.buttonGreen)
-                            .foregroundColor(.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
-                    }
                     
                     if !store.isKeyboardViewUp {
                         Button {
-                            store.send(.searchButtonTap(
-                                store.scope(state: \.inputBox1, action: \.inputBox1).city,
-                                store.scope(state: \.inputBox2, action: \.inputBox2).text,
-                                store.scope(state: \.inputBox3, action: \.inputBox3).text,
-                                store.scope(state: \.inputBox4, action: \.inputBox4).text,
-                                store.scope(state: \.inputBox5, action: \.inputBox5).text
-                            ))
+//                            store.send(.searchButtonTap(
+//                                store.scope(state: \.inputBox1, action: \.inputBox1).city,
+//                                store.scope(state: \.inputBox2, action: \.inputBox2).text,
+//                                store.scope(state: \.inputBox3, action: \.inputBox3).text,
+//                                store.scope(state: \.inputBox4, action: \.inputBox4).text,
+//                                store.scope(state: \.inputBox5, action: \.inputBox5).text
+//                            ))
+                            store.send(.openMain)
                         } label: {
                             
                             Text("정책검색")
@@ -91,15 +81,6 @@ struct StartView: View {
                                 .foregroundColor(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                             
-                        }
-                        .navigationDestination(isPresented: $store.openMain.sending(\.setMain)) {
-                            // 이동할 뷰 (현재 임시 뷰 지정)
-                            MainView(
-                                store: Store(initialState: MainFeature.State(policies: store.result, initialAppear: true)) {
-                                    MainFeature()
-                                }
-                            )
-                            .navigationBarBackButtonHidden(true)
                         }
                         .transition(
                             .asymmetric(
@@ -120,21 +101,14 @@ struct StartView: View {
                 }
             } destination: { store in
                 switch store.state {
-                case .testTab:
-                    if let store = store.scope(state: \.testTab, action: \.testTab) {
-                        TestTabView(store: store)
+     
+                case .mainScene:
+                    if let store = store.scope(state: \.mainScene, action: \.mainScene) {
+                        MainView(store: store)
                     }
-                    
-                case .testFinal:
-                    if let store = store.scope(state: \.testFinal, action: \.testFinal) {
-                        FinalView(store: store)
-                    }
-                case .testTest1:
-                    EmptyView()
-                    
-                case .testTest2:
-                    if let store = store.scope(state: \.testTest2, action: \.testTest2) {
-                        TestTwoView(store: store)
+                case .listScene(_):
+                    if let store = store.scope(state: \.listScene, action: \.listScene) {
+                        ListView(store: store)
                     }
                 }
             }

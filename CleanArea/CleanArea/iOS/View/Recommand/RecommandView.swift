@@ -34,33 +34,19 @@ struct RecommandView: View {
     var body: some View {
         
         VStack {
-            HeaderView(
-                store: Store(
-                    initialState: HeaderFeature.State(title: "추천정책")) {
-                        HeaderFeature()
-                    }
-            )
-            
-            Spacer()
-            
             ScrollView {
                 ForEach(store.recommandcellModels.indices, id: \.self) { index in
-                    NavigationLink {
-                        
-                        ListView(store: Store(initialState: ListFeature.State(
-                            policies: store.recommandcellModels[index].policies,
-                            tabType: .recommand,
-                            hearderTitle: store.recommandcellModels[index].name,
-                            text: "")) {
-                                ListFeature()
-                            })
-                        
-                    } label: {
+                    NavigationLink(state: StartFeature.Path.State.listScene(.init(
+                        policies: store.recommandcellModels[index].policies,
+                        tabType: .recommand,
+                        hearderTitle: store.recommandcellModels[index].name))) {
                         RecommandCell(model: store.recommandcellModels[index])
                             .frame(height: 70)
                             .padding(.vertical, 11)
                             .padding(.horizontal, 20)
                     }
+                    
+                 
                 }
             }
             Spacer()

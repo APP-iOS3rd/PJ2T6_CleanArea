@@ -23,8 +23,11 @@ struct ListFeature {
     enum Action {
         case clearTextField
         case setText(String)
+        case tabBackButton
     }
     
+    @Dependency(\.dismiss) var dismiss
+
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
@@ -35,6 +38,11 @@ struct ListFeature {
             case let .setText(text):
                 state.text = text
                 return .none
+                
+            case .tabBackButton:
+                return .run { _ in
+                    await self.dismiss()
+                }
             }
         }
     }

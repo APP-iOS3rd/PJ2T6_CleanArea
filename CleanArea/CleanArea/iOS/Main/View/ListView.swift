@@ -15,13 +15,24 @@ struct ListView: View {
     
     var body: some View {
         VStack {
-            HeaderView(
-                store: Store(
-                    initialState: HeaderFeature.State(title: store.hearderTitle)) {
-                        HeaderFeature()
-                    }
-            )
+
             if store.tabType == .recommand {
+                HStack {
+                    Button {
+                        store.send(.tabBackButton)
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .bold()
+                            .foregroundStyle(.mainGreen)
+                            .padding(.top, 20)
+                    }
+                    Text(store.hearderTitle)
+                        .font(.pretendardBold30)
+                        .foregroundStyle(.mainGreen)
+                        .padding(.top, 20)
+                    Spacer()
+                }
+                .padding(.horizontal)
                 SearchBar(store: store)
                     .padding(.horizontal)
             }

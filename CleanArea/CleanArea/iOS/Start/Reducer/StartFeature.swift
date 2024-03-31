@@ -14,7 +14,6 @@ struct StartFeature {
     @ObservableState
     struct State: Equatable {
         var isKeyboardViewUp: Bool = false
-        var openMain: Bool = false
         var result: IdentifiedArrayOf<YouthPolicy> = []
         var viewType: StartViewType = .startView
         
@@ -44,9 +43,7 @@ struct StartFeature {
         case keyboardDown
         case keyboardUp
         case openMain
-        case openTest
         case searchButtonTap(City?, String, String, String, String)
-        case setMain(Bool)
         
         case inputBox1(LocationFeature.Action)
         case inputBox2(TextFieldFeature.Action)
@@ -95,11 +92,7 @@ struct StartFeature {
                 
             case .openMain:
                 state.viewType = .startView
-                state.openMain = true
-                return .none
-                
-            case .openTest:
-                state.path.append(.testTab(TestTabFeature.State()))
+                state.path.append(.mainScene(MainFeature.State()))
                 return .none
                 
             case let .searchButtonTap(residence,
@@ -130,10 +123,6 @@ struct StartFeature {
                 } catch: { error, _ in
                     print("데이터 받아오기 실패: \(error)")
                 }
-                
-            case let .setMain(openMain):
-                state.openMain = openMain
-                return .none
 
             case .inputBox1(_):
                 return .none
@@ -151,20 +140,10 @@ struct StartFeature {
                 return .none
             case let .path(action):
                 switch action {
-                    
-                    //                case .element(id: _, action: .mainScene(.getPolicy)):
-                    //                    state.path.append(.mainScene(MainFeature.State()))
-                    //                    return .none
-                case .element(id: _, action: .testTab(.initialAppear)):
+              
+                case .element(id: _, action: .mainScene(.appearSet)):
                     return .none
 
-                case .element(id: _, action: .testFinal(.finalButton)):
-                    state.path.append(.testTest2(TestTwoFeature.State()))
-                    return .none
-                    
-                case .element(id: _, action: .testTest2(.removeAll)):
-                    state.path.removeAll()
-                    return .none
                 default:
                     return .none
                 }
@@ -182,46 +161,23 @@ extension StartFeature {
     struct Path {
         @ObservableState
         enum State: Equatable {
-            //case startScene(StartFeature.State = .init())
-            //case mainScene(MainFeature.State)
-            case testTab(TestTabFeature.State)
-            case testTest1(TestFeature.State)
-            case testTest2(TestTwoFeature.State)
-            case testFinal(FinalFeature.State)
+            case mainScene(MainFeature.State)
+            case listScene(ListFeature.State)
         }
         
         enum Action {
-            //case startScene(StartFeature.Action)
-            //case mainScene(MainFeature.Action)
-            case testTab(TestTabFeature.Action)
-            case testTest1(TestFeature.Action)
-            case testTest2(TestTwoFeature.Action)
-            case testFinal(FinalFeature.Action)
+            case mainScene(MainFeature.Action)
+            case listScene(ListFeature.Action)
         }
         
         var body: some ReducerOf<Self> {
-            Scope(state: \.testTab, action: \.testTab) {
-                TestTabFeature()
+            Scope(state: \.mainScene, action: \.mainScene) {
+                MainFeature()
             }
             
-            Scope(state: \.testTest1, action: \.testTest1) {
-                TestFeature()
+            Scope(state: \.listScene, action: \.listScene) {
+                ListFeature()
             }
-            
-            Scope(state: \.testTest2, action: \.testTest2) {
-                TestTwoFeature()
-            }
-            
-            Scope(state: \.testFinal, action: \.testFinal) {
-                FinalFeature()
-            }
-            
-            //            Scope(state: \.startScene, action: \.startScene) {
-            //                StartFeature()
-            //            }
-            //            Scope(state: \.mainScene, action: \.mainScene) {
-            //                MainFeature()
-            //            }
         }
     }
 }
