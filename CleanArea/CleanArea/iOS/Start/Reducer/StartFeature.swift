@@ -163,11 +163,13 @@ extension StartFeature {
         enum State: Equatable {
             case mainScene(MainFeature.State)
             case listScene(ListFeature.State)
+            case detailScene(DetailFeature.State)
         }
         
         enum Action {
             case mainScene(MainFeature.Action)
             case listScene(ListFeature.Action)
+            case detailScene(DetailFeature.Action)
         }
         
         var body: some ReducerOf<Self> {
@@ -177,6 +179,11 @@ extension StartFeature {
             
             Scope(state: \.listScene, action: \.listScene) {
                 ListFeature()
+            }
+            
+            
+            Scope(state: \.detailScene, action: \.detailScene) {
+                DetailFeature()
             }
         }
     }

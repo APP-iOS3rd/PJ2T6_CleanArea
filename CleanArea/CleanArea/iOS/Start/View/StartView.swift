@@ -101,7 +101,6 @@ struct StartView: View {
                 }
             } destination: { store in
                 switch store.state {
-     
                 case .mainScene:
                     if let store = store.scope(state: \.mainScene, action: \.mainScene) {
                         MainView(store: store)
@@ -109,6 +108,10 @@ struct StartView: View {
                 case .listScene(_):
                     if let store = store.scope(state: \.listScene, action: \.listScene) {
                         ListView(store: store)
+                    }
+                case .detailScene(_):
+                    if let store = store.scope(state: \.detailScene, action: \.detailScene) {
+                        DetailView(store: store)
                     }
                 }
             }

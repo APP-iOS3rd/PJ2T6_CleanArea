@@ -5,19 +5,45 @@
 //  Created by 노주영 on 2023/12/06.
 //
 
+import ComposableArchitecture
+
 import SwiftUI
 
-struct DetailView: View {
-    @Environment(\.presentationMode) var presentationMode
+@Reducer
+struct DetailFeature {
+    @ObservableState
+    struct State: Equatable {
+        var cityImage: City?                            //시 이미지
+        var youthPolicy: YouthPolicy                    //정책 내용
+    }
     
-    var cityImage: City?                            //시 이미지
-    var youthPolicy: YouthPolicy                    //정책 내용
+    enum Action {
+        case tabBackButton
+    }
+    
+    @Dependency(\.dismiss) var dismiss
+    
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .tabBackButton:
+                return .run { _ in
+                    await self.dismiss()
+                }
+            }
+        }
+    }
+}
+
+struct DetailView: View {
+    
+    @Bindable var store: StoreOf<DetailFeature>
     
     var body: some View {
         VStack {
             HStack {
                 Button(action: {
-                    self.presentationMode.wrappedValue.dismiss()
+                    store.send(.tabBackButton)
                 }) {
                     Image(systemName: "chevron.left")
                         .bold()
@@ -26,20 +52,20 @@ struct DetailView: View {
                 Spacer()
                 
                 //TODO: 스타버튼
-                StarBtn(policy: youthPolicy)
+                StarBtn(policy: store.youthPolicy)
             }
             .padding(.top, 20)
             .padding(.horizontal, 20)
             
             HStack {
-                Text(youthPolicy.polyBizSjnm)
+                Text(store.youthPolicy.polyBizSjnm)
                     .multilineTextAlignment(.leading)
                     .font(.pretendardSemiBold25)
                     .foregroundStyle(.mainGreen)
                 
                 Spacer()
                 
-                Image(City(rawValue: youthPolicy.polyBizSecd)?.getCityImage() ?? "")
+                Image(City(rawValue: store.youthPolicy.polyBizSecd)?.getCityImage() ?? "")
                  .resizable()
                  .frame(width: 90, height: 60)
                  .cornerRadius(10)
@@ -53,7 +79,7 @@ struct DetailView: View {
             .padding(.top, 30)
             .padding(.horizontal, 20)
             
-            DetailScrollView(youthPolicy: youthPolicy)
+            DetailScrollView(youthPolicy: store.youthPolicy)
         }
         .navigationBarBackButtonHidden()
     }

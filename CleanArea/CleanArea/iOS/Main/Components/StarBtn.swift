@@ -4,6 +4,9 @@
 //
 //  Created by 이민호 on 12/6/23.
 //
+
+import ComposableArchitecture
+
 import SwiftUI
 import SwiftData
 
@@ -21,6 +24,8 @@ class LikedStatusManager: ObservableObject {
             }
         }
     }
+    
+    @Dependency(\.swiftData) var swiftData
 
     func setLikedStatus(for policyID: String, status: Bool) {
         likedStatus[policyID] = status
@@ -29,6 +34,28 @@ class LikedStatusManager: ObservableObject {
 
     func getLikedStatus(for policyID: String) -> Bool {
         return likedStatus[policyID] ?? UserDefaults.standard.bool(forKey: "isLiked_\(policyID)")
+    }
+}
+
+
+@Reducer
+struct StarFeature {
+    @ObservableState
+    struct State: Equatable {
+        var likedStatus: [String: Bool] = [:]
+        var policy: YouthPolicy
+
+    }
+    
+    enum Action {
+        
+    }
+    
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            
+            return .none
+        }
     }
 }
 

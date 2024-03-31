@@ -38,30 +38,22 @@ struct ListView: View {
             }
             
             ScrollView {
-                ForEach(store.policies, id: \.self) { policy in
-                    /*
-                    NavigationLink(state: StartFeature.Path.State.testFinal(.init(cityImage: cityImage: store.residence, youthPolicy: policy))) {
+                ForEach(store.filteredPolicies, id: \.self) { policy in
+
+                    NavigationLink(state: StartFeature.Path.State.detailScene(.init(
+                        cityImage: store.residence,
+                        youthPolicy: policy)
+                    )) {
                         ListItemView(
                             store: Store(
                                 initialState: ListItemFeature.State(policy: policy)) {
                                     ListItemFeature()
                                 }
                         )
-                    }*/
-                    
-                    
-                    NavigationLink {
-                        DetailView(cityImage: store.residence, youthPolicy: policy)
-                    } label: {
-                        ListItemView(
-                            store: Store(
-                                initialState: ListItemFeature.State(policy: policy)) {
-                                    ListItemFeature()
-                                }
-                        )
+                        .padding(.horizontal)
+                        .padding(.vertical, 4)
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical, 4)
+
                 }
             }
             .scrollContentBackground(.hidden)
@@ -71,3 +63,4 @@ struct ListView: View {
         .navigationBarHidden(true)
     }
 }
+

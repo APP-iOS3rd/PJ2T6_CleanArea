@@ -42,6 +42,8 @@ struct ListItemFeature {
                 ])
                 
             case let .calculateDay(dateString):
+                
+                print(dateString)
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = Locale(identifier: "ko_KR")
                 
@@ -54,7 +56,7 @@ struct ListItemFeature {
                     dateFormatter.dateFormat = format
                     let dates = dateString.split(separator: "~").map(String.init)
                     if let endDateString = dates.last, let endDate = dateFormatter.date(from: endDateString.trimmingCharacters(in: .whitespaces)),
-                       endDate >= Date() {
+                       endDate <= Date() {
                         return .run { send in
                             await send(.setDDayText(endDate))
                             await send(.setProgressColor)
@@ -63,7 +65,7 @@ struct ListItemFeature {
                     
                     let date = dateString.split(separator: "-").map(String.init)
                     if let endDateString = date.last, let endDate = dateFormatter.date(from: endDateString.trimmingCharacters(in: .whitespaces)),
-                       endDate >= Date() {
+                       endDate <= Date() {
                         return .run { send in
                             await send(.setDDayText(endDate))
                             await send(.setProgressColor)

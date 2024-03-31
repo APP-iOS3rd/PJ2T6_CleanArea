@@ -13,8 +13,6 @@ import SwiftData
 struct MainView: View {
     @Bindable var store: StoreOf<MainFeature>
     
-//    @Query var youthPolicies: [YouthPolicy]
-    
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.all)
@@ -70,6 +68,7 @@ struct MainView: View {
                     ListView(
                         store: Store(initialState: ListFeature.State(
                             policies: store.hotPolicies,
+                            filteredPolicies: store.hotPolicies,
                             tabType: .hot,
                             hearderTitle: "인기정책",
                             text: "")) {
@@ -102,6 +101,7 @@ struct MainView: View {
                     ListView(
                         store: Store(initialState: ListFeature.State(
                             policies: store.likePolicies,
+                            filteredPolicies: store.likePolicies,
                             tabType: .like,
                             hearderTitle: "즐겨찾기",
                             text: "")) {

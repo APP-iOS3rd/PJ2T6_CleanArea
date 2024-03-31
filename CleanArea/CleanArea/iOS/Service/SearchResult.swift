@@ -27,10 +27,3 @@ extension SearchResult: DependencyKey {
         }
     )
 }
-
-extension DependencyValues {
-    var searchResult: SearchResult {
-        get { self[SearchResult.self] }
-        set { self[SearchResult.self] = newValue }
-    }
-}

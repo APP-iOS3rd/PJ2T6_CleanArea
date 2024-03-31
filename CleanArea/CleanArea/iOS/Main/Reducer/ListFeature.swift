@@ -14,6 +14,7 @@ struct ListFeature {
     @ObservableState
     struct State: Equatable {
         var policies: IdentifiedArrayOf<YouthPolicy> = []
+        var filteredPolicies: IdentifiedArrayOf<YouthPolicy> = []
         var residence: City?
         var tabType: TabType = .recommand
         var hearderTitle: String = ""
@@ -22,6 +23,7 @@ struct ListFeature {
     
     enum Action {
         case clearTextField
+        case filterPolicies(String)
         case setText(String)
         case tabBackButton
     }
@@ -34,10 +36,23 @@ struct ListFeature {
             case .clearTextField:
                 state.text = ""
                 return .none
+            case let .filterPolicies(text):
+                if state.text.isEmpty {
+                    state.filteredPolicies = state.policies
+                } else {
+                    state.filteredPolicies = state.policies.filter {
+                        $0.polyBizSjnm.localizedCaseInsensitiveContains(text)
+                    }
+                }
+                return .none
                 
             case let .setText(text):
                 state.text = text
-                return .none
+                state.filteredPolicies = []
+             
+                return .run { send in
+                    await send(.filterPolicies(text))
+                }
                 
             case .tabBackButton:
                 return .run { _ in

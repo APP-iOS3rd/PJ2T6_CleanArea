@@ -9,35 +9,16 @@ import ComposableArchitecture
 
 import SwiftUI
 
-@Reducer
-struct RecommandFeature {
-    @ObservableState
-    struct State: Equatable {
-        var recommandcellModels: [RecommandCellModel] = []
-    }
-    
-    enum Action {
-        
-    }
-    
-    var body: some ReducerOf<Self> {
-        Reduce { state, action in
-            return .none
-            
-        }
-    }
-}
-
 struct RecommandView: View {
     @Bindable var store: StoreOf<RecommandFeature>
     
     var body: some View {
-        
         VStack {
             ScrollView {
                 ForEach(store.recommandcellModels.indices, id: \.self) { index in
                     NavigationLink(state: StartFeature.Path.State.listScene(.init(
                         policies: store.recommandcellModels[index].policies,
+                        filteredPolicies: store.recommandcellModels[index].policies,
                         tabType: .recommand,
                         hearderTitle: store.recommandcellModels[index].name))) {
                         RecommandCell(model: store.recommandcellModels[index])
@@ -45,8 +26,6 @@ struct RecommandView: View {
                             .padding(.vertical, 11)
                             .padding(.horizontal, 20)
                     }
-                    
-                 
                 }
             }
             Spacer()
