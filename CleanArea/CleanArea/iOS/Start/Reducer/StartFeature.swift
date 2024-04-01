@@ -92,7 +92,9 @@ struct StartFeature {
                 
             case .openMain:
                 state.viewType = .startView
-                state.path.append(.mainScene(MainFeature.State()))
+                state.path.append(.mainScene(MainFeature.State(
+                    policies: state.result
+                )))
                 return .none
                 
             case let .searchButtonTap(residence,
@@ -140,7 +142,6 @@ struct StartFeature {
                 return .none
             case let .path(action):
                 switch action {
-              
                 case .element(id: _, action: .mainScene(.appearSet)):
                     return .none
 
@@ -180,7 +181,6 @@ extension StartFeature {
             Scope(state: \.listScene, action: \.listScene) {
                 ListFeature()
             }
-            
             
             Scope(state: \.detailScene, action: \.detailScene) {
                 DetailFeature()

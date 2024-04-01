@@ -63,14 +63,14 @@ struct StartView: View {
                     
                     if !store.isKeyboardViewUp {
                         Button {
-//                            store.send(.searchButtonTap(
-//                                store.scope(state: \.inputBox1, action: \.inputBox1).city,
-//                                store.scope(state: \.inputBox2, action: \.inputBox2).text,
-//                                store.scope(state: \.inputBox3, action: \.inputBox3).text,
-//                                store.scope(state: \.inputBox4, action: \.inputBox4).text,
-//                                store.scope(state: \.inputBox5, action: \.inputBox5).text
-//                            ))
-                            store.send(.openMain)
+                            store.send(.searchButtonTap(
+                                store.scope(state: \.inputBox1, action: \.inputBox1).city,
+                                store.scope(state: \.inputBox2, action: \.inputBox2).text,
+                                store.scope(state: \.inputBox3, action: \.inputBox3).text,
+                                store.scope(state: \.inputBox4, action: \.inputBox4).text,
+                                store.scope(state: \.inputBox5, action: \.inputBox5).text
+                            ))
+//                            store.send(.openMain)
                         } label: {
                             
                             Text("정책검색")
