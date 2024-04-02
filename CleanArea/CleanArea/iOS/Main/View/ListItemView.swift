@@ -59,7 +59,7 @@ struct ListItemView: View {
         .background(Color.backgroundGreen)
         .cornerRadius(10)
         .onAppear{
-            store.send(.appearSet(store.policy))
+            store.send(.appearSet)
         }
     }
 }

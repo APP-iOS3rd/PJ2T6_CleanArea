@@ -16,17 +16,17 @@ struct MainFeature {
         var policies: IdentifiedArrayOf<YouthPolicy> = []
         var hotPolicies: IdentifiedArrayOf<YouthPolicy> = []
         var initialAppear: Bool = true
-        var likePolicies: IdentifiedArrayOf<YouthPolicy> = []
+//        var likePolicies: IdentifiedArrayOf<YouthPolicy> = []
         var recommandcellModels: [RecommandCellModel] = []
         
-        mutating func fetchItems() {
-            @Dependency(\.swiftData) var swiftData
-            do {
-                self.likePolicies = IdentifiedArray(uniqueElements: try swiftData.fetch())
-            } catch {
-                print("error :: fetchItems", error.localizedDescription)
-            }
-        }
+//        mutating func fetchItems() {
+//            @Dependency(\.swiftData) var swiftData
+//            do {
+//                self.likePolicies = IdentifiedArray(uniqueElements: try swiftData.fetch())
+//            } catch {
+//                print("error :: fetchItems", error.localizedDescription)
+//            }
+//        }
     }
     
     enum Action {
@@ -41,7 +41,7 @@ struct MainFeature {
     }
     
     @Dependency(\.dismiss) var dismiss
-    @Dependency(\.swiftData) var swiftData
+//    @Dependency(\.swiftData) var swiftData
 
     
     var body: some ReducerOf<Self> {
@@ -54,6 +54,8 @@ struct MainFeature {
                         await send(.getPolicy)
                         await send(.initialAppear)
                     }
+                    
+//                    fetchItems
                 }
                 
             case let .filterPolicy(policies, code):
@@ -110,7 +112,7 @@ struct MainFeature {
                 
             case .setFilterPolicy:
                 state.hotPolicies = IdentifiedArrayOf<YouthPolicy>( uniqueElements: state.policies.sorted { $0.views > $1.views })
-                state.likePolicies = state.likePolicies
+//                state.likePolicies = state.likePolicies
                 return .none
                 
             case let .setRecommanModel(policies, name):

@@ -21,7 +21,7 @@ struct ListItemFeature {
     }
     
     enum Action {
-        case appearSet(YouthPolicy)
+        case appearSet
         case calculateDay(String)
         case convertCodeToCategory(String)
         case setDDayText(Date)
@@ -31,12 +31,12 @@ struct ListItemFeature {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
-            case let .appearSet(policy):
+            case .appearSet:
                 return .concatenate([
-                    .run { send in
+                    .run { [policy = state.policy] send in
                         await send(.calculateDay(policy.bizPrdCn))
                     },
-                    .run { send in
+                    .run { [policy = state.policy] send in
                         await send(.convertCodeToCategory(policy.polyRlmCd))
                     }
                 ])
