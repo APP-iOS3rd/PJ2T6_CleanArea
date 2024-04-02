@@ -16,9 +16,9 @@ struct MainFeature {
         var policies: IdentifiedArrayOf<YouthPolicy> = []
         var hotPolicies: IdentifiedArrayOf<YouthPolicy> = []
         var initialAppear: Bool = true
-//        var likePolicies: IdentifiedArrayOf<YouthPolicy> = []
         var recommandcellModels: [RecommandCellModel] = []
         
+//        var likePolicies: IdentifiedArrayOf<YouthPolicy> = []
 //        mutating func fetchItems() {
 //            @Dependency(\.swiftData) var swiftData
 //            do {
@@ -54,7 +54,7 @@ struct MainFeature {
                         await send(.getPolicy)
                         await send(.initialAppear)
                     }
-                    
+                
 //                    fetchItems
                 }
                 
@@ -111,8 +111,7 @@ struct MainFeature {
                 return .none
                 
             case .setFilterPolicy:
-                state.hotPolicies = IdentifiedArrayOf<YouthPolicy>( uniqueElements: state.policies.sorted { $0.views > $1.views })
-//                state.likePolicies = state.likePolicies
+                state.hotPolicies = IdentifiedArrayOf<YouthPolicy>(uniqueElements: state.policies.sorted { $0.views > $1.views })
                 return .none
                 
             case let .setRecommanModel(policies, name):

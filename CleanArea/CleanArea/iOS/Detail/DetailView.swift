@@ -18,6 +18,7 @@ struct DetailFeature {
     }
     
     enum Action {
+        case onAppear
         case tabBackButton
     }
     
@@ -26,6 +27,26 @@ struct DetailFeature {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
+            case .onAppear:
+                return .run { [policyId = state.youthPolicy.bizId] send in
+                    guard let url = URL(string: "\(requestIP)/views") else { return }
+                    var request = URLRequest(url: url)
+                    request.httpMethod = "POST"
+                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                    let body: [String: Any] = ["bizId": policyId]
+                    request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+                
+                    do {
+                        let (_, response) = try await URLSession.shared.data(for: request)
+                        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                            print("데이터 전송 실패")
+                            return
+                        }
+                        print("데이터 전송 성공")
+                    } catch {
+                        print("데이터 전송 에러: \(error.localizedDescription)")
+                    }
+                }
             case .tabBackButton:
                 return .run { _ in
                     await self.dismiss()
@@ -80,6 +101,9 @@ struct DetailView: View {
             .padding(.horizontal, 20)
             
             DetailScrollView(youthPolicy: store.youthPolicy)
+        }
+        .onAppear {
+            store.send(.onAppear)
         }
         .navigationBarBackButtonHidden()
     }
