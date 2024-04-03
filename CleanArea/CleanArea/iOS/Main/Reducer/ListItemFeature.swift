@@ -16,7 +16,7 @@ struct ListItemFeature {
         var category: String = ""
         var currentProgress: String = "진행중"
         var dDayText: String = ""
-        var policy: YouthPolicy
+        var policy: YouthPolicy = .init(bizId: "", polyBizSecd: "", polyBizTy: "", polyBizSjnm: "", polyItcnCn: "", sporCn: "", sporScvl: "", bizPrdCn: "", prdRpttSecd: "", rqutPrdCn: "", ageInfo: "", majrRqisCn: "", empmSttsCn: "", splzRlmRqisCn: "", accrRqisCn: "", prcpCn: "", aditRscn: "", prcpLmttTrgtCn: "", rqutProcCn: "", pstnPaprCn: "", jdgnPresCn: "", rqutUrla: "", rfcSiteUrla1: "", rfcSiteUrla2: "", mngtMson: "", mngtMrofCherCn: "", cherCtpcCn: "", cnsgNmor: "", tintCherCn: "", tintCherCtpcCn: "", etct: "", polyRlmCd: "", minAge: "", maxAge: "", startDate: "", endDate: "", views: 0)
         var progressColor: Color = .proceed
     }
     
