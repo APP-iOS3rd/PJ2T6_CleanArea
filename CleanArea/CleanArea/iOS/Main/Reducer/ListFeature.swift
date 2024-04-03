@@ -13,11 +13,11 @@ import Foundation
 struct ListFeature {
     @ObservableState
     struct State: Equatable {
-        var policies: IdentifiedArrayOf<YouthPolicy> = []
         var filteredPolicies: IdentifiedArrayOf<YouthPolicy> = []
+        var hearderTitle: String = ""
+        var policies: IdentifiedArrayOf<YouthPolicy> = []
         var residence: City?
         var tabType: TabType = .recommand
-        var hearderTitle: String = ""
         var text: String = ""
     }
     
@@ -36,6 +36,7 @@ struct ListFeature {
             case .clearTextField:
                 state.text = ""
                 return .none
+                
             case let .filterPolicies(text):
                 if state.text.isEmpty {
                     state.filteredPolicies = state.policies
@@ -49,7 +50,6 @@ struct ListFeature {
             case let .setText(text):
                 state.text = text
                 state.filteredPolicies = []
-             
                 return .run { send in
                     await send(.filterPolicies(text))
                 }

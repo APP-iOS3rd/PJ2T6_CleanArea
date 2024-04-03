@@ -8,13 +8,10 @@
 import ComposableArchitecture
 
 import SwiftUI
-import SwiftData
 
 struct MainView: View {
     @Bindable var store: StoreOf<MainFeature>
-    
-    @Query var likePolicies: [YouthPolicy]
-    
+        
     var body: some View {
         ZStack {
             Color.white.edgesIgnoringSafeArea(.all)
@@ -69,10 +66,10 @@ struct MainView: View {
                     .padding(.horizontal)
                     ListView(
                         store: Store(initialState: ListFeature.State(
-                            policies: store.hotPolicies,
                             filteredPolicies: store.hotPolicies,
-                            tabType: .hot,
                             hearderTitle: "인기정책",
+                            policies: store.hotPolicies,
+                            tabType: .hot,
                             text: "")) {
                                 ListFeature()
                             })
@@ -102,10 +99,10 @@ struct MainView: View {
                     
                     ListView(
                         store: Store(initialState: ListFeature.State(
-                            policies: IdentifiedArray(uniqueElements: likePolicies),
-                            filteredPolicies: IdentifiedArray(uniqueElements: likePolicies),
-                            tabType: .like,
+                            filteredPolicies: store.likePolicies,
                             hearderTitle: "즐겨찾기",
+                            policies: store.likePolicies,
+                            tabType: .like,
                             text: "")) {
                                 ListFeature()
                             })

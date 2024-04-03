@@ -7,7 +7,6 @@
 
 import ComposableArchitecture
 
-import SwiftData
 import SwiftUI
 
 struct ListView: View {

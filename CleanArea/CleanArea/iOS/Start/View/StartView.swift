@@ -70,9 +70,7 @@ struct StartView: View {
                                 store.scope(state: \.inputBox4, action: \.inputBox4).text,
                                 store.scope(state: \.inputBox5, action: \.inputBox5).text
                             ))
-//                            store.send(.openMain)
                         } label: {
-                            
                             Text("정책검색")
                                 .font(.pretendardRegular25)
                                 .padding(.horizontal, 50)
@@ -80,7 +78,6 @@ struct StartView: View {
                                 .background(.buttonGreen)
                                 .foregroundColor(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                            
                         }
                         .transition(
                             .asymmetric(
@@ -101,17 +98,19 @@ struct StartView: View {
                 }
             } destination: { store in
                 switch store.state {
-                case .mainScene:
-                    if let store = store.scope(state: \.mainScene, action: \.mainScene) {
-                        MainView(store: store)
+                case .detailScene(_):
+                    if let store = store.scope(state: \.detailScene, action: \.detailScene) {
+                        DetailView(store: store)
                     }
+                    
                 case .listScene(_):
                     if let store = store.scope(state: \.listScene, action: \.listScene) {
                         ListView(store: store)
                     }
-                case .detailScene(_):
-                    if let store = store.scope(state: \.detailScene, action: \.detailScene) {
-                        DetailView(store: store)
+                    
+                case .mainScene:
+                    if let store = store.scope(state: \.mainScene, action: \.mainScene) {
+                        MainView(store: store)
                     }
                 }
             }
@@ -121,7 +120,7 @@ struct StartView: View {
             .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidHideNotification)) { _ in
                 store.send(.keyboardDown)
             }
-            
+    
         case .loading:
             LoadingCircleView()
         }

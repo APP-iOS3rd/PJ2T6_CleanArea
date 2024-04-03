@@ -42,11 +42,9 @@ struct ListItemFeature {
                 ])
                 
             case let .calculateDay(dateString):
-                
-                print(dateString)
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = Locale(identifier: "ko_KR")
-                
+        
                 let dateFormats = [
                     "yyyy.MM.dd.",
                     "yyyy.MM.dd"

@@ -11,7 +11,6 @@ import SwiftData
 
 @main
 struct CleanAreaApp: App {
-    
     static let store = Store(initialState: StartFeature.State()) {
         StartFeature()
             ._printChanges()
@@ -22,7 +21,6 @@ struct CleanAreaApp: App {
             ContentView(
                 store: CleanAreaApp.store
             )
-                .environmentObject(LikedStatusManager())
         }
         .modelContainer(for: YouthPolicy.self)
     }

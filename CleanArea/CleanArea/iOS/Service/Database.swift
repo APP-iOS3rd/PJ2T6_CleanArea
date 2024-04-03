@@ -24,7 +24,6 @@ fileprivate let itemModelContext: ModelContext = {
     }
 }()
 
-
 // MARK: - SwiftData 를 사용한 Database
 struct Database {
     var context: () throws -> ModelContext

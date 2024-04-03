@@ -13,20 +13,20 @@ import Foundation
 struct MainFeature {
     @ObservableState
     struct State: Equatable {
-        var policies: IdentifiedArrayOf<YouthPolicy> = []
         var hotPolicies: IdentifiedArrayOf<YouthPolicy> = []
         var initialAppear: Bool = true
+        var likePolicies: IdentifiedArrayOf<YouthPolicy> = []
+        var policies: IdentifiedArrayOf<YouthPolicy> = []
         var recommandcellModels: [RecommandCellModel] = []
         
-//        var likePolicies: IdentifiedArrayOf<YouthPolicy> = []
-//        mutating func fetchItems() {
-//            @Dependency(\.swiftData) var swiftData
-//            do {
-//                self.likePolicies = IdentifiedArray(uniqueElements: try swiftData.fetch())
-//            } catch {
-//                print("error :: fetchItems", error.localizedDescription)
-//            }
-//        }
+        mutating func fetchItems() {
+            @Dependency(\.swiftData) var swiftData
+            do {
+                self.likePolicies = IdentifiedArray(uniqueElements: try swiftData.fetch())
+            } catch {
+                print("error :: fetchItems", error.localizedDescription)
+            }
+        }
     }
     
     enum Action {
@@ -41,21 +41,19 @@ struct MainFeature {
     }
     
     @Dependency(\.dismiss) var dismiss
-//    @Dependency(\.swiftData) var swiftData
 
-    
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
             case .appearSet:
-                return .run { [initialAppear = state.initialAppear] send in
+                return .run { [initialAppear = state.initialAppear,
+                               fetchItems = state.fetchItems()] send in
                     if initialAppear {
                         await send(.setFilterPolicy)
                         await send(.getPolicy)
                         await send(.initialAppear)
                     }
-                
-//                    fetchItems
+                    fetchItems
                 }
                 
             case let .filterPolicy(policies, code):
@@ -65,21 +63,25 @@ struct MainFeature {
                     return .run { send in
                         await send(.setRecommanModel(job, "일자리"))
                     }
+                    
                 case .residence:
                     let residence = policies.filter {  $0.polyRlmCd == code.rawValue }
                     return .run { send in
                         await send(.setRecommanModel(residence, "주거"))
                     }
+                    
                 case .education:
                     let education = policies.filter {  $0.polyRlmCd == code.rawValue }
                     return .run { send in
                         await send(.setRecommanModel(education, "교육"))
                     }
+                    
                 case .curture:
                     let curture = policies.filter {  $0.polyRlmCd == code.rawValue }
                     return .run { send in
                         await send(.setRecommanModel(curture, "복지, 문화"))
                     }
+                    
                 case .participation:
                     let participation = policies.filter {  $0.polyRlmCd == code.rawValue }
                     return .run { send in
@@ -124,7 +126,6 @@ struct MainFeature {
                     await self.dismiss()
                 }
             }
-            
         }
     }
 }

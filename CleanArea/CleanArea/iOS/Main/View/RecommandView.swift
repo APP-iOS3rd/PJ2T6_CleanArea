@@ -17,10 +17,10 @@ struct RecommandView: View {
             ScrollView {
                 ForEach(store.recommandcellModels.indices, id: \.self) { index in
                     NavigationLink(state: StartFeature.Path.State.listScene(.init(
+                        filteredPolicies: store.recommandcellModels[index].policies, 
+                        hearderTitle: store.recommandcellModels[index].name, 
                         policies: store.recommandcellModels[index].policies,
-                        filteredPolicies: store.recommandcellModels[index].policies,
-                        tabType: .recommand,
-                        hearderTitle: store.recommandcellModels[index].name))) {
+                        tabType: .recommand))) {
                         RecommandCell(model: store.recommandcellModels[index])
                             .frame(height: 70)
                             .padding(.vertical, 11)

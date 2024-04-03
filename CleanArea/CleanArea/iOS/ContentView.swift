@@ -10,9 +10,9 @@ import ComposableArchitecture
 import SwiftUI
 
 struct ContentView: View {
-    var store: StoreOf<StartFeature>
-
     @State private var showLaunchScreen = true
+
+    var store: StoreOf<StartFeature>
 
     var body: some View {
         Group {

@@ -77,7 +77,6 @@ struct StartFeature {
             switch action {
             case let .dataResponse(result):
                 state.result = result
-                
                 return .run { send in
                     await send(.openMain)
                 }
@@ -140,6 +139,7 @@ struct StartFeature {
                 
             case .inputBox5(_):
                 return .none
+                
             case let .path(action):
                 switch action {
                 case .element(id: _, action: .mainScene(.appearSet)):
@@ -162,28 +162,26 @@ extension StartFeature {
     struct Path {
         @ObservableState
         enum State: Equatable {
-            case mainScene(MainFeature.State)
-            case listScene(ListFeature.State)
             case detailScene(DetailFeature.State)
+            case listScene(ListFeature.State)
+            case mainScene(MainFeature.State)
         }
         
         enum Action {
-            case mainScene(MainFeature.Action)
-            case listScene(ListFeature.Action)
             case detailScene(DetailFeature.Action)
+            case listScene(ListFeature.Action)
+            case mainScene(MainFeature.Action)
         }
         
         var body: some ReducerOf<Self> {
-            Scope(state: \.mainScene, action: \.mainScene) {
-                MainFeature()
+            Scope(state: \.detailScene, action: \.detailScene) {
+                DetailFeature()
             }
-            
             Scope(state: \.listScene, action: \.listScene) {
                 ListFeature()
             }
-            
-            Scope(state: \.detailScene, action: \.detailScene) {
-                DetailFeature()
+            Scope(state: \.mainScene, action: \.mainScene) {
+                MainFeature()
             }
         }
     }
