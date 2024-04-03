@@ -16,7 +16,7 @@ struct DetailFeature {
         var cityImage: City?                            //시 이미지
         var likePolicies: IdentifiedArrayOf<YouthPolicy> = []
         var likeStatus: Bool = false
-        var youthPolicy: YouthPolicy                    //정책 내용
+        var youthPolicy: YouthPolicy = .init(bizId: "", polyBizSecd: "", polyBizTy: "", polyBizSjnm: "", polyItcnCn: "", sporCn: "", sporScvl: "", bizPrdCn: "", prdRpttSecd: "", rqutPrdCn: "", ageInfo: "", majrRqisCn: "", empmSttsCn: "", splzRlmRqisCn: "", accrRqisCn: "", prcpCn: "", aditRscn: "", prcpLmttTrgtCn: "", rqutProcCn: "", pstnPaprCn: "", jdgnPresCn: "", rqutUrla: "", rfcSiteUrla1: "", rfcSiteUrla2: "", mngtMson: "", mngtMrofCherCn: "", cherCtpcCn: "", cnsgNmor: "", tintCherCn: "", tintCherCtpcCn: "", etct: "", polyRlmCd: "", minAge: "", maxAge: "", startDate: "", endDate: "", views: 0)                    //정책 내용
         
         mutating func addItem() {
             @Dependency(\.swiftData) var swiftData
