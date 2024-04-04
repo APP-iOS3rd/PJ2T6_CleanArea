@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class YouthPolicy: Codable, Hashable {
+class YouthPolicy: Codable, Hashable, Identifiable {
     enum CodingKeys: CodingKey {
         case bizId, polyBizSecd, polyBizTy, polyBizSjnm, polyItcnCn, sporCn, sporScvl, bizPrdCn, prdRpttSecd, rqutPrdCn, ageInfo, majrRqisCn, empmSttsCn, splzRlmRqisCn, accrRqisCn, prcpCn, aditRscn, prcpLmttTrgtCn, rqutProcCn, pstnPaprCn, jdgnPresCn, rqutUrla, rfcSiteUrla1, rfcSiteUrla2, mngtMson, mngtMrofCherCn, cherCtpcCn, cnsgNmor, tintCherCn, tintCherCtpcCn, etct, polyRlmCd, minAge, maxAge, startDate, endDate, views
     }
@@ -52,7 +52,43 @@ class YouthPolicy: Codable, Hashable {
     var endDate: String       // 정책종료일
     var views: Int              //조회수
     
-    init(bizId: String, polyBizSecd: String, polyBizTy: String, polyBizSjnm: String, polyItcnCn: String, sporCn: String, sporScvl: String, bizPrdCn: String, prdRpttSecd: String, rqutPrdCn: String, ageInfo: String, majrRqisCn: String, empmSttsCn: String, splzRlmRqisCn: String, accrRqisCn: String, prcpCn: String, aditRscn: String, prcpLmttTrgtCn: String, rqutProcCn: String, pstnPaprCn: String, jdgnPresCn: String, rqutUrla: String, rfcSiteUrla1: String, rfcSiteUrla2: String, mngtMson: String, mngtMrofCherCn: String, cherCtpcCn: String, cnsgNmor: String, tintCherCn: String, tintCherCtpcCn: String, etct: String, polyRlmCd: String, minAge: String, maxAge: String, startDate: String, endDate: String, views: Int) {
+    init(bizId: String,
+         polyBizSecd: String,
+         polyBizTy: String,
+         polyBizSjnm: String,
+         polyItcnCn: String,
+         sporCn: String,
+         sporScvl: String,
+         bizPrdCn: String,
+         prdRpttSecd: String,
+         rqutPrdCn: String,
+         ageInfo: String,
+         majrRqisCn: String,
+         empmSttsCn: String,
+         splzRlmRqisCn: String,
+         accrRqisCn: String,
+         prcpCn: String,
+         aditRscn: String,
+         prcpLmttTrgtCn: String,
+         rqutProcCn: String,
+         pstnPaprCn: String,
+         jdgnPresCn: String,
+         rqutUrla: String,
+         rfcSiteUrla1: String,
+         rfcSiteUrla2: String,
+         mngtMson: String,
+         mngtMrofCherCn: String,
+         cherCtpcCn: String,
+         cnsgNmor: String,
+         tintCherCn: String,
+         tintCherCtpcCn: String,
+         etct: String,
+         polyRlmCd: String,
+         minAge: String,
+         maxAge: String,
+         startDate: String,
+         endDate: String,
+         views: Int) {
                 
         self.bizId = bizId
         self.polyBizSecd = polyBizSecd
