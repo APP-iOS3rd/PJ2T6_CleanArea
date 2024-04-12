@@ -13,12 +13,19 @@
 
 
 ## 🌱 소개
+
+
+### 소개 영상
+
+- [유튜브 - 청정구역 시연 영상](https://youtu.be/S1xxq8XBxU8)
+
 ### 앱 목적
 - 청년들의 성공을 위한 국가정책 제공
 - 너무 복잡하고 많은 청년 정책들을 일일히 찾아보기 어려운 청년들에게 알맞는 청년정책 추천
 
 ### 타겟 사용자
 - 20 ~ 30대 청년 ( 일상에 치여 청년 정책을 알아볼 시간이 없는 청년들 )
+
 
 ### 🧑🏻‍💻 팀원
 |[최동호](https://github.com/hamfan524)|[김건호](https://github.com/GeonH0)|[김지훈](https://github.com/Jihunkim95)|[노주영](https://github.com/JooYoungNoh)|[이민호](https://github.com/funMango)|
@@ -52,6 +59,7 @@
 ## ⚙️ 개발 환경 및 라이브러리
 [![swift](https://img.shields.io/badge/swift-5.9.0-orange)]()
 [![xcode](https://img.shields.io/badge/Xcode-15.0.1-blue)]()
+[![The Composable Architecture](https://img.shields.io/badge/TheComposableArchitecture-1.9.2-brown)]()
 
 ## 💡동작 원리
 ![qwewqewqewq](https://github.com/APP-iOS3rd/PJ2T6_CleanArea/assets/37105602/321f5e04-f740-4005-a40f-b71d8140e457)
@@ -122,6 +130,36 @@
     - launchScreen추가, 앱 Icon 추가
 </details>
 
+<details>
+<summary>Step 4 타임라인</summary>
+
+- 24.03.18
+    - TCA 라이브러리 설치
+    - 코드 컨벤션 수정
+- 24.03.25
+    - StartView TCA 패턴 적용 
+        - StartView -> StartFeature
+        - StartTextField -> TextFieldFeature
+        - startLocation -> LocationFeature
+        - 각 리듀서별로 Test코드 작성
+- 24.03.27 ~ 24.03.31
+    - Start-Main-List 화면이동 구현
+        - path에 스토어 추가하고 제거하는 로직 적용
+    - Detail, Main TCA 아키텍처 적용
+- 24.04.01
+    - 더미데이터로 작업 중이던 부분들 서버데이터로 변경
+- 24.04.02
+    - 즐겨찾기 SwiftData를 리듀서에서 처리하는 로직 구현
+        - DetailView 오픈 시 서버에 데이터 전송로직 구현
+- 24.04.03
+    - TCA 패턴 적용 완료
+    - StartFeature 테스트 코드 추가
+    - MainFeature 테스트 코드 추가
+    - ListFeature 테스트 코드 추가
+    - ListItemFeature 테스트 코드 추가
+    - DetailFeature 테스트 코드 추가
+   
+</details> 
 
 ## 📱 실행 화면
 |앱 실행|시작화면|
@@ -222,5 +260,123 @@
 
 - 해당 방법을 적용후 데이터가 연동되지 않는 문제 해결
 </details>
+
+<details>
+<summary>TCA패턴으로 적용하며 생겼던 문제들</summary>
+
+### 1. 문제 정의
+
+- 네비게이션을 이용한 뷰 이동이 제대로 작동되지 않던 오류
+
+### 2. 사실 수집
+
+- StartView에서 MainView로의 이동은 되는데 그 MainView안에 있는 탭뷰 아이템들에서 새로 네비게이션이 열리지 않음
+
+### 3. 원인 추론
+
+- TCA아키텍처에서는 네비게이션 패스가 선언되어있는 스택안에서 새로운 네비게이션 스택을 생성하는게 불가능함
+
+### 4. 해결방법
+
+- 최상위 스토어에서 스택을 쌓을 수 있는 Path를 생성
+- 이동할 화면을 Path에 추가하고 dismiss로 Path에서 제거하는 방식으로 네비게이션 구현
+
+### 해결 코드 
+- ### 리듀서
+    - `State`: 네비게이션을 위한 경로 상태를 관리. StackState<Path.State>를 사용하여 현재 네비게이션 스택을 추적
+    - `Action`: openMain 액션은 메인 화면으로의 경로를 추가하는 데 사용. path 액션은 네비게이션 스택의 변경을 관리
+    - `body`: openMain 액션을 받았을 때, 메인 화면으로의 경로를 네비게이션 스택에 추가하여 네비게이션 상태 변경
+
+
+```Swift
+@Reducer
+struct StartFeature {
+    @ObservableState
+    struct State: Equatable {
+        var path = StackState<Path.State>()
+    }
+    
+    enum Action {
+        case openMain
+        case path(StackAction<Path.State, Path.Action>)
+    }
+
+    var body: some ReducerOf<Self> {
+        
+        Reduce { state, action in
+            switch action {
+           
+            case .openMain:
+                // Main 화면으로의 경로를 path 스택에 추가합니다.
+                state.path.append(.mainScene(MainFeature.State(
+                    policies: state.result
+                )))
+                return .none
+                
+            case let .path(action):
+                // Path 액션을 처리합니다. 여기서는 화면 전환 로직을 추가할 수 있습니다.
+                switch action {
+                default:
+                    return .none
+                }
+            }
+            
+        }
+        .forEach(\.path, action: \.path) {
+            Path()
+        }
+    }
+}
+
+extension StartFeature {
+    @Reducer
+    struct Path {
+        @ObservableState
+        enum State: Equatable {
+            case mainScene(MainFeature.State)
+        }
+        
+        enum Action {
+            case mainScene(MainFeature.Action)
+        }
+        
+        var body: some ReducerOf<Self> {
+
+            Scope(state: \.mainScene, action: \.mainScene) {
+                MainFeature()
+            }
+        }
+    }
+}
+```
+
+- ### 뷰
+    - `NavigationStack`: TCA의 NavigationStack을 사용하여, 스토어의 상태를 바탕으로 동적으로 화면을 전환      
+        - path 파라미터에 바인딩된 스토어의 상태를 통해 네비게이션 스택을 관리
+    - `destination`: 경로 상태에 따라 표시할 화면을 결정
+        - 예를 들어, 상태가 .mainScene일 때 MainView를 표시
+
+```Swift
+NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
+                VStack {
+                    // 화면 구성
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 20)
+            } destination: { store in
+                switch store.state {
+      
+                    
+                case .mainScene:
+                    if let store = store.scope(state: \.mainScene, action: \.mainScene) {
+                        MainView(store: store)
+                    }
+                }
+            }
+```
+
+</details>
+
+
 
 
